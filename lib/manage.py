@@ -17,4 +17,6 @@ def update():
     simpleRegistry = getSimpleAppRegistry(apps, appsDir)
     with open(os.path.join(appsDir, "apps.json"), "w") as f:
         json.dump(simpleRegistry, f, indent=4, sort_keys=True)
+    with open(os.path.join(appsDir, "apps", "apps.json"), "w") as f:
+        json.dump(simpleRegistry, f, indent=4, sort_keys=True)
     print("Wrote information to apps.json")
