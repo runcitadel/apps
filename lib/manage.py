@@ -10,13 +10,13 @@ import json
 from lib.validate import findAndValidateApps
 from lib.metadata import getSimpleAppRegistry
 
-appsDir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..")
+appsDir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "apps")
 
 def update():
     apps = findAndValidateApps(appsDir)
     simpleRegistry = getSimpleAppRegistry(apps, appsDir)
-    with open(os.path.join(appsDir, "apps.json"), "w") as f:
+    with open(os.path.join(appsDir, "..", "apps.json"), "w") as f:
         json.dump(simpleRegistry, f, indent=4, sort_keys=True)
-    with open(os.path.join(appsDir, "apps", "apps.json"), "w") as f:
+    with open(os.path.join(appsDir, "apps.json"), "w") as f:
         json.dump(simpleRegistry, f, indent=4, sort_keys=True)
     print("Wrote information to apps.json")
