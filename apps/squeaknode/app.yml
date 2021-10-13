@@ -5,7 +5,6 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Social
   name: Squeaknode
