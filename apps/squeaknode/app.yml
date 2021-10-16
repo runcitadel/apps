@@ -9,7 +9,7 @@ metadata:
   category: Social
   name: Squeaknode
   version: 0.1.161
-  tagline: A peer-to-peer status feed on Lightning
+  tagline: A peer-to-peer status feed with Lightning monetization
   description: >-
     The Squeaknode app allows you to create, view, buy, and sell squeaks. A
     squeak is a single post that can contain up to 280 characters.
