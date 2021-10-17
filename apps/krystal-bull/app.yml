@@ -46,6 +46,7 @@ containers:
       TOR_PROXY: socks5://${TOR_PROXY_IP}:${TOR_PROXY_PORT}
     depends_on: 
       - oracleserver
+    port: 3001
   - name: oracleserver
     image: bitcoinscala/bitcoin-s-oracle-server:1.7.0-212-d9126650-SNAPSHOT
     user: "1000:1000"

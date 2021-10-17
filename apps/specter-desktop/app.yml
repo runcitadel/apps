@@ -63,6 +63,7 @@ containers:
     BTC_RPC_PORT: $BITCOIN_RPC_PORT
     BTC_RPC_PROTOCOL: http
   name: web
+  port: 25441
   data:
   - data:/data
   permissions:
