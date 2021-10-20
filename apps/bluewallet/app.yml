@@ -35,7 +35,7 @@ containers:
   command: redis-server --requirepass moneyprintergobrrr
   data:
   - data/redis:/data
-  user: 1000:1000
+  #user: 1000:1000
   init: true
 
 - name: main
@@ -66,5 +66,5 @@ containers:
         }
       }
   # Some stuff for the container to run securely & stop properly
-  user: 1000:1000
+  #user: 1000:1000
   init: true
