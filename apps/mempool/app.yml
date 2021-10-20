@@ -55,7 +55,7 @@ metadata:
 containers:
 - name: main
   image: mempool/frontend:v2.3.0-dev1@sha256:2ae9338415bc55e9691f0971dd28bbad270da0a6200a3251faf3b91c2c8add62
-  #user: 1000:1000
+  user: 1000:1000
   init: true
   command: ./wait-for mariadb:3306 --timeout=720 -- nginx -g 'daemon off;'
   environment:
@@ -64,7 +64,7 @@ containers:
 
 - name: api
   image: mempool/backend:v2.3.0-dev1@sha256:a4a282e673736f37c358d32b241b131b4f4456faaea76572d83fa61956a02f9a
-  #user: 1000:1000
+  user: 1000:1000
   init: true
   command: ./wait-for-it.sh mariadb:3306 --timeout=720 --strict -- ./start.sh
   environment:
@@ -91,7 +91,7 @@ containers:
 
 - name: mariadb
   image: mariadb:10.6.4@sha256:4bbee12b1adf299211f844ebbe89563675c46965470dcfa40f5278d63c56d030
-  #user: 1000:1000
+  user: 1000:1000
   environment:
     MYSQL_DATABASE: mempool
     MYSQL_USER: mempool

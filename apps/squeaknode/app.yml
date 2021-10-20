@@ -37,7 +37,7 @@ containers:
     port: 12994
     ports:
       - 8994:8994
-    #user: 1000:1000
+    user: 1000:1000
     environment:
       SQUEAKNODE_BITCOIN_RPC_HOST: $BITCOIN_IP
       SQUEAKNODE_BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
