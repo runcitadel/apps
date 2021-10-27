@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2021 Aaron Dewes
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+
+metadata:
+  category: Beta
+  name: LnMe (Early beta)
+  version: 1.4.0
+  tagline: Very early beta app
+  description: >-
+    Didn't finish the description yet.
+
+    But this will allow you to host a Lightning Address on your node (over Tor, which makes it less universal, but it's a first step).
+
+    I haven't tested this app yet, it's an early port. Feel free to try it
+  developer: Michael Bumann
+  website: https://ln.michaelbumann.com/
+  dependencies:
+  - lnd
+  repo: https://github.com/bumi/lnme
+  support: https://github.com/bumi/lnme/issues
+  gallery: []
+containers:
+- image: ghcr.io/runcitadel/lnme:master
+  user: 1000:1000
+  environment:
+    LNME_LND_ADDRESS: $LND_IP:$LND_GRPC_PORT
+    LNME_LND_CERT_PATH: /lnd/tls.cert
+    LNME_LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/invoice.macaroon
+  name: web
+  port: 1323
+  permissions:
+  - lnd
