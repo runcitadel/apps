@@ -8,15 +8,13 @@ version: 1
 
 metadata:
   category: Beta
-  name: LnMe (Early beta)
+  name: LnMe (Beta)
   version: 1.4.0
-  tagline: Very early beta app
+  tagline: A personal server to receive tips over Lightning
   description: >-
-    Didn't finish the description yet.
+    I didn't finish the description yet.
 
     But this will allow you to host a Lightning Address on your node (over Tor, which makes it less universal, but it's a first step).
-
-    I haven't tested this app yet, it's an early port. Feel free to try it
   developer: Michael Bumann
   website: https://ln.michaelbumann.com/
   dependencies:
