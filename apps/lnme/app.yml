@@ -7,21 +7,30 @@
 version: 1
 
 metadata:
-  category: Beta
-  name: LnMe (Beta)
+  category: Wallets
+  name: LnMe
   version: 1.4.0
-  tagline: A personal server to receive tips over Lightning
+  tagline: Receive tips over Lightning
   description: >-
-    I didn't finish the description yet.
+    This app allows you to receive tips over Lightning.
 
-    But this will allow you to host a Lightning Address on your node (over Tor, which makes it less universal, but it's a first step).
+    You can share the onion address of this app with others and they can dynamically generate an invoice using this app.
+
+    Using some apps, like BlueWallet, users can directly send tips to our Lightning address.
+
+    Your lightning address is <your-name-or-anything-you-like-it-doesn't-matter>@<the-onion-url-of-this-app>.onion.
+
+    Please note: This app only works on Citadel 0.5.1 and above (Yes, that update doesn't exist yet).
+
+    The Lightning Address feature will only work with the next BlueWallet release.
   developer: Michael Bumann
   website: https://ln.michaelbumann.com/
   dependencies:
   - lnd
   repo: https://github.com/bumi/lnme
   support: https://github.com/bumi/lnme/issues
-  gallery: []
+  gallery:
+    - https://raw.githubusercontent.com/bumi/lnme/master/lnme-demo.gif
 containers:
 - image: ghcr.io/runcitadel/lnme:master
   user: 1000:1000
