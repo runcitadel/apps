@@ -31,14 +31,15 @@ metadata:
   support: https://github.com/bumi/lnme/issues
   gallery:
     - https://raw.githubusercontent.com/bumi/lnme/master/lnme-demo.gif
+
 containers:
-- image: ghcr.io/runcitadel/lnme:master
+- name: web
+  image: ghcr.io/runcitadel/lnme:master
+  port: 1323
   user: 1000:1000
+  permissions:
+  - lnd
   environment:
     LNME_LND_ADDRESS: $LND_IP:$LND_GRPC_PORT
     LNME_LND_CERT_PATH: /lnd/tls.cert
     LNME_LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/invoice.macaroon
-  name: web
-  port: 1323
-  permissions:
-  - lnd
