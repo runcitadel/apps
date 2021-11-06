@@ -66,7 +66,5 @@ containers:
   port: 25441
   data:
   - data:/data
-  volumes:
-    - ${BITCOIN_DATA_DIR}:/.data/bitcoin:ro
   permissions:
   - bitcoind
