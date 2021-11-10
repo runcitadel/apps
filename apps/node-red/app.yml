@@ -43,8 +43,9 @@ containers:
     stop_grace_period: 1m
     data:
       - data:/data
+    port: 3000
     environment:
-      PORT: $APP_NODE_RED_PORT
+      PORT: 3000
       BITCOIN_NETWORK: $BITCOIN_NETWORK
       BITCOIN_IP: $BITCOIN_IP
       BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
