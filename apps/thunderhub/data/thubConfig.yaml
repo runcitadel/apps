@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-masterPassword: 'moneyprintergobrrr'
+masterPassword: '{YML_ENV_2}'
 accounts:
   - name: 'Citadel'
     serverUrl: '{YML_ENV_1}'

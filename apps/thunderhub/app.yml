@@ -31,7 +31,7 @@ metadata:
   - 1.jpg
   - 2.jpg
   - 3.jpg
-  defaultPassword: moneyprintergobrrr
+  defaultPassword: $APP_SEED
 containers:
 - image: apotdevin/thunderhub:v0.12.30@sha256:631c911609da44685687ac11ace4391e1cdfa52caa70582ea41d1b468cdec8e1
   user: 1000:1000
@@ -40,6 +40,7 @@ containers:
     LOG_LEVEL: debug
     ACCOUNT_CONFIG_PATH: /data/thubConfig.yaml
     YML_ENV_1: $LND_IP:$LND_GRPC_PORT
+    YML_ENV_2: $APP_SEED
     TOR_PROXY_SERVER: socks://$TOR_PROXY_IP:$TOR_PROXY_PORT
   name: web
   port: 3000
