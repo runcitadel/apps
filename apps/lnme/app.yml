@@ -20,9 +20,9 @@ metadata:
 
     Your lightning address is <your-name-or-anything-you-like-it-doesn't-matter>@<the-onion-url-of-this-app>.onion.
 
-    Please note: This app only works on Citadel 0.5.1 and above (Yes, that update doesn't exist yet).
-
-    The Lightning Address feature will only work with the next BlueWallet release.
+    If you contact the Citadel team, you can also get a shorter and easier to use @ln.runcitadel.space address. To receive one, contact
+    us on forum.runcitadel.space with your prefered address and also, share the onion URL of the LnMe app (not of your node, the app will have a differen one)
+    or DM us on Twitter (https://twitter.com/runcitadel)
   developer: Michael Bumann
   website: https://ln.michaelbumann.com/
   dependencies:
@@ -34,7 +34,7 @@ metadata:
 
 containers:
 - name: web
-  image: ghcr.io/runcitadel/lnme:master
+  image: ghcr.io/bumi/lnme:master@sha256:833144ef654a8d0e714b226422f33aaf6a645c05ff98f4e82ffe1a36626fbe6e
   port: 1323
   user: 1000:1000
   permissions:
