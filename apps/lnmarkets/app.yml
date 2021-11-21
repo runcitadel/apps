@@ -31,7 +31,7 @@ metadata:
   website: https://lnmarkets.com
   dependencies:
       - lnd
-  repo: https://github.com/lnmarkets/umbrel
+  repo: https://github.com/ln-markets/umbrel
   support: https://www.t.me/lnmarkets
   gallery:
       - 1.jpg
@@ -40,7 +40,7 @@ metadata:
 
 containers:
   - name: lnmarkets
-    image: ghcr.io/lnmarkets/umbrel:v1.1.4@sha256:a378c9e7d21129b44a37cebe60d91b0c35468af97a453772f61764d9ba1576ac
+    image: ghcr.io/ln-markets/umbrel:v1.1.4@sha256:a378c9e7d21129b44a37cebe60d91b0c35468af97a453772f61764d9ba1576ac
     user: 1000:1000
     init: true
     stop_grace_period: 1m
