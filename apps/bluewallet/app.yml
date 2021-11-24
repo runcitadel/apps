@@ -62,7 +62,7 @@ containers:
           "db": 0
         },
         "lnd": {
-          "url": "[$LND_IP6]:$LND_GRPC_PORT",
+          "url": "[${LND_IP6}]:$LND_GRPC_PORT",
           "password": ""
         }
       }
