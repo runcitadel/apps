@@ -42,8 +42,8 @@ containers:
     user: "1000:1000"
     stop_grace_period: 1m
     environment:
-      ORACLE_SERVER_API_URL: "http://${APP_KRYSTAL_BULL_ORACLESERVER_IP6}:9998/"
-      TOR_PROXY: socks5://${TOR_PROXY_IP6}:${TOR_PROXY_PORT}
+      ORACLE_SERVER_API_URL: "http://[${APP_KRYSTAL_BULL_ORACLESERVER_IP6}]:9998/"
+      TOR_PROXY: socks5://[${TOR_PROXY_IP6}]:${TOR_PROXY_PORT}
     depends_on: 
       - oracleserver
     port: 3001
