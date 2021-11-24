@@ -55,7 +55,7 @@
           },
           {
               "p": "url",
-              "v": "\"http://\" & $env(\"BITCOIN_IP\") & \":\" & $env(\"BITCOIN_RPC_PORT\")",
+              "v": "\"http://\" & $env(\"BITCOIN_IP6\") & \":\" & $env(\"BITCOIN_RPC_PORT\")",
               "vt": "jsonata"
           },
           {

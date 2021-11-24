@@ -41,7 +41,7 @@ containers:
   init: true
   environment:
     PUBLIC_URL: $APP_HIDDEN_SERVICE:80
-    LND_IP: $LND_IP
+    LND_IP6: $LND_IP6
     CONNECT_UI: 'true'
     LND_PORT: $LND_GRPC_PORT
     TLS_LOCATION: /lnd/tls.cert
