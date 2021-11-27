@@ -9,7 +9,7 @@ version: 1
 metadata:
   category: Finance
   name: LN Markets
-  version: 1.1.4
+  version: 1.1.5
   tagline: Trade Bitcoin derivatives on Lightning
   description: >-
     LN Markets is the first Lightning-native Bitcoin derivatives trading platform.
@@ -26,7 +26,7 @@ metadata:
       More features may come in the future!
     
     
-    Thank you for your support and let’s keep building the future of finance together!
+    Thank you for your support and let's keep building the future of finance together!
   developer: LN Markets
   website: https://lnmarkets.com
   dependencies:
@@ -37,10 +37,11 @@ metadata:
       - 1.jpg
       - 2.jpg
       - 3.jpg
+  defaultPassword: $APP_SEED
 
 containers:
   - name: lnmarkets
-    image: ghcr.io/ln-markets/umbrel:v1.1.4@sha256:a378c9e7d21129b44a37cebe60d91b0c35468af97a453772f61764d9ba1576ac
+    image: ghcr.io/ln-markets/umbrel:v1.1.5@sha256:94b2259e4c2445d518cabc4bd6c0519c5fae87a3fb3c0bb564522e805d63bd89
     user: 1000:1000
     init: true
     stop_grace_period: 1m
@@ -48,6 +49,7 @@ containers:
     environment:
       APP_URL: 0.0.0.0
       API_PORT: 1234
+      APP_PASSWORD: $APP_SEED
 
       LND_IP: $LND_IP
       LND_GRPC_PORT: $LND_GRPC_PORT

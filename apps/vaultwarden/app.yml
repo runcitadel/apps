@@ -10,7 +10,7 @@ version: 1
 metadata:
   category: Password Managers
   name: Vaultwarden
-  version: 1.22.2
+  version: 1.23.0
   tagline: Unofficial Bitwarden® compatible server
   description: >-
     Vaultwarden (formerly known as Bitwarden_RS) is an alternative implementation\
@@ -49,7 +49,7 @@ metadata:
   - 3.jpg
   torOnly: true
 containers:
-- image: vaultwarden/server:1.22.2@sha256:fe2a236b792fb2304ef50f86f1c25076ac5b2748e1b776fce260ad12ad29188d
+- image: vaultwarden/server:1.23.0@sha256:2b222cce85a97624b30fb1ff228f609ec5b43dd182357f80239834a1ada3aa38
   user: 1000:1000
   port: 3000
   environment:
