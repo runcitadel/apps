@@ -1,0 +1,59 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+
+metadata:
+  category: Lightning Node Management
+  name: Lightning Terminal
+  version: 0.6.1-alpha
+  tagline: A browser-based interface for managing channel liquidity
+  description: >-
+      With Lightning Terminal, you can
+        - Visualize your channels and balances
+
+        - Perform submarine swaps via the Lightning Loop service
+
+        - Classify channels according to your node's operating mode
+
+        - Run a single binary that integrates loopd, poold and faraday daemons all in one
+
+        - Access a preview release of the Pool UI
+
+        - Use Pool to earn sats by opening channels to those needing inbound liquidity
+
+
+  developer: Lightning Labs
+  website: https://lightning.engineering
+  dependencies:
+    - lnd
+  repo: https://github.com/lightninglabs/lightning-terminal
+  support: https://github.com/lightninglabs/lightning-terminal/issues
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg
+  defaultPassword: $APP_SEED
+
+containers:
+  - name: web
+    image: lightninglabs/lightning-terminal:v0.6.1-alpha@sha256:cb1af6b972b7fa686886ace5794c4d56dda8f96cacda677b4601518e02b8b894
+    user: 1000:1000
+    environment:
+      HOME: /data
+    command:
+      - --insecure-httplisten=0.0.0.0:$APP_LIGHTNING_TERMINAL_WEB_PORT
+      - --network="$BITCOIN_NETWORK"
+      - --lnd-mode="remote"
+      - --remote.lnd.rpcserver=$LND_IP:$LND_GRPC_PORT
+      - --remote.lnd.macaroonpath="/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon"
+      - --remote.lnd.tlscertpath="/lnd/tls.cert"
+      - --uipassword="${APP_SEED}"
+    data:
+      - data:/data
+    permissions:
+      - lnd
