@@ -69,3 +69,4 @@ containers:
   # Some stuff for the container to run securely & stop properly
   user: 1000:1000
   init: true
+  restarts: "on-failure"
