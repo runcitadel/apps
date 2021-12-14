@@ -41,15 +41,19 @@ containers:
     CONFIG_PATH: /lnd/lnd.conf
     SWAP_SERVER_URL: https://$APP_RIDE_THE_LIGHTNING_LOOP_IP:8081
     SWAP_MACAROON_PATH: /loop/.loop/$BITCOIN_NETWORK
+    BOLTZ_SERVER_URL: "https://$APP_RIDE_THE_LIGHTNING_BOLTZ_IP:9003"
+    BOLTZ_MACAROON_PATH: "/boltz/.boltz-lnd/macaroons"
   name: web
   data:
   - loop:/loop
+  - boltz:/boltz
   - rtl:/data
   permissions:
   - lnd
   - bitcoind
 
-- image: ghcr.io/runcitadel/loop:v0.15.1-beta@sha256:c8e1d361442675a17a2ec3d7de8f5718db17c9b24e744cd6b89992f97befc904
+- name: loop
+  image: ghcr.io/runcitadel/loop:v0.15.1-beta@sha256:c8e1d361442675a17a2ec3d7de8f5718db17c9b24e744cd6b89992f97befc904
   user: 1000:1000
   environment:
     HOME: /data
@@ -59,8 +63,24 @@ containers:
   - --lnd.macaroonpath="/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon"
   - --lnd.tlspath="/lnd/tls.cert"
   - --restlisten=0.0.0.0:8081
-  name: loop
   data:
   - loop:/data
+  permissions:
+  - lnd
+
+- name: boltz
+  image: boltz/boltz-lnd:1.2.6@sha256:01a56dd357a2460bfd0ecdd726d6db3ab59d78ee691250831d09ba5de3fec7ce
+  user: "1000:1000"
+  restart: "on-failure"
+  environment:
+    HOME: "/data"
+  data:
+  - boltz:/data
+  command:
+    - --lnd.host="$LND_IP"
+    - --lnd.macaroon="/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon"
+    - --lnd.certificate="/lnd/tls.cert"
+    - --rpc.rest.host="$APP_RIDE_THE_LIGHTNING_BOLTZ_IP"
+    - --rpc.rest.port="9003"
   permissions:
   - lnd
