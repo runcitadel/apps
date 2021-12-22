@@ -5,55 +5,50 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
-
 metadata:
   category: Password Managers
   name: Vaultwarden
-  version: 1.23.0
+  version: 1.23.1
   tagline: Unofficial Bitwarden® compatible server
   description: >-
-    Vaultwarden (formerly known as Bitwarden_RS) is an alternative implementation\
-    of the Bitwarden® server API written in Rust, compatible with upstream BitwardenÂ®\
-    clients*. Vaultwarden is perfect for self-hosting all of your passwords in an\
-    encrypted vault on your Citadel. Vaultwarden is a full implementation of BitwardenÂ®\
-    API that includes:
-    
+    Vaultwarden (formerly known as Bitwarden_RS) is an alternative
+    implementation\ of the Bitwarden® server API written in Rust, compatible
+    with upstream BitwardenÂ®\ clients*. Vaultwarden is perfect for self-hosting
+    all of your passwords in an\ encrypted vault on your Citadel. Vaultwarden is
+    a full implementation of BitwardenÂ®\ API that includes:
+
     - Organizations support
-    
+
     - Attachments
-    
+
     - Vault API support
 
     - Serving the static files for Vault interface
-    
+
     - Website icons API
-    
+
     - Authenticator and U2F support
-    
+
     - YubiKey and Duo support
-    
-    
-    Please note that Vaultwarden is not associated with the Bitwarden® project nor 8bit Solutions LLC.
-    When using this app, please report any bugs or suggestions to us directly, regardless
-    of whatever clients you are using (mobile, desktop, browser, etc), and do not
-    use Bitwarden®'s official support channels.
+
+
+    Please note that Vaultwarden is not associated with the Bitwarden® project nor 8bit Solutions LLC. When using this app, please report any bugs or suggestions to us directly, regardless of whatever clients you are using (mobile, desktop, browser, etc), and do not use Bitwarden®'s official support channels.
   developer: Daniel García
   website: https://github.com/dani-garcia
   dependencies: []
   repo: https://github.com/dani-garcia/vaultwarden
   support: https://vaultwarden.discourse.group/
   gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
   torOnly: true
 containers:
-- image: vaultwarden/server:1.23.0@sha256:2b222cce85a97624b30fb1ff228f609ec5b43dd182357f80239834a1ada3aa38
-  user: 1000:1000
-  port: 3000
-  environment:
-    ROCKET_PORT: 3000
-  name: server
-  data:
-  - data:/data
+  - image: vaultwarden/server:1.23.1@sha256:08d8edab2311ee36de9f1e2dd7f6ae18680a7fcbf00bab98d63fd4ff82b285e2
+    user: 1000:1000
+    port: 3000
+    environment:
+      ROCKET_PORT: 3000
+    name: server
+    data:
+      - data:/data

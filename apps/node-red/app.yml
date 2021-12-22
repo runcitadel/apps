@@ -5,11 +5,10 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Automation
   name: Node-RED
-  version: 2.1.3
+  version: 2.1.4
   tagline: Wire together the Internet of Things
   description: >-
     Node-RED is a visual programming tool for wiring together hardware devices,
@@ -39,7 +38,7 @@ metadata:
   torOnly: false
 containers:
   - name: web
-    image: nodered/node-red:2.1.3@sha256:c6c82e6404c88f766e18034148597e59ff593e291622b965ac9c4c7342bb9469
+    image: nodered/node-red:2.1.4@sha256:f1fb4f8eec0fcc49ff6edff988da48358dc3c6afe20a927be58a33dff4bbe359
     stop_grace_period: 1m
     data:
       - data:/data
