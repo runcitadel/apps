@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+metadata:
+  category: Payments
+  name: BTCPay Server
+  version: 1.3.7
+  tagline: Accept Bitcoin payments. Free, open-source & self-hosted, Bitcoin payment processor.
+  description: >-
+      BTCPay Server is a free and open-source Bitcoin payment processor which allows you to accept bitcoin without fees or intermediaries. 
+      
+  developer: BTCPay Server Foundation
+  website: https://btcpayserver.org
+  dependencies:
+    - lnd
+    - bitcoind
+  repo: https://github.com/btcpayserver/btcpayserver
+  support: https://chat.btcpayserver.org
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  mainContainer: web
+containers:
+  - name: nbxplorer
+    image: nicolasdorier/nbxplorer:2.2.18@sha256:2418ecdc331d070c51343abb98ec32252d410bb130361fd0e4d946b41b4a4949
+    user: 1000:1000
+    environment:
+      NBXPLORER_DATADIR: /data
+      NBXPLORER_NETWORK: $BITCOIN_NETWORK
+      NBXPLORER_PORT: 32838
+      NBXPLORER_BIND: 0.0.0.0
+      NBXPLORER_CHAINS: btc
+      NBXPLORER_SIGNALFILEDIR: /data
+      NBXPLORER_BTCRPCURL: http://$BITCOIN_IP:$BITCOIN_RPC_PORT
+      NBXPLORER_BTCNODEENDPOINT: $BITCOIN_IP:$BITCOIN_P2P_PORT
+      NBXPLORER_BTCRPCUSER: $BITCOIN_RPC_USER
+      NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
+    data:
+      - data/nbxplorer:/data
+    permissions:
+      - bitcoind
+  - name: web
+    image: btcpayserver/btcpayserver:1.3.7@sha256:0649db998e1997738c6866b9dbcaf86fd5b244308e01026f37c9a85d9ef370ed
+    port: 1234
+    depends_on:
+      - nbxplorer
+      - postgres
+    entrypoint:
+      - dotnet
+      - BTCPayServer.dll
+    environment:
+      HOME: /data
+      BTCPAY_DATADIR: /data
+      BTCPAY_PLUGINDIR: /data/plugins
+      BTCPAY_DOCKERDEPLOYMENT: "false"
+      BTCPAY_POSTGRES: User
+        ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Database=btcpayserver$BITCOIN_NETWORK
+      BTCPAY_NETWORK: $BITCOIN_NETWORK
+      BTCPAY_BIND: 0.0.0.0:1234
+      BTCPAY_CHAINS: btc
+      BTCPAY_BTCEXPLORERURL: http://$APP_BTCPAY_SERVER_NBXPLORER_IP:32838
+      BTCPAY_BTCLIGHTNING: type=lnd-rest;server=https://$LND_IP:$LND_REST_PORT/;macaroonfilepath=/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon;allowinsecure=true
+      BTCPAY_SOCKSENDPOINT: $TOR_PROXY_IP:$TOR_PROXY_PORT
+    data:
+      - data/nbxplorer:/data/.nbxplorer
+      - data/btcpay:/data
+    permissions:
+      - lnd
+    user: 1000:1000
+  - name: postgres
+    image: postgres:14.1-bullseye@sha256:1fe27b334443793af98d7eb320ad6f9f30fcc9bc068f545cb46ec01cefe9c8ee
+    user: 1000:1000
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    data:
+      - data/postgres:/var/lib/postgresql/data
