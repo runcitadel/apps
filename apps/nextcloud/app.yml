@@ -1,0 +1,67 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+version: 1
+metadata:
+  category: Files
+  name: Nextcloud
+  version: 23.0.0
+  tagline: Your personal cloud
+  description: >-
+    No description yet.
+  developer: Nextcloud GmbH
+  website: https://nextcloud.com
+  dependencies: []
+  repo: https://github.com/nextcloud/server
+  support: https://help.nextcloud.com/categories
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  path: /login?user=citadel
+  defaultPassword: $APP_SEED
+  mainContainer: web
+containers:
+  - name: db
+    image: mariadb:10.7.1@sha256:832c6e488f49720f484f87ee9f2cd4487321b373db07ac77037860bcd97d92bb
+    user: 1000:1000
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+      --skip-innodb-read-only-compressed
+    environment:
+      MARIADB_ROOT_PASSWORD: password123
+      MARIADB_PASSWORD: password123
+      MARIADB_DATABASE: nextcloud
+      MARIADB_USER: nextcloud
+    data:
+      - data/db:/var/lib/mysql
+  - image: redis:6.2.6-bullseye@sha256:0c0484b1d1ff36faace984fe9d8e0fe58892ecc34a4859b97171045b9cd343e1
+    user: 1000:1000
+    name: redis
+    data:
+      - data/redis:/data
+  - name: web
+    image: nextcloud:23.0.0@sha256:79ee017a5dd00e063c8fd1f557b2c62eab2594b0bdc41c446402c0be13cbf005
+    port: 80
+    environment:
+      MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
+      REDIS_HOST: ${APP_NEXTCLOUD_REDIS_IP}
+      MYSQL_PASSWORD: password123
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      NEXTCLOUD_ADMIN_USER: citadel
+      NEXTCLOUD_ADMIN_PASSWORD: $APP_SEED
+      NEXTCLOUD_TRUSTED_DOMAINS: ${APP_DOMAIN}:${APP_NEXTCLOUD_WEB_PORT} ${APP_HIDDEN_SERVICE}
+    depends_on:
+      - db
+      - redis
+    data:
+      - data/nextcloud:/var/www/html
+  - image: nextcloud:23.0.0@sha256:79ee017a5dd00e063c8fd1f557b2c62eab2594b0bdc41c446402c0be13cbf005
+    entrypoint: /cron.sh
+    depends_on:
+      - db
+      - redis
+    name: cron
+    data:
+      - data/nextcloud:/var/www/html
