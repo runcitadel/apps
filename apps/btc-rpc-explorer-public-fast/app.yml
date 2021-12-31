@@ -8,10 +8,13 @@ version: 1
 
 metadata:
   category: Explorers
-  name: BTC RPC Explorer
+  name: BTC RPC Explorer (Public; Fast version)
   version: 3.3.0
-  tagline: Database-free, self-hosted Bitcoin explorer
+  tagline: More RAM-intensive, but faster Bitcoin explorer
   description: >-
+    Unlike the "normal" version, this version doesn't have a password protection and can be shared with anyone.
+    This version also uses more RAM, but you'll get a faster explorer with more features.
+    
     This is a self-hosted explorer for the Bitcoin blockchain, driven by RPC calls to your own Bitcoin node. It is easy to run and can be connected to other tools (like Electrum servers) to achieve a full-featured explorer.
 
     Whatever reasons you may have for running a full node (trustlessness, technical curiosity, supporting the network, etc) it's valuable to appreciate the fullness of your node. With this explorer, you can explore not just the blockchain database, but also explore all of the functional capabilities of your own node.
@@ -26,7 +29,6 @@ metadata:
     - 1.jpg
     - 2.jpg
     - 3.jpg
-  defaultPassword: $APP_SEED
 
 containers:
   - name: main
@@ -44,9 +46,9 @@ containers:
       BTCEXP_ADDRESS_API: electrum
       BTCEXP_ELECTRUM_SERVERS: tcp://$ELECTRUM_IP:$ELECTRUM_PORT
       DEBUG: btcexp:*,electrumClient
-      BTCEXP_SLOW_DEVICE_MODE: "true"
-      BTCEXP_NO_INMEMORY_RPC_CACHE: "true"
+      BTCEXP_SLOW_DEVICE_MODE: "false"
+      BTCEXP_NO_INMEMORY_RPC_CACHE: "false"
       BTCEXP_PRIVACY_MODE: "true"
       BTCEXP_NO_RATES: "true"
-      BTCEXP_RPC_ALLOWALL: "true"
-      BTCEXP_BASIC_AUTH_PASSWORD: $APP_SEED
+      BTCEXP_RPC_ALLOWALL: "false"
+      BTCEXP_BASIC_AUTH_PASSWORD: ""
