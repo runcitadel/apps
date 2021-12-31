@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+
+metadata:
+  category: Explorers
+  name: BTC RPC Explorer (Public)
+  version: 3.3.0
+  tagline: Database-free, self-hosted Bitcoin explorer to share
+  description: >-
+    Unlike the "normal" version, this version doesn't have a password protection and can be shared with anyone.
+    
+    This is a self-hosted explorer for the Bitcoin blockchain, driven by RPC calls to your own Bitcoin node. It is easy to run and can be connected to other tools (like Electrum servers) to achieve a full-featured explorer.
+
+    Whatever reasons you may have for running a full node (trustlessness, technical curiosity, supporting the network, etc) it's valuable to appreciate the fullness of your node. With this explorer, you can explore not just the blockchain database, but also explore all of the functional capabilities of your own node.
+  developer: Dan Janosik
+  website: https://explorer.btc21.org
+  dependencies:
+    - electrum
+    - bitcoind
+  repo: https://github.com/janoside/btc-rpc-explorer
+  support: https://github.com/janoside/btc-rpc-explorer/discussions
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+
+containers:
+  - name: main
+    image: ghcr.io/runcitadel/btc-rpc-explorer:main@sha256:743a2f67035e41901b3d1f65f9f654525d00312d1d7d15f5be19a2768d33b416
+    permissions:
+      - electrum
+      - bitcoind
+    port: 3002
+    environment:
+      BTCEXP_HOST: 0.0.0.0
+      BTCEXP_BITCOIND_HOST: $BITCOIN_IP
+      BTCEXP_BITCOIND_PORT: $BITCOIN_RPC_PORT
+      BTCEXP_BITCOIND_USER: $BITCOIN_RPC_USER
+      BTCEXP_BITCOIND_PASS: $BITCOIN_RPC_PASS
+      BTCEXP_ADDRESS_API: electrum
+      BTCEXP_ELECTRUM_SERVERS: tcp://$ELECTRUM_IP:$ELECTRUM_PORT
+      DEBUG: btcexp:*,electrumClient
+      BTCEXP_SLOW_DEVICE_MODE: "true"
+      BTCEXP_NO_INMEMORY_RPC_CACHE: "true"
+      BTCEXP_PRIVACY_MODE: "true"
+      BTCEXP_NO_RATES: "true"
+      BTCEXP_RPC_ALLOWALL: "false"
+      BTCEXP_BASIC_AUTH_PASSWORD: ""
