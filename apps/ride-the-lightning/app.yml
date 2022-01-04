@@ -9,12 +9,12 @@ version: 1
 metadata:
   category: Lightning Node Management
   name: Ride The Lightning
-  version: 0.11.2
+  version: 0.12.0
   tagline: Manage lightning node operations better
   description: >-
     Haven't written a desription yet for this, sorry.
   developer: Shahana and Suheb
-  website: https://github.com/Ride-The-Lightning/RTL
+  website: ridethelightning.info
   dependencies:
   - lnd
   - bitcoind
@@ -24,11 +24,11 @@ metadata:
   - 1.jpg
   - 2.jpg
   - 3.jpg
-  defaultPassword: moneyprintergobrrr
+  defaultPassword: $APP_SEED
   mainContainer: web
 
 containers:
-- image: shahanafarooqui/rtl:0.11.2@sha256:225b47abcca053e3ea831431742a08b3f3e70b12654df6fd703f617ad965f34e
+- image: shahanafarooqui/rtl:0.12.0@sha256:2fe9080b8065e8f4b838b61bdd8d24ce6ad0dffbc4fde9d7efaf89189cdbaeff
   user: 1000:1000
   port: 3000
   environment:
@@ -43,6 +43,7 @@ containers:
     SWAP_MACAROON_PATH: /loop/.loop/$BITCOIN_NETWORK
     BOLTZ_SERVER_URL: "https://$APP_RIDE_THE_LIGHTNING_BOLTZ_IP:9003"
     BOLTZ_MACAROON_PATH: "/boltz/.boltz-lnd/macaroons"
+    APP_PASSWORD: $APP_SEED
   name: web
   data:
   - loop:/loop
