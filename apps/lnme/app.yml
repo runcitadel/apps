@@ -34,7 +34,7 @@ metadata:
 
 containers:
 - name: web
-  image: ghcr.io/bumi/lnme:master@sha256:833144ef654a8d0e714b226422f33aaf6a645c05ff98f4e82ffe1a36626fbe6e
+  image: ghcr.io/bumi/lnme:master@sha256:e131a8584d2b6d1dd01723164cebad0fa2a47b4e30fe0c6fdac83ffb386de518
   port: 1323
   user: 1000:1000
   permissions:
