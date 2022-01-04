@@ -8,16 +8,14 @@ version: 1
 metadata:
   category: Social
   name: Squeaknode
-  version: 0.1.191
+  version: 0.1.192
   tagline: A peer-to-peer status feed with Lightning monetization
   description: >-
     The Squeaknode app allows you to create, view, buy, and sell squeaks. A
     squeak is a single post that can contain up to 280 characters.
 
 
-    The Squeaknode timeline is ordered by the height of the block hash embedded in each squeak.
-    Each squeak is signed with a digital signature of the private key of the author. Squeaks can be downloaded from any peer to any peer,
-    but they remain locked until the downloader makes a Lightning payment to decrypt the content.
+    The Squeaknode timeline is ordered by the height of the block hash embedded in each squeak. Each squeak is signed with a digital signature of the private key of the author. Squeaks can be downloaded from any peer to any peer, but they remain locked until the downloader makes a Lightning payment to decrypt the content.
   developer: Jonathan Zernik
   website: https://github.com/yzernik
   dependencies:
@@ -34,7 +32,7 @@ metadata:
   mainContainer: web
 containers:
   - name: web
-    image: ghcr.io/squeaknode/squeaknode:v0.1.191@sha256:399efc33e4358c8017f342923ef729560906d1dec54c9a23121be1b5225d3964
+    image: ghcr.io/squeaknode/squeaknode:v0.1.192@sha256:5ac090ac0775c055dc07fb2a1ab613c39faf65b60d37ff8a620dc4a61db670cf
     stop_grace_period: 1m
     port: 12994
     ports:

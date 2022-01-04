@@ -3,13 +3,13 @@
         "id": "mempool",
         "name": "Mempool",
         "repo": "https://github.com/mempool/mempool",
-        "version": "2.3.0-dev1"
+        "version": "2.3.0-rc4"
     },
     {
         "id": "squeaknode",
         "name": "Squeaknode",
         "repo": "https://github.com/squeaknode/squeaknode",
-        "version": "0.1.186"
+        "version": "0.1.192"
     },
     {
         "id": "thunderhub",
@@ -18,10 +18,40 @@
         "version": "0.12.31"
     },
     {
+        "id": "btc-rpc-explorer-public",
+        "name": "BTC RPC Explorer (Public)",
+        "repo": "https://github.com/janoside/btc-rpc-explorer",
+        "version": "3.3.0"
+    },
+    {
+        "id": "btc-rpc-explorer-public-fast",
+        "name": "BTC RPC Explorer (Public; Fast version)",
+        "repo": "https://github.com/janoside/btc-rpc-explorer",
+        "version": "3.3.0"
+    },
+    {
         "id": "lightning-terminal",
         "name": "Lightning Terminal",
         "repo": "https://github.com/lightninglabs/lightning-terminal",
         "version": "0.6.1-alpha"
+    },
+    {
+        "id": "btcpay-server",
+        "name": "BTCPay Server",
+        "repo": "https://github.com/btcpayserver/btcpayserver",
+        "version": "1.3.7"
+    },
+    {
+        "id": "nextcloud",
+        "name": "Nextcloud",
+        "repo": "https://github.com/nextcloud/server",
+        "version": "23.0.0"
+    },
+    {
+        "id": "code-server",
+        "name": "code-server",
+        "repo": "https://github.com/cdr/code-server",
+        "version": "3.12.0"
     },
     {
         "id": "vaultwarden",
@@ -36,10 +66,16 @@
         "version": "1.4.0"
     },
     {
+        "id": "btc-rpc-explorer",
+        "name": "BTC RPC Explorer",
+        "repo": "https://github.com/janoside/btc-rpc-explorer",
+        "version": "3.3.0"
+    },
+    {
         "id": "ride-the-lightning",
         "name": "Ride The Lightning",
         "repo": "https://github.com/Ride-The-Lightning/RTL",
-        "version": "0.11.2"
+        "version": "0.12.0"
     },
     {
         "id": "bluewallet",
