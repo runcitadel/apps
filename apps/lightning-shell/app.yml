@@ -38,5 +38,7 @@ containers:
     permissions:
       - lnd
     environment:
-        APP_PASSWORD: "${APP_SEED}"
-        USERNAME: citadel
+      APP_PASSWORD: "${APP_SEED}"
+      USERNAME: citadel
+      LND_IP: "${LND_IP}"
+      LND_GRPC_PORT: ${LND_GRPC_PORT}
