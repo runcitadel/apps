@@ -29,7 +29,7 @@ metadata:
 
 containers:
   - name: web
-    image: ghcr.io/runcitadel/lightning-shell:main@sha256:82341df7653544cd6185cf61682d0e8057adbcd4ad81707cad1a0fe1f3250382
+    image: ghcr.io/runcitadel/lightning-shell:main@sha256:339f14bbc54828a2b0238e11a848275e2b4beb8ebfae53472dc1307cd62d2a7d
     restart: on-failure
     stop_grace_period: 1m
     port: 7681
