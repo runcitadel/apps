@@ -14,7 +14,7 @@ metadata:
   description: >-
     This app allows you to access a lot of terminal apps directly on the web.
 
-    The default username for this app is (currently) "umbrel".
+    The default username for this app is "citadel".
   developer: Ioan Bizău
   website: Ioan Bizău
   dependencies:
@@ -35,5 +35,8 @@ containers:
     port: 7681
     data:
     - data:/data
+    permissions:
+      - lnd
     environment:
         APP_PASSWORD: "${APP_SEED}"
+        USERNAME: citadel
