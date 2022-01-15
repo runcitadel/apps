@@ -16,7 +16,7 @@ metadata:
 
     The default username for this app is "citadel".
   developer: Ioan Bizău
-  website: Ioan Bizău
+  website: https://ibz.me
   dependencies:
     - lnd
   repo: https://ibz.github.io/lightning-shell/
@@ -29,7 +29,7 @@ metadata:
 
 containers:
   - name: web
-    image: ghcr.io/runcitadel/lightning-shell:main@sha256:699428fd5bbe11f951ccb9148a0004a936a0f7de024fe469ce918c7a0166beca
+    image: ghcr.io/ibz/lightning-shell:v0.1.3@sha256:30c4327fc9cdcbdffc58568b87150891f5d3eb2dd1c82343c528ad1283e8a51d
     restart: on-failure
     stop_grace_period: 1m
     port: 7681
