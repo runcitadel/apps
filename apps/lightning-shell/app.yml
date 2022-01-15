@@ -29,7 +29,7 @@ metadata:
 
 containers:
   - name: web
-    image: ghcr.io/ibz/lightning-shell:v0.1.3@sha256:30c4327fc9cdcbdffc58568b87150891f5d3eb2dd1c82343c528ad1283e8a51d
+    image: ghcr.io/ibz/lightning-shell:v0.1.3@sha256:3e1f21a1a752fce404be8e4a22432507cf41d3d630c88610aa53aa2a3e9b3623
     restart: on-failure
     stop_grace_period: 1m
     port: 7681
