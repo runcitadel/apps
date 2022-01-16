@@ -99,7 +99,7 @@
         "id": "mempool",
         "name": "Mempool",
         "repo": "https://github.com/mempool/mempool",
-        "version": "2.3.0-rc4"
+        "version": "2.3.0"
     },
     {
         "id": "specter-desktop",
