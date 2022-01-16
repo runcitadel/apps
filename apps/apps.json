@@ -27,7 +27,7 @@
         "id": "ride-the-lightning",
         "name": "Ride The Lightning",
         "repo": "https://github.com/Ride-The-Lightning/RTL",
-        "version": "0.12.0"
+        "version": "0.12.1"
     },
     {
         "id": "btcpay-server",
