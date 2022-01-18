@@ -117,6 +117,6 @@
         "id": "node-red",
         "name": "Node-RED",
         "repo": "https://github.com/node-red/node-red",
-        "version": "2.1.5"
+        "version": "2.1.6"
     }
 ]
