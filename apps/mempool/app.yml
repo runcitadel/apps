@@ -87,7 +87,7 @@ containers:
       - electrum
       - bitcoind
   - name: mariadb
-    image: mariadb:10.6.4@sha256:4bbee12b1adf299211f844ebbe89563675c46965470dcfa40f5278d63c56d030
+    image: mariadb:10.7.1@sha256:a469ba5edc9267eb3f32f5a6773376677274b09d36bbe742b448fc4c787e6b37
     user: 1000:1000
     environment:
       MYSQL_DATABASE: mempool
