@@ -45,7 +45,7 @@
         "id": "sphinx-relay",
         "name": "Sphinx Relay",
         "repo": "https://github.com/stakwork/sphinx-relay",
-        "version": "2.2.3"
+        "version": "2.2.4"
     },
     {
         "id": "node-red",

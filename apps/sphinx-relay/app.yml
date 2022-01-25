@@ -5,50 +5,47 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Social
   name: Sphinx Relay
-  version: 2.2.3
+  version: 2.2.4
   tagline: Chat and pay over the Lightning Network
-  description: 'Sphinx Relay turns your Lightning node into a personal communication
-    server. Messages are end-to-end encrypted and transmitted over the Bitcoin Lightning
-    Network. Download Sphinx on your phone from https://sphinx.chat and pair it with
-    Sphinx Relay on Citadel.
+  description: >-
+    Sphinx Relay turns your Lightning node into a personal communication server.
+    Messages are end-to-end encrypted and transmitted over the Bitcoin Lightning
+    Network. Download Sphinx on your phone from https://sphinx.chat and pair it
+    with Sphinx Relay on Citadel.
 
 
-    Communication between Sphinx Relay nodes takes place entirely on the Lightning
-    Network, so it is decentralized, untraceable, and encrypted. Messages are encrypted
-    using client public keys on the Sphinx app.
+    Communication between Sphinx Relay nodes takes place entirely on the Lightning Network, so it is decentralized, untraceable, and encrypted. Messages are encrypted using client public keys on the Sphinx app.
 
 
-    You can join tribes at https://tribes.sphinx.chat. If you join a podcast tribe,
-    you can listen to the podcast in Sphinx and stream donations to the host.'
+    You can join tribes at https://tribes.sphinx.chat. If you join a podcast tribe, you can listen to the podcast in Sphinx and stream donations to the host.
   developer: Stakwork
   website: https://sphinx.chat
   dependencies:
-  - lnd
+    - lnd
   repo: https://github.com/stakwork/sphinx-relay
   support: https://t.me/joinchat/Fb4OcRo4LrRD6NXfsNdeeQ
   gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
   path: /connect
 containers:
-- name: web
-  image: sphinxlightning/sphinx-relay:v2.2.3@sha256:d72093d7faac4b94b752ce7ae445180ba286df851c4d3b7da514aa4ba5f8bafb
-  init: true
-  environment:
-    PUBLIC_URL: $APP_HIDDEN_SERVICE:80
-    LND_IP: $LND_IP
-    CONNECT_UI: 'true'
-    LND_PORT: $LND_GRPC_PORT
-    TLS_LOCATION: /lnd/tls.cert
-    MACAROON_LOCATION: /lnd/data/chain/bitcoin/${BITCOIN_NETWORK}/admin.macaroon
-    LND_LOG_LOCATION: /lnd/logs/bitcoin/${BITCOIN_NETWORK}/lnd.log
-  port: 3300
-  data:
-  - data:/relay/.lnd/
-  permissions:
-  - lnd
+  - name: web
+    image: sphinxlightning/sphinx-relay:v2.2.4@sha256:9d9e6a1ada0c4438c98b72dcf693aef179ed308a01cbb868953dd61fbbf79508
+    init: true
+    environment:
+      PUBLIC_URL: $APP_HIDDEN_SERVICE:80
+      LND_IP: $LND_IP
+      CONNECT_UI: "true"
+      LND_PORT: $LND_GRPC_PORT
+      TLS_LOCATION: /lnd/tls.cert
+      MACAROON_LOCATION: /lnd/data/chain/bitcoin/${BITCOIN_NETWORK}/admin.macaroon
+      LND_LOG_LOCATION: /lnd/logs/bitcoin/${BITCOIN_NETWORK}/lnd.log
+    port: 3300
+    data:
+      - data:/relay/.lnd/
+    permissions:
+      - lnd
