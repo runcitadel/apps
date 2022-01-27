@@ -99,7 +99,7 @@
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
-        "version": "1.3.7"
+        "version": "1.4.0"
     },
     {
         "id": "btc-rpc-explorer",
