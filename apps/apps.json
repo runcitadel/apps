@@ -15,7 +15,7 @@
         "id": "code-server",
         "name": "code-server",
         "repo": "https://github.com/cdr/code-server",
-        "version": "4.0.1"
+        "version": "4.0.2"
     },
     {
         "id": "mempool",
