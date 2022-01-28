@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2021 Aaron Dewes <aaron.dewes@protonmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+
+metadata:
+  id: bitfeed
+  category: Explorers
+  name: Bitfeed
+  version: 2.1.2
+  tagline: A live visualization of your node's mempool
+  description: A self-hosted version of Bitfeed - the open source mempool & block visualizer available at https://bits.monospace.live. Watch as new transactions drop into your node's mempool, before being packaged into newly mined blocks. Monitor Bitcoin network activity, explore the composition of the latest block, or simply enjoy a soothing Bitcoin screensaver.
+  developer: Mononaut
+  website: https://monospace.live
+  dependencies:
+    - bitcoind
+  repo: https://github.com/bitfeed-project/bitfeed
+  support: https://github.com/bitfeed-project/bitfeed/issues
+  port: 8314
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+
+containers:
+  - name: web
+    image: ghcr.io/runcitadel/bitfeed-client:master@sha256:6c456e408748ee3c240a57080b7d9b9dd0fd3fabfca8323d6e050f50f2a58178
+    restart: on-failure
+    stop_grace_period: 1m
+    depends_on:
+      - "api"
+    environment:
+      TARGET: "citadel"
+      BACKEND_HOST: "$APP_BITFEED_API_IP"
+      BACKEND_PORT: "$APP_BITFEED_API_PORT"
+
+  - name: api
+    image: ghcr.io/runcitadel/bitfeed-server:master@sha256:a1fed2fcb2a7ba61f6aed2281cd16812f6cd31670464a46d2a97d9f0b99e8a34
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    environment:
+      PORT: "$APP_BITFEED_API_PORT"
+      BITCOIN_HOST: "$BITCOIN_IP"
+      BITCOIN_ZMQ_RAWTX_PORT: "$BITCOIN_ZMQ_RAWTX_PORT"
+      BITCOIN_ZMQ_RAWBLOCK_PORT: "$BITCOIN_ZMQ_RAWBLOCK_PORT"
+      BITCOIN_RPC_PORT: "$BITCOIN_RPC_PORT"
+      BITCOIN_RPC_USER: "$BITCOIN_RPC_USER"
+      BITCOIN_RPC_PASS: "$BITCOIN_RPC_PASS"
+    data:
+      - data:/app/data
