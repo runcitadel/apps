@@ -61,7 +61,7 @@ containers:
       FRONTEND_HTTP_PORT: $APP_MEMPOOL_MAIN_PORT
       BACKEND_MAINNET_HTTP_HOST: $APP_MEMPOOL_API_IP
   - name: api
-    image: mempool/backend:v2.3.0@sha256:6b7f3e6cf402917d1442d9ecbac34a50f42aed0ac7bb75e93457e966f05c250d
+    image: mempool/backend:v2.3.1@sha256:f7b16a6b00ea8aabf3b71a34ec05bb373fa0b6f1d31c7981b767edb2d1b7cf89
     user: 1000:1000
     init: true
     command: ./wait-for-it.sh mariadb:3306 --timeout=720 --strict -- ./start.sh
