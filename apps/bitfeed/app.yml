@@ -24,7 +24,7 @@ metadata:
     - 3.jpg
 
 containers:
-  - name: web
+  - name: main
     image: ghcr.io/runcitadel/bitfeed-client:master@sha256:6c456e408748ee3c240a57080b7d9b9dd0fd3fabfca8323d6e050f50f2a58178
     restart: on-failure
     stop_grace_period: 1m
