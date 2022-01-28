@@ -21,7 +21,7 @@
         "id": "mempool",
         "name": "Mempool",
         "repo": "https://github.com/mempool/mempool",
-        "version": "2.3.0"
+        "version": "2.3.1"
     },
     {
         "id": "btc-rpc-explorer-public",
