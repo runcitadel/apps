@@ -29,11 +29,11 @@ containers:
     restart: on-failure
     stop_grace_period: 1m
     depends_on:
-      - "api"
+      - api
     environment:
-      TARGET: "citadel"
+      TARGET: citadel
       BACKEND_HOST: "$APP_BITFEED_API_IP"
-      BACKEND_PORT: "$APP_BITFEED_API_PORT"
+      BACKEND_PORT: "8315"
 
   - name: api
     image: ghcr.io/runcitadel/bitfeed-server:master@sha256:a1fed2fcb2a7ba61f6aed2281cd16812f6cd31670464a46d2a97d9f0b99e8a34
