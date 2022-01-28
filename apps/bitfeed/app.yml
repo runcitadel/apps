@@ -50,3 +50,5 @@ containers:
       BITCOIN_RPC_PASS: "$BITCOIN_RPC_PASS"
     data:
       - data:/app/data
+    permissions:
+      - bitcoind
