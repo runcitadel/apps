@@ -28,12 +28,13 @@ containers:
     image: ghcr.io/runcitadel/bitfeed-client:master@sha256:6c456e408748ee3c240a57080b7d9b9dd0fd3fabfca8323d6e050f50f2a58178
     restart: on-failure
     stop_grace_period: 1m
+    port: 80
     depends_on:
       - api
     environment:
       TARGET: citadel
       BACKEND_HOST: "$APP_BITFEED_API_IP"
-      BACKEND_PORT: "8315"
+      BACKEND_PORT: "3000"
 
   - name: api
     image: ghcr.io/runcitadel/bitfeed-server:master@sha256:a1fed2fcb2a7ba61f6aed2281cd16812f6cd31670464a46d2a97d9f0b99e8a34
@@ -41,7 +42,7 @@ containers:
     restart: on-failure
     stop_grace_period: 1m
     environment:
-      PORT: "$APP_BITFEED_API_PORT"
+      PORT: "3000"
       BITCOIN_HOST: "$BITCOIN_IP"
       BITCOIN_ZMQ_RAWTX_PORT: "$BITCOIN_ZMQ_RAWTX_PORT"
       BITCOIN_ZMQ_RAWBLOCK_PORT: "$BITCOIN_ZMQ_RAWBLOCK_PORT"
