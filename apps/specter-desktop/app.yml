@@ -5,17 +5,16 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Wallets
   name: Specter Desktop
-  version: 1.7.2
+  version: 1.8.0
   tagline: Multisig with hardware wallets made easy
   description: >-
-    Specter Desktop connects to the Bitcoin Core running on your Citadel
-    and functions as a watch-only coordinator for multi-signature and single-key Bitcoin
-    wallets. At the moment Specter Desktop is working with all major hardware wallets
-    including:
+    Specter Desktop connects to the Bitcoin Core running on your Citadel and
+    functions as a watch-only coordinator for multi-signature and single-key
+    Bitcoin wallets. At the moment Specter Desktop is working with all major
+    hardware wallets including:
 
 
     - Trezor
@@ -35,37 +34,33 @@ metadata:
     - Cobo (airgapped, using QR codes)
 
 
-    Specter Desktop also supports using the Bitcoin Core on your Citadel as a hot wallet,
-    by importing or generating a random BIP39 mnemonic, but this feature is experimental
-    and we do not recommend using it at this stage. We plan to add support for other
-    hardware wallets as they come up.
+    Specter Desktop also supports using the Bitcoin Core on your Citadel as a hot wallet, by importing or generating a random BIP39 mnemonic, but this feature is experimental and we do not recommend using it at this stage. We plan to add support for other hardware wallets as they come up.
   developer: Crypto Advance
   website: https://specter.solutions
   dependencies:
-  - bitcoind
+    - bitcoind
   repo: https://github.com/cryptoadvance/specter-desktop
   support: https://t.me/spectersupport
   gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
-
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
 containers:
-- image: lncm/specter-desktop:v1.7.2@sha256:78c9287598dc62efe7cbde05e8bb2328bca66b973ba47220f0167868508b503e
-  stop_signal: SIGINT
-  command:
-  - --host=0.0.0.0
-  - --specter-data-folder=/data
-  environment:
-    BTC_RPC_USER: $BITCOIN_RPC_USER
-    BTC_RPC_PASSWORD: $BITCOIN_RPC_PASS
-    BTC_RPC_HOST: $BITCOIN_IP
-    BTC_RPC_PORT: $BITCOIN_RPC_PORT
-    BTC_RPC_PROTOCOL: http
-  name: web
-  port: 25441
-  data:
-  - data:/data
-  bitcoin_mount_dir: /data/.bitcoin
-  permissions:
-  - bitcoind
+  - image: lncm/specter-desktop:v1.8.0@sha256:8fd2d8649b42526f83090024c6f2f50d3c8ad518c81e3131640226f03dff507b
+    stop_signal: SIGINT
+    command:
+      - --host=0.0.0.0
+      - --specter-data-folder=/data
+    environment:
+      BTC_RPC_USER: $BITCOIN_RPC_USER
+      BTC_RPC_PASSWORD: $BITCOIN_RPC_PASS
+      BTC_RPC_HOST: $BITCOIN_IP
+      BTC_RPC_PORT: $BITCOIN_RPC_PORT
+      BTC_RPC_PROTOCOL: http
+    name: web
+    port: 25441
+    data:
+      - data:/data
+    bitcoin_mount_dir: /data/.bitcoin
+    permissions:
+      - bitcoind
