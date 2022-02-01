@@ -36,6 +36,12 @@
         "version": "3.3.0"
     },
     {
+        "id": "synapse-admin",
+        "name": "Synapse Admin",
+        "repo": "https://github.com/Awesome-Technologies/synapse-admin",
+        "version": "0.8.4"
+    },
+    {
         "id": "lightning-terminal",
         "name": "Lightning Terminal",
         "repo": "https://github.com/lightninglabs/lightning-terminal",
