@@ -37,5 +37,3 @@ containers:
     name: server
     data:
       - data/synapse:/data
-    hiddenServicePorts:
-      matrix: 8008
