@@ -111,7 +111,7 @@
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
-        "version": "1.4.2"
+        "version": "1.4.3"
     },
     {
         "id": "synapse",
