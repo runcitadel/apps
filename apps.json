@@ -114,6 +114,12 @@
         "version": "1.4.2"
     },
     {
+        "id": "synapse",
+        "name": "Synapse",
+        "repo": "https://github.com/matrix-org/synapse",
+        "version": "1.51.0"
+    },
+    {
         "id": "btc-rpc-explorer",
         "name": "BTC RPC Explorer",
         "repo": "https://github.com/janoside/btc-rpc-explorer",
