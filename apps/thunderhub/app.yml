@@ -33,7 +33,7 @@ metadata:
   - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-- image: ghcr.io/runcitadel/thunderhub:master@sha256:4ff32bad57ddbb1e36b3f83f929ae0a3c67d3184ae175e0695cc7efe940082bd
+- image: apotdevin/thunderhub:v0.13.6@sha256:b439b00f23376f932acd9c13e5037dd5870740dd66e3ebb7065a9d62a4fc370d
   #user: 1000:1000
   environment:
     NO_VERSION_CHECK: 'true'
