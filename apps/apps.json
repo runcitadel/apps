@@ -48,6 +48,12 @@
         "version": "0.6.2-alpha"
     },
     {
+        "id": "uptime-kuma",
+        "name": "Uptime Kuma",
+        "repo": "https://github.com/louislam/uptime-kuma",
+        "version": "1.11.3"
+    },
+    {
         "id": "specter-desktop",
         "name": "Specter Desktop",
         "repo": "https://github.com/cryptoadvance/specter-desktop",
