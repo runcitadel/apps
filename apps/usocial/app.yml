@@ -27,7 +27,7 @@ metadata:
 
 containers:
   - name: web
-    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:0f4346db86847dbc0cc243b19b4823536f79306495e3e8d70cdd78d3a61569af
+    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
     restart: on-failure
     stop_grace_period: 1m
     port: 8448
@@ -44,7 +44,7 @@ containers:
   - name: fetcher
     depends_on:
       - web
-    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:0f4346db86847dbc0cc243b19b4823536f79306495e3e8d70cdd78d3a61569af
+    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
     restart: on-failure
     stop_grace_period: 1m
     data:
