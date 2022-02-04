@@ -6,10 +6,9 @@ version: 1
 metadata:
   category: Files
   name: Nextcloud
-  version: 23.0.0
+  version: 23.0.1
   tagline: Your personal cloud
-  description: >-
-    No description yet.
+  description: No description yet.
   developer: Nextcloud GmbH
   website: https://nextcloud.com
   dependencies: []
@@ -41,7 +40,7 @@ containers:
     data:
       - data/redis:/data
   - name: web
-    image: nextcloud:23.0.0@sha256:79ee017a5dd00e063c8fd1f557b2c62eab2594b0bdc41c446402c0be13cbf005
+    image: nextcloud:23.0.1@sha256:867d3f34d5a7baa1fb48b18b86e36486e406832881219c5bcd7f9952bc947366
     port: 80
     environment:
       MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
