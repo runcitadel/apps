@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+metadata:
+  category: Lightning Node Management
+  name: Ride The C-Lightning
+  version: 0.12.1
+  tagline: RTL with c-lightning (WIP)
+  description: This app allows you to test the c-lightning integration on Citadel.
+  developer: Shahana and Suheb
+  website: ridethelightning.info
+  dependencies:
+    - lnd
+    - bitcoind
+  repo: https://github.com/Ride-The-Lightning/RTL
+  support: https://twitter.com/RTL_App
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  defaultPassword: $APP_SEED
+  mainContainer: web
+containers:
+  - image: shahanafarooqui/rtl:0.12.1@sha256:8589a880f6357e5ea5cc3826e1704f4e91de324067f34388586faa0395204725
+    user: 1000:1000
+    port: 3000
+    environment:
+      PORT: 3000
+      RTL_CONFIG_PATH: /data
+      CHANNEL_BACKUP_PATH: /data/backup
+      LN_IMPLEMENTATION: CLT
+      LN_SERVER_URL: https://$C_LIGHTNING_IP:3001
+      MACAROON_PATH: /c-lightning/certs
+      CONFIG_PATH: /c-lightning/config
+      APP_PASSWORD: $APP_SEED
+    name: web
+    data:
+      - rtl:/data
+    permissions:
+      - c-lightning
+      - bitcoind
