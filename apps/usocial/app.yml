@@ -1,4 +1,5 @@
-# SPDX-FileCopyrightText: 2021 Citadel and contributors
+# SPDX-FileCopyrightText: 2022 Ioan Bizău
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -26,11 +27,11 @@ metadata:
   defaultPassword: $APP_SEED
 
 containers:
-  - name: web
+  - name: main
     image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
     restart: on-failure
     stop_grace_period: 1m
-    port: 8448
+    port: 5000
     data:
     - data:/instance
     permissions:
@@ -43,7 +44,7 @@ containers:
       LND_DIR: "/lnd"
   - name: fetcher
     depends_on:
-      - web
+      - main
     image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
     restart: on-failure
     stop_grace_period: 1m
