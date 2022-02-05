@@ -24,6 +24,12 @@
         "version": "3.3.0"
     },
     {
+        "id": "usocial",
+        "name": "Usocial",
+        "repo": "https://github.com/ibz/usocial",
+        "version": "0.1.1"
+    },
+    {
         "id": "nextcloud",
         "name": "Nextcloud",
         "repo": "https://github.com/nextcloud/server",
