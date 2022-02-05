@@ -1,0 +1,54 @@
+# SPDX-FileCopyrightText: 2022 Ioan Bizău
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# yaml-language-server: $schema=../../app-standard-v1.json
+
+version: 1
+
+metadata:
+  category: Social
+  name: Usocial
+  version: 0.1.1
+  tagline: Read. Listen. Pay back.
+  description: >-
+    The minimalist self-hosted feed reader and podcast client for your personal server. With Lightning Network support.
+  developer: Ioan Bizău
+  website: http://usocial.me
+  dependencies:
+    - lnd
+  repo: https://github.com/ibz/usocial
+  support: https://github.com/ibz/usocial/issues
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  defaultPassword: $APP_SEED
+
+containers:
+  - name: main
+    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
+    restart: on-failure
+    stop_grace_period: 1m
+    port: 5000
+    data:
+    - data:/instance
+    permissions:
+      - lnd
+    environment:
+      USOCIAL_JOB: "WEB"
+      APP_PASSWORD: "${APP_SEED}"
+      LND_IP: "${LND_IP}"
+      LND_GRPC_PORT: ${LND_GRPC_PORT}
+      LND_DIR: "/lnd"
+  - name: fetcher
+    depends_on:
+      - main
+    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
+    restart: on-failure
+    stop_grace_period: 1m
+    data:
+    - data:/instance
+    environment:
+      USOCIAL_JOB: "FETCH_FEEDS"
