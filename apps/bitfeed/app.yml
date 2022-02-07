@@ -9,7 +9,7 @@ version: 1
 metadata:
   category: Explorers
   name: Bitfeed
-  version: 2.1.2
+  version: 2.1.3
   tagline: A live visualization of your node's mempool
   description: A self-hosted version of Bitfeed - the open source mempool & block visualizer available at https://bits.monospace.live. Watch as new transactions drop into your node's mempool, before being packaged into newly mined blocks. Monitor Bitcoin network activity, explore the composition of the latest block, or simply enjoy a soothing Bitcoin screensaver.
   developer: Mononaut
@@ -25,7 +25,7 @@ metadata:
 
 containers:
   - name: main
-    image: ghcr.io/runcitadel/bitfeed-client:master@sha256:6c456e408748ee3c240a57080b7d9b9dd0fd3fabfca8323d6e050f50f2a58178
+    image: ghcr.io/bitfeed-project/bitfeed-client:v2.1.3@sha256:861a70a049735717616cc5dfa480963a2adef31e937fdc34f6aa298e45eb3afc
     restart: on-failure
     stop_grace_period: 1m
     port: 80
@@ -37,7 +37,7 @@ containers:
       BACKEND_PORT: "3000"
 
   - name: api
-    image: ghcr.io/runcitadel/bitfeed-server:master@sha256:a1fed2fcb2a7ba61f6aed2281cd16812f6cd31670464a46d2a97d9f0b99e8a34
+    image: ghcr.io/bitfeed-project/bitfeed-server:v2.1.3@sha256:67e0357152a4f7fca067a32ca737c287521be16038936ed67b60a50558935b73
     user: "1000:1000"
     restart: on-failure
     stop_grace_period: 1m
