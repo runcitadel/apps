@@ -69,7 +69,7 @@
         "id": "bitfeed",
         "name": "Bitfeed",
         "repo": "https://github.com/bitfeed-project/bitfeed",
-        "version": "2.1.2"
+        "version": "2.1.3"
     },
     {
         "id": "vaultwarden",
@@ -98,8 +98,8 @@
     {
         "id": "lightning-shell",
         "name": "Lightning Shell",
-        "repo": "https://ibz.github.io/lightning-shell/",
-        "version": "0.1.4"
+        "repo": "https://github.com/ibz/lightning-shell",
+        "version": "0.1.5"
     },
     {
         "id": "synapse",
