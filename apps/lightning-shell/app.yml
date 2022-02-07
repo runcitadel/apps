@@ -9,14 +9,14 @@ version: 1
 metadata:
   category: Lightning Node Management
   name: Lightning Shell
-  version: 0.1.4
+  version: 0.1.5
   tagline: Web shell with a selection of LN node management utilities
   description: >-
     This app allows you to access a lot of terminal apps directly on the web.
 
     The default username for this app is "citadel".
   developer: Ioan Bizău
-  website: https://ibz.me
+  website: https://lightningshell.app
   dependencies:
     - lnd
   repo: https://ibz.github.io/lightning-shell/
@@ -29,7 +29,7 @@ metadata:
 
 containers:
   - name: web
-    image: ghcr.io/ibz/lightning-shell:v0.1.4@sha256:e0431e087382016d558554474b92ccdd826d0f2e6d2718a099e85b6c4fffad74
+    image: ghcr.io/ibz/lightning-shell:v0.1.5-bullseye-slim@sha256:9b64f38ebe747616c253ff39672427c7c2b9f5840468bb743d979f2f55ace27c
     restart: on-failure
     stop_grace_period: 1m
     port: 7681
