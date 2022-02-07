@@ -16,10 +16,10 @@ metadata:
 
     The default username for this app is "citadel".
   developer: Ioan Bizău
-  website: https://ibz.me
+  website: https://lightningshell.app
   dependencies:
     - lnd
-  repo: https://ibz.github.io/lightning-shell/
+  repo: https://github.com/ibz/lightning-shell
   support: https://github.com/ibz/lightning-shell/issues
   gallery:
   - 1.jpg
