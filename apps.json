@@ -99,7 +99,7 @@
         "id": "lightning-shell",
         "name": "Lightning Shell",
         "repo": "https://github.com/ibz/lightning-shell",
-        "version": "0.1.5"
+        "version": "0.1.6"
     },
     {
         "id": "synapse",
