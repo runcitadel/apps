@@ -1,9 +1,9 @@
-version: 1
 
+version: 1
 metadata:
   category: Networking
   name: Uptime Kuma
-  version: 1.11.3
+  version: 1.11.4
   tagline: Self-hosted uptime monitoring tool
   description: >
     Uptime Kuma is a self-hosted monitoring tool like Uptime Robot.
@@ -12,13 +12,11 @@ metadata:
     Features:
 
 
-    - Monitoring uptime for HTTP(s) / TCP / HTTP(s) Keyword / Ping / DNS Record /
-    Push / Steam Game Server.
+    - Monitoring uptime for HTTP(s) / TCP / HTTP(s) Keyword / Ping / DNS Record / Push / Steam Game Server.
 
     - Fancy, Reactive, Fast UI/UX.
 
-    - Notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP),
-    and 70+ notification services.
+    - Notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP), and 70+ notification services.
 
     - 20 second intervals.
 
@@ -38,10 +36,9 @@ metadata:
     - 1.jpg
     - 2.jpg
     - 3.jpg
-
 containers:
   - name: main
-    image: louislam/uptime-kuma:1.11.3@sha256:8856a17f10d05f95bd0ce24a532c8a3f659bb69243c8edea721608de3e9f24b7
+    image: louislam/uptime-kuma:1.11.4@sha256:5a5627e3a676e0056ad96c3d40c922da863c42b5abeedbc65cf87dbf38f04a11
     restart: on-failure
     stop_grace_period: 1m
     port: 3001
