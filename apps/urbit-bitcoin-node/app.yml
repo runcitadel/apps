@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2021 Kilian Botrel
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
+metadata:
+  category: Wallet Servers
+  name: Urbit Bitcoin Connector
+  version: 0.1.0
+  tagline: Connect your Urbit's Bitcoin wallet to your Bitcoin node
+  description: |-
+    Urbit has a native Bitcoin wallet that you can connect to a full node via an intermediary, called a provider. Providers run a piece of backend software called %btc-provider that communicates with a full node with bitcoind and electrs, as well as a custome Node Express proxy to translate RPC calls between TCP and HTTP. This app will install the Express proxy and configure it to point at your Citadel's Bitcoin full node. Using this, you can configure a Bitcoin provider on a ship (even one running on your Citadel) and configure it, or other ships to point their wallets at it.
+
+    This app also provides an information GUI web page, with instructions on connecting your provider ship and Bitcoin wallet. The web UI is accessible at port 9090. Note that if your Urbit is running on your Citadel, you must configure your provider to point at the Citadel's local/private IP address (like http://192.168.0.10:55555).
+
+    Credit to ~timluc-miptev & ~master-forwex
+  developer: "~sitful-hatred & ~mopfel-winrux"
+  website: https://subject.network
+  dependencies:
+  - bitcoind
+  - electrum
+  repo: https://github.com/yapishu/urbit-bitcoin-node
+  support: https://github.com/yapishu/urbit-bitcoin-node
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+
+containers:
+  - name: manager
+    image: ghcr.io/runcitadel/urbit-bitcoin-node:master@sha256:b2f8dab214c7a01f74eee999b6516c8e69c757bd54597c4b0c1abd2834c407a8
+    port: 9090
+    ports:
+      - 55555:55555
+    data:
+      - piers:/data/piers
+      - keys:/data/keys
+    environment:
+      INTERNAL_IP: $APP_URBIT_BITCOIN_CONNECTOR_MANAGER_IP
+      ELECTRUM_IP: $ELECTRUM_IP
+      ELECTRUM_PORT: $ELECTRUM_PORT
+      BITCOIN_IP: $BITCOIN_IP
+      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
+      BITCOIN_RPC_USER: $BITCOIN_RPC_USER
+      BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
+    permissions:
+      - bitcoind
+      - electrum

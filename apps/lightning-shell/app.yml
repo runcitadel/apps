@@ -5,40 +5,37 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Lightning Node Management
   name: Lightning Shell
-  version: 0.1.4
+  version: 0.1.6
   tagline: Web shell with a selection of LN node management utilities
-  description: >-
+  description: |-
     This app allows you to access a lot of terminal apps directly on the web.
-
     The default username for this app is "citadel".
   developer: Ioan Bizău
-  website: https://ibz.me
+  website: https://lightningshell.app
   dependencies:
     - lnd
-  repo: https://ibz.github.io/lightning-shell/
+  repo: https://github.com/ibz/lightning-shell
   support: https://github.com/ibz/lightning-shell/issues
   gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
   defaultPassword: $APP_SEED
-
 containers:
   - name: web
-    image: ghcr.io/ibz/lightning-shell:v0.1.4@sha256:e0431e087382016d558554474b92ccdd826d0f2e6d2718a099e85b6c4fffad74
+    image: ghcr.io/ibz/lightning-shell:v0.1.5@sha256:9b64f38ebe747616c253ff39672427c7c2b9f5840468bb743d979f2f55ace27c
     restart: on-failure
     stop_grace_period: 1m
     port: 7681
     data:
-    - data:/data
+      - data:/data
     permissions:
       - lnd
     environment:
-      APP_PASSWORD: "${APP_SEED}"
+      APP_PASSWORD: ${APP_SEED}
       USERNAME: citadel
-      LND_IP: "${LND_IP}"
+      LND_IP: ${LND_IP}
       LND_GRPC_PORT: ${LND_GRPC_PORT}

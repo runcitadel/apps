@@ -24,6 +24,12 @@
         "version": "3.3.0"
     },
     {
+        "id": "usocial",
+        "name": "Usocial",
+        "repo": "https://github.com/ibz/usocial",
+        "version": "0.1.2"
+    },
+    {
         "id": "nextcloud",
         "name": "Nextcloud",
         "repo": "https://github.com/nextcloud/server",
@@ -63,7 +69,7 @@
         "id": "bitfeed",
         "name": "Bitfeed",
         "repo": "https://github.com/bitfeed-project/bitfeed",
-        "version": "2.1.2"
+        "version": "2.1.5"
     },
     {
         "id": "vaultwarden",
@@ -92,14 +98,14 @@
     {
         "id": "lightning-shell",
         "name": "Lightning Shell",
-        "repo": "https://ibz.github.io/lightning-shell/",
-        "version": "0.1.4"
+        "repo": "https://github.com/ibz/lightning-shell",
+        "version": "0.1.6"
     },
     {
         "id": "synapse",
         "name": "Synapse",
         "repo": "https://github.com/matrix-org/synapse",
-        "version": "1.51.0"
+        "version": "1.52.0"
     },
     {
         "id": "thunderhub",
@@ -117,7 +123,7 @@
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
-        "version": "1.4.3"
+        "version": "1.4.4"
     },
     {
         "id": "btc-rpc-explorer-public-fast",
@@ -141,6 +147,6 @@
         "id": "uptime-kuma",
         "name": "Uptime Kuma",
         "repo": "https://github.com/louislam/uptime-kuma",
-        "version": "1.11.3"
+        "version": "1.11.4"
     }
 ]
