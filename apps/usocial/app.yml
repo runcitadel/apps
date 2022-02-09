@@ -6,14 +6,13 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Social
   name: Usocial
-  version: 0.1.1
+  version: 0.1.2
   tagline: Read. Listen. Pay back.
-  description: >-
-    The minimalist self-hosted feed reader and podcast client for your personal server. With Lightning Network support.
+  description: The minimalist self-hosted feed reader and podcast client for your
+    personal server. With Lightning Network support.
   developer: Ioan Bizău
   website: http://usocial.me
   dependencies:
@@ -21,11 +20,10 @@ metadata:
   repo: https://github.com/ibz/usocial
   support: https://github.com/ibz/usocial/issues
   gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
   defaultPassword: $APP_SEED
-
 containers:
   - name: main
     image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
@@ -33,15 +31,15 @@ containers:
     stop_grace_period: 1m
     port: 5000
     data:
-    - data:/instance
+      - data:/instance
     permissions:
       - lnd
     environment:
-      USOCIAL_JOB: "WEB"
-      APP_PASSWORD: "${APP_SEED}"
-      LND_IP: "${LND_IP}"
+      USOCIAL_JOB: WEB
+      APP_PASSWORD: ${APP_SEED}
+      LND_IP: ${LND_IP}
       LND_GRPC_PORT: ${LND_GRPC_PORT}
-      LND_DIR: "/lnd"
+      LND_DIR: /lnd
   - name: fetcher
     depends_on:
       - main
@@ -49,6 +47,6 @@ containers:
     restart: on-failure
     stop_grace_period: 1m
     data:
-    - data:/instance
+      - data:/instance
     environment:
-      USOCIAL_JOB: "FETCH_FEEDS"
+      USOCIAL_JOB: FETCH_FEEDS
