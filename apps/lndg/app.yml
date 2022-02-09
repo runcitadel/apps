@@ -1,0 +1,44 @@
+# SPDX-FileCopyrightText: 2021 Kilian Botrel
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
+metadata:
+  category: Lightning Node Management
+  name: LNDg
+  version: 1.0.2
+  tagline: Lite GUI web interface to analyze LND data and manage your node with automation.
+  description: LNDg is your command center for running a profitable and efficient routing
+    node. From quickly viewing your node's health, automated rebalancing, selecting
+    new potential peers and much more.
+  developer: cryptosharks131
+  website: https://github.com/cryptosharks131
+  dependencies:
+  - lnd
+  repo: https://github.com/cryptosharks131/lndg
+  support: https://t.me/+-RxoZdi7snk2ZGYx
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  path: ''
+  defaultPassword: $APP_SEED
+
+containers:
+  - name: web
+    image: ghcr.io/cryptosharks131/lndg:v1.0.2@sha256:3c55173dca8af79fd122587e5e53ddc68159ed7c3a4865a72c4e90b4b84ce787
+    restart: on-failure
+    stop_grace_period: 1m
+    lnd_mount_dir: /root/.lnd
+    port: 8889
+    data:
+      - /:/lndg/data
+    command:
+      - sh
+      - -c
+      - python initialize.py -net '${BITCOIN_NETWORK}' -server '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord && python manage.py runserver 0.0.0.0:${APP_LNDG_PORT}
+    permissions:
+      - lnd

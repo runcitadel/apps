@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2021 Kilian Botrel
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
+metadata:
+  category: Networking
+  name: Urbit
+  version: 0.1.0
+  tagline: Run Urbit on your Citadel
+  description: |-
+    Urbit is a personal server for self-sovereign personal & networked computing. Nock, a functional combinator, is built into Hoon, a system programming language, used to implement Arvo, a deterministic operating system, that communicates over Ames, a decentralized, encrypted P2P network.
+
+    This app helps you boot and manage Urbit instances on your Citadel. It provides a simple management GUI, start and stop operations, and passes your +code through the interface.
+
+    Credit to ~timluc-miptev, ~master-forwex, ~sipsen-pilser & ~rivpyl-sidfyl
+  developer: "~mopfel-winrux & ~sitful-hatred"
+  website: https://github.com/mopfel-winrux/urbit-umbrel
+  dependencies: []
+  repo: https://github.com/mopfel-winrux/urbit-umbrel
+  support: https://github.com/mopfel-winrux/urbit-umbrel/issues
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  path: "/launch"
+  defaultPassword: $APP_SEED
+  torOnly: false
+
+
+containers:
+  - name: manager
+    image: ghcr.io/runcitadel/urbit-citadel:main@sha256:5c2f1b76dbb9279ea0d0598efcdae81ce7cdfc378267150523187e9efa5a6ef0
+    port: 8090
+    ports:
+      - "34343"
+    data:
+      - piers:/data/piers
+      - keys:/data/keys
+    environment:
+      FLASK_APP: app
+      APP_PASSWORD: ${APP_PASSWORD}
