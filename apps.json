@@ -69,7 +69,7 @@
         "id": "bitfeed",
         "name": "Bitfeed",
         "repo": "https://github.com/bitfeed-project/bitfeed",
-        "version": "2.1.3"
+        "version": "2.1.5"
     },
     {
         "id": "vaultwarden",
