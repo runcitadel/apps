@@ -4,11 +4,11 @@
 
 # yaml-language-server: $schema=../../app-standard-v1.json
 
-version: 1
+version: 2
 metadata:
   category: Lightning Node Management
   name: Lightning Shell
-  version: 0.1.6
+  version: 0.1.5
   tagline: Web shell with a selection of LN node management utilities
   description: |-
     This app allows you to access a lot of terminal apps directly on the web.
@@ -24,6 +24,7 @@ metadata:
     - 2.jpg
     - 3.jpg
   defaultPassword: $APP_SEED
+
 containers:
   - name: web
     image: ghcr.io/ibz/lightning-shell:v0.1.5@sha256:9b64f38ebe747616c253ff39672427c7c2b9f5840468bb743d979f2f55ace27c

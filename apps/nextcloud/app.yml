@@ -2,11 +2,14 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-version: 1
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
 metadata:
   category: Files
   name: Nextcloud
-  version: 23.0.1
+  version: 23.0.0
   tagline: Your personal cloud
   description: No description yet.
   developer: Nextcloud GmbH
@@ -20,7 +23,10 @@ metadata:
     - 3.jpg
   path: /login?user=citadel
   defaultPassword: $APP_SEED
-  mainContainer: web
+  updateContainer:
+    - web
+    - cron
+
 containers:
   - name: db
     image: mariadb:10.7.1@sha256:832c6e488f49720f484f87ee9f2cd4487321b373db07ac77037860bcd97d92bb
@@ -40,7 +46,7 @@ containers:
     data:
       - data/redis:/data
   - name: web
-    image: nextcloud:23.0.1@sha256:867d3f34d5a7baa1fb48b18b86e36486e406832881219c5bcd7f9952bc947366
+    image: nextcloud:23.0.0@sha256:867d3f34d5a7baa1fb48b18b86e36486e406832881219c5bcd7f9952bc947366
     port: 80
     environment:
       MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
