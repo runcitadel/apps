@@ -30,6 +30,12 @@
         "version": "0.1.2"
     },
     {
+        "id": "nextcloud",
+        "name": "Nextcloud",
+        "repo": "https://github.com/nextcloud/server",
+        "version": "23.0.0"
+    },
+    {
         "id": "squeaknode",
         "name": "Squeaknode",
         "repo": "https://github.com/squeaknode/squeaknode",
@@ -90,10 +96,22 @@
         "version": "3.3.0"
     },
     {
+        "id": "lndg",
+        "name": "LNDg",
+        "repo": "https://github.com/cryptosharks131/lndg",
+        "version": "1.0.2"
+    },
+    {
         "id": "lightning-shell",
         "name": "Lightning Shell",
         "repo": "https://github.com/ibz/lightning-shell",
         "version": "0.1.5"
+    },
+    {
+        "id": "synapse",
+        "name": "Synapse",
+        "repo": "https://github.com/matrix-org/synapse",
+        "version": "1.52.0"
     },
     {
         "id": "thunderhub",
