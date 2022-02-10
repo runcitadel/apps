@@ -14,7 +14,6 @@ appDir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..")
 # A folder is invalid if it doesn't contain an app.yml file
 def findAndValidateApps(dir: str):
     apps = []
-    app_data = {}
     for root, dirs, files in os.walk(dir, topdown=False):
         for name in dirs:
             app_dir = os.path.join(root, name)
