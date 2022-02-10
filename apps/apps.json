@@ -96,10 +96,16 @@
         "version": "3.3.0"
     },
     {
+        "id": "lndg",
+        "name": "LNDg",
+        "repo": "https://github.com/cryptosharks131/lndg",
+        "version": "1.0.2"
+    },
+    {
         "id": "lightning-shell",
         "name": "Lightning Shell",
         "repo": "https://github.com/ibz/lightning-shell",
-        "version": "0.1.6"
+        "version": "0.1.7"
     },
     {
         "id": "synapse",
