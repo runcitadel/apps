@@ -96,12 +96,6 @@
         "version": "0.1.5"
     },
     {
-        "id": "synapse",
-        "name": "Synapse",
-        "repo": "https://github.com/matrix-org/synapse",
-        "version": "1.52.0"
-    },
-    {
         "id": "thunderhub",
         "name": "ThunderHub",
         "repo": "https://github.com/apotdevin/thunderhub",
