@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v2.json
 
-version: 1
+version: 2
+
 metadata:
   category: Lightning Node Management
   name: Ride The C-Lightning
@@ -23,7 +24,7 @@ metadata:
     - 2.jpg
     - 3.jpg
   defaultPassword: $APP_SEED
-  mainContainer: web
+
 containers:
   - image: shahanafarooqui/rtl:0.12.1@sha256:8589a880f6357e5ea5cc3826e1704f4e91de324067f34388586faa0395204725
     user: 1000:1000

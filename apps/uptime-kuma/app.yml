@@ -1,5 +1,8 @@
 
-version: 1
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
 metadata:
   category: Networking
   name: Uptime Kuma
