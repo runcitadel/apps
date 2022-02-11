@@ -33,7 +33,6 @@ containers:
     restart: on-failure
     stop_grace_period: 1m
     lnd_mount_dir: /root/.lnd
-    port: 8889
     data:
       - data:/lndg/data
     command:
