@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v2.json
 
-version: 1
+version: 2
 metadata:
   category: Explorers
   name: Bitfeed
@@ -25,6 +25,10 @@ metadata:
     - 1.jpg
     - 2.jpg
     - 3.jpg
+  updateContainer: 
+    - main
+    - api
+
 containers:
   - name: main
     image: ghcr.io/bitfeed-project/bitfeed-client:v2.1.5@sha256:36155dc32d423b07519515fda7cfa204e5abeb978a03cf4e27e993b10b585426

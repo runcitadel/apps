@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v2.json
 
-version: 1
+version: 2
+
 metadata:
   category: Social
   name: Squeaknode
@@ -29,7 +30,7 @@ metadata:
     - 3.jpg
   path: /login?user=citadel
   defaultPassword: $APP_SEED
-  mainContainer: web
+
 containers:
   - name: web
     image: ghcr.io/squeaknode/squeaknode:v0.1.194@sha256:fd1150908604e058426e5dda6eb9360d2b5931bdab4d852e4222ba20c35d82b9
