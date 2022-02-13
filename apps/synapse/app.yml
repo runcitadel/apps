@@ -40,4 +40,4 @@ containers:
       - data/synapse:/data
     hiddenServicePorts:
       - 80
-      - 8008s
+      - 8008
