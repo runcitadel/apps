@@ -99,7 +99,7 @@
         "id": "lndg",
         "name": "LNDg",
         "repo": "https://github.com/cryptosharks131/lndg",
-        "version": "1.0.2"
+        "version": "1.0.3"
     },
     {
         "id": "lightning-shell",
