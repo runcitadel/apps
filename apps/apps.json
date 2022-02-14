@@ -27,7 +27,7 @@
         "id": "usocial",
         "name": "Usocial",
         "repo": "https://github.com/ibz/usocial",
-        "version": "0.1.3"
+        "version": "0.1.4"
     },
     {
         "id": "nextcloud",
@@ -64,6 +64,12 @@
         "name": "Synapse Admin",
         "repo": "https://github.com/Awesome-Technologies/synapse-admin",
         "version": "0.8.4"
+    },
+    {
+        "id": "ride-the-c-lightning",
+        "name": "Ride The C-Lightning",
+        "repo": "https://github.com/Ride-The-Lightning/RTL",
+        "version": "0.12.1"
     },
     {
         "id": "bitfeed",
@@ -105,7 +111,7 @@
         "id": "lightning-shell",
         "name": "Lightning Shell",
         "repo": "https://github.com/ibz/lightning-shell",
-        "version": "0.1.7"
+        "version": "0.1.8"
     },
     {
         "id": "synapse",
