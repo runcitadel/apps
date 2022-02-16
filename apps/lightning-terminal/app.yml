@@ -8,7 +8,7 @@ version: 1
 metadata:
   category: Lightning Node Management
   name: Lightning Terminal
-  version: 0.6.2-alpha
+  version: 0.6.3-alpha
   tagline: A browser-based interface for managing channel liquidity
   description: >-
     With Lightning Terminal, you can
