@@ -24,6 +24,7 @@ metadata:
     - 2.jpg
     - 3.jpg
   path: ""
+  dependencies: []
 
 containers:
   - name: server
