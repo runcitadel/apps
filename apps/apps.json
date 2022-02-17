@@ -78,6 +78,12 @@
         "version": "1.24.0"
     },
     {
+        "id": "spigot-mc",
+        "name": "Spigot",
+        "repo": "https://github.com/SpigotMC",
+        "version": "Latest"
+    },
+    {
         "id": "specter-desktop",
         "name": "Specter Desktop",
         "repo": "https://github.com/cryptoadvance/specter-desktop",
