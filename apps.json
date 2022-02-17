@@ -63,7 +63,7 @@
         "id": "synapse-admin",
         "name": "Synapse Admin",
         "repo": "https://github.com/Awesome-Technologies/synapse-admin",
-        "version": "0.8.4"
+        "version": "0.8.5"
     },
     {
         "id": "bitfeed",
