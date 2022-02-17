@@ -8,7 +8,7 @@ version: 1
 metadata:
   category: Automation
   name: Node-RED
-  version: 2.2.0
+  version: 2.2.1
   tagline: Wire together the Internet of Things
   description: >-
     Node-RED is a visual programming tool for wiring together hardware devices,
@@ -38,7 +38,7 @@ metadata:
   torOnly: false
 containers:
   - name: web
-    image: nodered/node-red:2.2.0@sha256:6af5c7d0860e6e738cd1ad6037e9e5bc07be7237be30be97771f260f3708aec0
+    image: nodered/node-red:2.2.1@sha256:8a668a56151705ea30603ea00fc5c009de412d100238dfdfe399d4cd2d62e28e
     stop_grace_period: 1m
     data:
       - data:/data

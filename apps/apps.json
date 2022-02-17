@@ -33,7 +33,7 @@
         "id": "nextcloud",
         "name": "Nextcloud",
         "repo": "https://github.com/nextcloud/server",
-        "version": "23.0.1"
+        "version": "23.0.2"
     },
     {
         "id": "squeaknode",
@@ -51,13 +51,13 @@
         "id": "lightning-terminal",
         "name": "Lightning Terminal",
         "repo": "https://github.com/lightninglabs/lightning-terminal",
-        "version": "0.6.2-alpha"
+        "version": "0.6.3-alpha"
     },
     {
         "id": "node-red",
         "name": "Node-RED",
         "repo": "https://github.com/node-red/node-red",
-        "version": "2.2.0"
+        "version": "2.2.1"
     },
     {
         "id": "synapse-admin",
@@ -129,7 +129,7 @@
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
-        "version": "1.4.4"
+        "version": "1.4.5"
     },
     {
         "id": "btc-rpc-explorer-public-fast",
