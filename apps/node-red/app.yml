@@ -8,7 +8,7 @@ version: 1
 metadata:
   category: Automation
   name: Node-RED
-  version: 2.2.1
+  version: 2.2.2
   tagline: Wire together the Internet of Things
   description: >-
     Node-RED is a visual programming tool for wiring together hardware devices,
