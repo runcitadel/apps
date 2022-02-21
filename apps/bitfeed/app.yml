@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Explorers
   name: Bitfeed
-  version: 2.1.5
+  version: 2.2.0
   tagline: A live visualization of your node's mempool
   description: A self-hosted version of Bitfeed - the open source mempool & block
     visualizer available at https://bits.monospace.live. Watch as new
@@ -25,13 +25,12 @@ metadata:
     - 1.jpg
     - 2.jpg
     - 3.jpg
-  updateContainer: 
+  updateContainer:
     - main
     - api
-
 containers:
   - name: main
-    image: ghcr.io/bitfeed-project/bitfeed-client:v2.1.5@sha256:36155dc32d423b07519515fda7cfa204e5abeb978a03cf4e27e993b10b585426
+    image: ghcr.io/bitfeed-project/bitfeed-client:v2.2.0@sha256:050c4e7c7744a856fbd49758db046c4dfead40d39a0719f35b3918e9f778b074
     restart: on-failure
     stop_grace_period: 1m
     port: 80
