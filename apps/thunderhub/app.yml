@@ -9,7 +9,7 @@ version: 1
 metadata:
   category: Lightning Node Management
   name: ThunderHub
-  version: 0.13.6
+  version: 0.13.7
   tagline: Take full control of your Lightning node
   description: >-
     ThunderHub allows you to take full control of your Lightning node with a

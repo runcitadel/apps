@@ -123,7 +123,7 @@
         "id": "thunderhub",
         "name": "ThunderHub",
         "repo": "https://github.com/apotdevin/thunderhub",
-        "version": "0.13.6"
+        "version": "0.13.7"
     },
     {
         "id": "lnmarkets",
