@@ -33,7 +33,7 @@
         "id": "nextcloud",
         "name": "Nextcloud",
         "repo": "https://github.com/nextcloud/server",
-        "version": "23.0.1"
+        "version": "23.0.2"
     },
     {
         "id": "squeaknode",
@@ -51,7 +51,7 @@
         "id": "lightning-terminal",
         "name": "Lightning Terminal",
         "repo": "https://github.com/lightninglabs/lightning-terminal",
-        "version": "0.6.2-alpha"
+        "version": "0.6.4-alpha"
     },
     {
         "id": "node-red",
@@ -63,7 +63,7 @@
         "id": "synapse-admin",
         "name": "Synapse Admin",
         "repo": "https://github.com/Awesome-Technologies/synapse-admin",
-        "version": "0.8.4"
+        "version": "0.8.5"
     },
     {
         "id": "ride-the-c-lightning",
@@ -105,7 +105,7 @@
         "id": "lndg",
         "name": "LNDg",
         "repo": "https://github.com/cryptosharks131/lndg",
-        "version": "1.0.2"
+        "version": "1.0.3"
     },
     {
         "id": "lightning-shell",
@@ -117,7 +117,7 @@
         "id": "synapse",
         "name": "Synapse",
         "repo": "https://github.com/matrix-org/synapse",
-        "version": "1.52.0"
+        "version": "1.53.0"
     },
     {
         "id": "thunderhub",
@@ -135,7 +135,7 @@
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
-        "version": "1.4.4"
+        "version": "1.4.6"
     },
     {
         "id": "btc-rpc-explorer-public-fast",
