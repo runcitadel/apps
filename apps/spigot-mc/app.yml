@@ -28,14 +28,15 @@ metadata:
 
 containers:
   - name: server
-    image: itzg/minecraft-server:java17
+    image: ghcr.io/runcitadel/crafty-web:main
     restart: on-failure
     stop_grace_period: 1m
     data:
-      - data:/data
+      - crafty_db:/crafty_db
     environment:
       TYPE: SPIGOT
       EULA: "TRUE"
       ALLOW_NETHER: "true"
+    port: 8000
     ports:
       - 25565:25565
