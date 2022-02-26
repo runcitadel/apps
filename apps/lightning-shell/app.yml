@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Lightning Node Management
   name: Lightning Shell
-  version: 0.1.8
+  version: 0.1.9
   tagline: Web shell with a selection of LN node management utilities
   description: |-
     This app allows you to access a lot of terminal apps directly on the web.
@@ -26,7 +26,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: web
-    image: ghcr.io/ibz/lightning-shell:v0.1.8@sha256:0abce43bb50cc9481460aa5032cd365e6c012eef08567f60d34d6746d0e5b675
+    image: ghcr.io/ibz/lightning-shell:v0.1.9@sha256:b73a33120a4d47ee21cd82d5842eb2dbd815ea607bc0cf1d42a662ccad196106
     restart: on-failure
     stop_grace_period: 1m
     port: 7681

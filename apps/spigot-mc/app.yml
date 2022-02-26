@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
+metadata:
+  category: Fun
+  name: Spigot
+  version: Latest
+  tagline: Host a Minecraft server on your Citadel
+  description: >-
+      Spigot is an easy-to-use Minecraft server you can host on your Citadel.
+
+      This app also features an eay-to-use admin panel for your server.
+  developer: Spigot developers
+  website: https://www.spigotmc.org/
+  repo: https://github.com/SpigotMC
+  support: https://www.spigotmc.org/
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  path: ""
+  dependencies: []
+
+containers:
+  - name: server
+    image: ghcr.io/runcitadel/crafty-web:main
+    restart: on-failure
+    stop_grace_period: 1m
+    data:
+      - crafty_db:/crafty_db
+    environment:
+      TYPE: SPIGOT
+      EULA: "TRUE"
+      ALLOW_NETHER: "true"
+    port: 8000
+    ports:
+      - 25565:25565
