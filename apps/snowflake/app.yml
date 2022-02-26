@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2020-2021 Umbrel. https://getumbrel.com
+#
+# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
+metadata:
+  category: Tor
+  name: Snowflake
+  version: 2.1.0
+  tagline: Help users in countries which censor online.
+  description: >-
+    Snowflake is a system to defeat internet censorship.
+    People who are censored can use Snowflake to access the internet.
+
+    By running the Snowflake app on Citadel, you can help people who 
+    live in countries which censor Tor.
+  developer: The Tor project
+  website: https://torproject.org/
+  repo: https://github.com/runcitadel/docker-snowflake
+  support: https://t.me/runcitadel
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+
+containers:
+  - image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
+    init: true
+    port: 80
+    name: main
+    data:
+    - nginx/snowflake:/var/www/snowflake
+    - nginx/nginx.conf:/etc/nginx/nginx.conf
+
+  - name: proxy
+    image: ghcr.io/runcitadel/snowflake:v2.1.0@sha256:43ecbea41715fb2040c8e528152dabde27ffdaa16cd1c07f2895232619b1d18f
+    network_mode: host
