@@ -7,7 +7,7 @@
 version: 2
 
 metadata:
-  category: Lightning Node Management
+  category: C-Lightning
   name: Ride The C-Lightning
   version: 0.12.1
   tagline: RTL with c-lightning (WIP)
@@ -15,7 +15,7 @@ metadata:
   developer: Shahana and Suheb
   website: ridethelightning.info
   dependencies:
-    - lnd
+    - c-lightning
     - bitcoind
   repo: https://github.com/Ride-The-Lightning/RTL
   support: https://twitter.com/RTL_App

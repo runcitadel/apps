@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+
+metadata:
+  category: C-Lightning
+  name: LNbits
+  version: latest
+  tagline: Multi-user wallet management system
+  description: >-
+        Lnbits, powered by your Citadel
+  developer: LNbits
+  website: https://github.com/lnbits/lnbits
+  dependencies:
+    - c-lightning
+  repo: https://github.com/lnbits/lnbits
+  support: https://t.me/lnbits
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  defaultPassword: $APP_SEED
+
+containers:
+  - image: ghcr.io/runcitadel/lnbits-legends:feat-admin-password@sha256:50aadbc142434d9ca68182811a32dd3ba4104f4336a7a2c2845625aeee064237
+    user: 1000:1000
+    init: true
+    port: 5000
+    environment:
+      LNBITS_DATA_FOLDER: /data
+      LNBITS_BACKEND_WALLET_CLASS: CLightningWallet
+      CLIGHTNING_RPC: /c-lightning/bitcoin/lightning-rpc
+      LNBITS_SITE_TITLE: LNbits (c-lightning)
+      LNBITS_DEFAULT_WALLET_NAME: LNbits wallet
+      LNBITS_DISABLED_EXTENSIONS: amilk
+      LNBITS_ADMIN_LOGIN_KEY: $APP_SEED
+      LNBITS_ADMIN_EXTENSIONS: ngrok
+    name: web
+    data:
+      - data:/data
+    permissions:
+      - c-lightning
+    restart: on-failure
