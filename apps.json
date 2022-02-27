@@ -84,6 +84,12 @@
         "version": "0.12.1"
     },
     {
+        "id": "snowflake",
+        "name": "Snowflake",
+        "repo": "https://github.com/runcitadel/docker-snowflake",
+        "version": "2.1.0"
+    },
+    {
         "id": "code-server",
         "name": "code-server",
         "repo": "https://github.com/cdr/code-server",

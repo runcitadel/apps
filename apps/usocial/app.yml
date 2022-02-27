@@ -26,7 +26,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: main
-    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
+    image: ghcr.io/ibz/usocial:v0.1.4-buster@sha256:a74b562b974bcafca4c5ab15e1a41c269709a9f7e09154c9b66685e9d84ec6af
     restart: on-failure
     stop_grace_period: 1m
     port: 5000
@@ -43,7 +43,7 @@ containers:
   - name: fetcher
     depends_on:
       - main
-    image: ghcr.io/ibz/usocial:v0.1.1-buster@sha256:144c1c27b95ffb5b221c8917fc158517b5a61dcdc7b0e7c02631c3770cc6b36b
+    image: ghcr.io/ibz/usocial:v0.1.4-buster@sha256:a74b562b974bcafca4c5ab15e1a41c269709a9f7e09154c9b66685e9d84ec6af
     restart: on-failure
     stop_grace_period: 1m
     data:
