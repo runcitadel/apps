@@ -21,6 +21,7 @@ metadata:
   website: https://torproject.org/
   repo: https://github.com/runcitadel/docker-snowflake
   support: https://t.me/runcitadel
+  dependencies: []
   gallery:
   - 1.jpg
   - 2.jpg
