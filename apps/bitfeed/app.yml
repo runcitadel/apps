@@ -41,7 +41,7 @@ containers:
       BACKEND_HOST: $APP_BITFEED_API_IP
       BACKEND_PORT: "3000"
   - name: api
-    image: ghcr.io/bitfeed-project/bitfeed-server:v2.1.5@sha256:26c15a003ae3848bd1c3dd5d25279ef7c7bb6bbaeeeda615121e6e12754a7f88
+    image: ghcr.io/bitfeed-project/bitfeed-server:v2.2.0@sha256:b04d9ef4f2c56bd25cd1cb6b33261a8716d6710d71c7e3c0388d12f2cc236e11
     user: 1000:1000
     restart: on-failure
     stop_grace_period: 1m
