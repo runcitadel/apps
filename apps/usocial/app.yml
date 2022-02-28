@@ -9,7 +9,7 @@ version: 1
 metadata:
   category: Social
   name: Usocial
-  version: 0.1.4
+  version: 0.1.5
   tagline: Read. Listen. Pay back.
   description: The minimalist self-hosted feed reader and podcast client for your
     personal server. With Lightning Network support.
