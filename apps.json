@@ -21,7 +21,7 @@
         "id": "squeaknode",
         "name": "Squeaknode",
         "repo": "https://github.com/squeaknode/squeaknode",
-        "version": "0.2.7"
+        "version": "0.2.8"
     },
     {
         "id": "thunderhub",
@@ -66,6 +66,18 @@
         "version": "0.6.4-alpha"
     },
     {
+        "id": "snowflake",
+        "name": "Snowflake",
+        "repo": "https://github.com/runcitadel/docker-snowflake",
+        "version": "2.1.0"
+    },
+    {
+        "id": "jam",
+        "name": "JAM",
+        "repo": "https://github.com/joinmarket-webui/joinmarket-webui",
+        "version": "0.0.3"
+    },
+    {
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
@@ -82,12 +94,6 @@
         "name": "Ride The C-Lightning",
         "repo": "https://github.com/Ride-The-Lightning/RTL",
         "version": "0.12.1"
-    },
-    {
-        "id": "snowflake",
-        "name": "Snowflake",
-        "repo": "https://github.com/runcitadel/docker-snowflake",
-        "version": "2.1.0"
     },
     {
         "id": "code-server",
@@ -114,10 +120,16 @@
         "version": "3.3.0"
     },
     {
+        "id": "lnbits-c-lightning",
+        "name": "LNbits",
+        "repo": "https://github.com/lnbits/lnbits",
+        "version": "latest"
+    },
+    {
         "id": "lightning-shell",
         "name": "Lightning Shell",
         "repo": "https://github.com/ibz/lightning-shell",
-        "version": "0.1.9"
+        "version": "0.1.10"
     },
     {
         "id": "ride-the-lightning",
@@ -171,6 +183,6 @@
         "id": "usocial",
         "name": "Usocial",
         "repo": "https://github.com/ibz/usocial",
-        "version": "0.1.4"
+        "version": "0.1.5"
     }
 ]
