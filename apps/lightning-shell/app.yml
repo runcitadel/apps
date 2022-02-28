@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Lightning Node Management
   name: Lightning Shell
-  version: 0.1.9
+  version: 0.1.10
   tagline: Web shell with a selection of LN node management utilities
   description: |-
     This app allows you to access a lot of terminal apps directly on the web.
