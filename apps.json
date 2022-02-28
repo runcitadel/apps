@@ -66,6 +66,12 @@
         "version": "0.8.5"
     },
     {
+        "id": "jam",
+        "name": "JAM",
+        "repo": "https://github.com/joinmarket-webui/joinmarket-webui",
+        "version": "0.0.3"
+    },
+    {
         "id": "bitfeed",
         "name": "Bitfeed",
         "repo": "https://github.com/bitfeed-project/bitfeed",
