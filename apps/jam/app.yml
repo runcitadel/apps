@@ -2,11 +2,11 @@ version: "2"
 
 metadata:
   category: Wallets
-  name: JoinMarket Web UI
+  name: Jam
   version: 0.0.3
-  tagline: Top-notch privacy for your bitcoin
+  tagline: A friendly UI for JoinMarket
   description: >-
-    JoinMarket Web UI is a user-interface for JoinMarket with a focus on user-friendliness.
+    Jam is a user-interface for JoinMarket with a focus on user-friendliness.
     It's time for top-notch privacy for your bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and privacy for all.
 
     The app provides sensible defaults and is easy to use for beginners while still providing the features advanced users expect.
@@ -25,7 +25,7 @@ metadata:
   defaultPassword: $APP_SEED
   
 containers:
-  - name: joinmarket-webui
+  - name: jam
     image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.3-clientserver-v0.9.5
     restart: on-failure
     stop_grace_period: 1m
@@ -47,7 +47,7 @@ containers:
       jm_rpc_port: $BITCOIN_RPC_PORT
       jm_rpc_user: $BITCOIN_RPC_USER
       jm_rpc_password: "${BITCOIN_RPC_PASS}"
-      jm_rpc_wallet_file: jm_webui_default
+      jm_rpc_wallet_file: jam_default
       jm_network: $BITCOIN_NETWORK
       jm_max_cj_fee_abs: 30000  # in sats
       jm_max_cj_fee_rel: 0.0003 # 0.03%
