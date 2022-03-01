@@ -4,12 +4,12 @@ metadata:
   category: Wallets
   name: JAM
   version: 0.0.3
-  tagline: Joinmarket's awesome, man
+  tagline: JoinMarket's awesome, man
   description: >-
     JAM (Joinmarket's awesome, man) is a user-interface for JoinMarket with a focus on user-friendliness.
     It's time for top-notch privacy for your bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and privacy for all.
     The app provides sensible defaults and is easy to use for beginners while still providing the features advanced users expect.
-  developer: joinmarket-webui
+  developer: JAM developers
   website: https://github.com/joinmarket-webui/joinmarket-webui
   dependencies:
   - bitcoind
