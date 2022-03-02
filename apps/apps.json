@@ -72,6 +72,12 @@
         "version": "0.0.3"
     },
     {
+        "id": "tailscale",
+        "name": "Tailscale",
+        "repo": "https://github.com/tailscale/tailscale",
+        "version": "23.0.2"
+    },
+    {
         "id": "bitfeed",
         "name": "Bitfeed",
         "repo": "https://github.com/bitfeed-project/bitfeed",
