@@ -28,6 +28,6 @@ containers:
     network_mode: "host"
     restart: on-failure
     stop_grace_period: 1m
-    command: "sh -c 'tailscale web --listen 0.0.0.0:${APP_TAILSCALE_PORT} & exec tailscaled --tun=userspace-networking'"
+    command: "sh -c 'tailscale web --listen 0.0.0.0:${APP_TAILSCALE_MAIN_PORT} & exec tailscaled --tun=userspace-networking'"
     data:
       - data:/var/lib
