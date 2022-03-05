@@ -24,7 +24,7 @@ jobs:
           git clone https://github.com/runcitadel/dev-tools
           cd dev-tools
           yarn && yarn tsc
-          yarn citadel-dev --consumerkey ${{ secrets.TWITTER_CONSUMER_API_KEY }} --consumersecret ${{ secrets.TWITTER_CONSUMER_API_SECRET }} --accesstoken ${{ secrets.TWITTER_ACCESS_TOKEN }} --accesstokensecret ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} appcheck -d ../apps
+          yarn citadel-dev --consumerkey "${{ secrets.TWITTER_CONSUMER_API_KEY }}" --consumersecret "${{ secrets.TWITTER_CONSUMER_API_SECRET }}" --accesstoken "${{ secrets.TWITTER_ACCESS_TOKEN }}" --accesstokensecret "${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}" appcheck -d ../apps
           cd ..
           rm -rf dev-tools
           ./update.py
