@@ -28,7 +28,7 @@ metadata:
 
 containers:
   - name: server
-    image: ghcr.io/runcitadel/crafty-web:main@sha256:6d474839444f4d367fdcfb6808681238ce3725f6057d729abad3bf7897a71c0e
+    image: ghcr.io/runcitadel/crafty-web:main@sha256:7aa6a72352ef0f7db7b07646bf0da699f209da199e9f2c3b465bd72447a38a84
     restart: on-failure
     stop_grace_period: 1m
     data:
