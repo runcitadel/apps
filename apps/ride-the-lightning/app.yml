@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Lightning Node Management
   name: Ride The Lightning
-  version: 0.12.1
+  version: 0.12.2
   tagline: Manage lightning node operations better
   description: Haven't written a desription yet for this, sorry.
   developer: Shahana and Suheb
