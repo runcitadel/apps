@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# yaml-language-server: $schema=../../app-standard-v2.json
+
+version: 2
+metadata:
+  category: Networking
+  name: Tailscale
+  version: 23.0.2
+  tagline: A VPN to access your Citadel from anywhere
+  description: No description yet.
+  developer: Tailscale Inc.
+  website: https://tailscale.com
+  dependencies: []
+  repo: https://github.com/tailscale/tailscale
+  support: https://github.com/tailscale/tailscale/issues
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  path: /
+
+containers:
+  - name: main
+    image: tailscale/tailscale:v1.20.4@sha256:ae08b5ab928118e85d01837e98449d69fc46dd66397ec9375f8ea5847e55d916
+    network_mode: "host"
+    restart: on-failure
+    stop_grace_period: 1m
+    command: "sh -c 'tailscale web --listen 0.0.0.0:${APP_TAILSCALE_MAIN_PORT} & exec tailscaled --tun=userspace-networking'"
+    data:
+      - data:/var/lib
