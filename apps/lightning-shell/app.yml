@@ -26,7 +26,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: web
-    image: ghcr.io/ibz/lightning-shell:v0.1.9@sha256:b73a33120a4d47ee21cd82d5842eb2dbd815ea607bc0cf1d42a662ccad196106
+    image: ghcr.io/ibz/lightning-shell:v0.1.10@sha256:32a51c16839250829ebbae73b52478ad980f635fc0da2742524ea31300298c14
     restart: on-failure
     stop_grace_period: 1m
     port: 7681
