@@ -37,7 +37,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: web
-    image: lightninglabs/lightning-terminal:v0.6.2-alpha@sha256:04ad5849e117c45d431bf32afdfd8c806578e94b1f38c17682a309cea6ca2ee2
+    image: lightninglabs/lightning-terminal:v0.6.4-alpha@sha256:cae5b00e3a218f51a00039baae5d0c41f9ee80bd3d8536a6da5470893d835998
     user: 1000:1000
     environment:
       HOME: /data
