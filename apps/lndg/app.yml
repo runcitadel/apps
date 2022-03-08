@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Lightning Node Management
   name: LNDg
-  version: 1.0.3
+  version: 1.0.4
   tagline: Lite GUI web interface to analyze LND data and manage your node with
     automation.
   description: LNDg is your command center for running a profitable and efficient
@@ -28,7 +28,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: web
-    image: ghcr.io/cryptosharks131/lndg:v1.0.3@sha256:a179456526cb9f8b7b804129d47f7b72fc6bae0ecbf1df999382b5513c188915
+    image: ghcr.io/cryptosharks131/lndg:v1.0.4@sha256:a6329ebbd8094547d063d803f883a963d9e879b4f60df2bc6b39a1aed1acb73b
     restart: on-failure
     stop_grace_period: 1m
     lnd_mount_dir: /root/.lnd
