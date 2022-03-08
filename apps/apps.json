@@ -129,7 +129,7 @@
         "id": "synapse",
         "name": "Synapse",
         "repo": "https://github.com/matrix-org/synapse",
-        "version": "1.53.0"
+        "version": "1.54.0"
     },
     {
         "id": "thunderhub",
