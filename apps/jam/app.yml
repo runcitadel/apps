@@ -34,6 +34,7 @@ containers:
       - data/joinmarket:/root/.joinmarket
     environment:
       ENSURE_WALLET: 1
+      RESTORE_DEFAULT_CONFIG: 1
       APP_USER: citadel
       APP_PASSWORD: ${APP_SEED}
       jm_tor_control_host: $TOR_PROXY_IP
