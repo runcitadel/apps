@@ -1,28 +1,28 @@
-version: "2"
 
+version: "2"
 metadata:
   category: Wallets
   name: JAM
   version: 0.0.3
   tagline: JoinMarket's awesome, man
-  description: >-
-    JAM (Joinmarket's awesome, man) is a user-interface for JoinMarket with a focus on user-friendliness.
-    It's time for top-notch privacy for your bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and privacy for all.
-    The app provides sensible defaults and is easy to use for beginners while still providing the features advanced users expect.
+  description: JAM (Joinmarket's awesome, man) is a user-interface for JoinMarket
+    with a focus on user-friendliness. It's time for top-notch privacy for your
+    bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and
+    privacy for all. The app provides sensible defaults and is easy to use for
+    beginners while still providing the features advanced users expect.
   developer: JAM developers
   website: https://github.com/joinmarket-webui/joinmarket-webui
   dependencies:
-  - bitcoind
+    - bitcoind
   repo: https://github.com/joinmarket-webui/joinmarket-webui
   support: https://t.me/JoinMarketWebUI
   gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
-  - 4.jpg
-  - 5.jpg
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg
+    - 5.jpg
   defaultPassword: $APP_SEED
-
 containers:
   - name: joinmarket-webui
     image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.3-clientserver-v0.9.5
@@ -35,7 +35,7 @@ containers:
     environment:
       ENSURE_WALLET: 1
       APP_USER: citadel
-      APP_PASSWORD: "${APP_SEED}"
+      APP_PASSWORD: ${APP_SEED}
       jm_tor_control_host: $TOR_PROXY_IP
       jm_tor_control_port: 29051
       jm_onion_socks5_host: $TOR_PROXY_IP
@@ -45,11 +45,10 @@ containers:
       jm_rpc_host: $BITCOIN_IP
       jm_rpc_port: $BITCOIN_RPC_PORT
       jm_rpc_user: $BITCOIN_RPC_USER
-      jm_rpc_password: "${BITCOIN_RPC_PASS}"
+      jm_rpc_password: ${BITCOIN_RPC_PASS}
       jm_rpc_wallet_file: jm_webui_default
       jm_network: $BITCOIN_NETWORK
-      jm_max_cj_fee_abs: 30000  # in sats
-      jm_max_cj_fee_rel: 0.0003 # 0.03%
+      jm_max_cj_fee_abs: 30000
+      jm_max_cj_fee_rel: 0.0003
     permissions:
       - bitcoind
-
