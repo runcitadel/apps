@@ -5,7 +5,7 @@ metadata:
   name: JAM
   version: 0.0.3
   tagline: JoinMarket's awesome, man
-  description: JAM (Joinmarket's awesome, man) is a user-interface for JoinMarket
+  description: JAM (JoinMarket's awesome, man) is a user-interface for JoinMarket
     with a focus on user-friendliness. It's time for top-notch privacy for your
     bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and
     privacy for all. The app provides sensible defaults and is easy to use for
