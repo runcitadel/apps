@@ -3,9 +3,9 @@ version: "2"
 metadata:
   category: Wallets
   name: JAM
-  version: 0.0.3
+  version: 0.0.4
   tagline: JoinMarket's awesome, man
-  description: JAM (Joinmarket's awesome, man) is a user-interface for JoinMarket
+  description: JAM (JoinMarket's awesome, man) is a user-interface for JoinMarket
     with a focus on user-friendliness. It's time for top-notch privacy for your
     bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and
     privacy for all. The app provides sensible defaults and is easy to use for
@@ -25,7 +25,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: joinmarket-webui
-    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.3-clientserver-v0.9.5
+    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.4-clientserver-v0.9.5
     restart: on-failure
     stop_grace_period: 1m
     init: true
@@ -34,6 +34,7 @@ containers:
       - data/joinmarket:/root/.joinmarket
     environment:
       ENSURE_WALLET: 1
+      RESTORE_DEFAULT_CONFIG: 1
       APP_USER: citadel
       APP_PASSWORD: ${APP_SEED}
       jm_tor_control_host: $TOR_PROXY_IP
@@ -48,7 +49,7 @@ containers:
       jm_rpc_password: ${BITCOIN_RPC_PASS}
       jm_rpc_wallet_file: jm_webui_default
       jm_network: $BITCOIN_NETWORK
-      jm_max_cj_fee_abs: 30000
+      jm_max_cj_fee_abs: 300000
       jm_max_cj_fee_rel: 0.0003
     permissions:
       - bitcoind
