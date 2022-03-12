@@ -14,7 +14,7 @@ metadata:
   description: >-
       Spigot is an easy-to-use Minecraft server you can host on your Citadel.
 
-      This app also features an eay-to-use admin panel for your server.
+      This app also features an easy-to-use admin panel for your server.
   developer: Spigot developers
   website: https://www.spigotmc.org/
   repo: https://github.com/SpigotMC
@@ -28,7 +28,7 @@ metadata:
 
 containers:
   - name: server
-    image: ghcr.io/runcitadel/crafty-web:main
+    image: ghcr.io/runcitadel/crafty-web:main@sha256:43dc7108b95787b582cb18cca6b562cd3a3acefe5e96d2072e42963183a990d7
     restart: on-failure
     stop_grace_period: 1m
     data:
