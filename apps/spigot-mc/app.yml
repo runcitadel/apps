@@ -33,6 +33,7 @@ containers:
     stop_grace_period: 1m
     data:
       - crafty_db:/crafty_db
+      - servers:/servers
     environment:
       TYPE: SPIGOT
       EULA: "TRUE"
