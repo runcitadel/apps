@@ -21,7 +21,7 @@
         "id": "btc-rpc-explorer-public",
         "name": "BTC RPC Explorer (Public)",
         "repo": "https://github.com/janoside/btc-rpc-explorer",
-        "version": "3.3.0"
+        "version": "3.2.0"
     },
     {
         "id": "btc-rpc-explorer-public-fast",

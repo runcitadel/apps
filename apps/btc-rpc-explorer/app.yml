@@ -5,14 +5,15 @@
 # yaml-language-server: $schema=../../app-standard-v1.json
 
 version: 1
-
 metadata:
   category: Explorers
   name: BTC RPC Explorer
-  version: 3.2.0
+  version: 3.3.0
   tagline: Database-free, self-hosted Bitcoin explorer
   description: >-
-    This is a self-hosted explorer for the Bitcoin blockchain, driven by RPC calls to your own Bitcoin node. It is easy to run and can be connected to other tools (like Electrum servers) to achieve a full-featured explorer.
+    This is a self-hosted explorer for the Bitcoin blockchain, driven by RPC
+    calls to your own Bitcoin node. It is easy to run and can be connected to
+    other tools (like Electrum servers) to achieve a full-featured explorer.
 
     Whatever reasons you may have for running a full node (trustlessness, technical curiosity, supporting the network, etc) it's valuable to appreciate the fullness of your node. With this explorer, you can explore not just the blockchain database, but also explore all of the functional capabilities of your own node.
   developer: Dan Janosik
@@ -27,10 +28,9 @@ metadata:
     - 2.jpg
     - 3.jpg
   defaultPassword: $APP_SEED
-
 containers:
   - name: main
-    image: ghcr.io/runcitadel/btc-rpc-explorer:main@sha256:743a2f67035e41901b3d1f65f9f654525d00312d1d7d15f5be19a2768d33b416
+    image: ghcr.io/runcitadel/btc-rpc-explorer:v3.3.0@sha256:01ecdf20d75cfe758c2c0908492ed938f89da55dd6ee98e61cacc4c73ef8cef1
     permissions:
       - electrum
       - bitcoind
