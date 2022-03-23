@@ -54,6 +54,8 @@ containers:
       BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
       BITCOIN_RPC_USER: $BITCOIN_RPC_USER
       BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
+      RPC_POOLS: 3
+      RPC_POOL_SIZE: 4
     data:
       - data:/app/data
     permissions:
