@@ -22,4 +22,4 @@ def getSimpleAppRegistry(apps, app_path):
                     'version': app_yml['metadata']['version']
                 }
                 app_metadata.append(metadata)
-    return app_metadata
+    return sorted(app_metadata, key=lambda app: app['id'])
