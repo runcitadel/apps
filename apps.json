@@ -93,7 +93,7 @@
         "id": "nextcloud",
         "name": "Nextcloud",
         "repo": "https://github.com/nextcloud/server",
-        "version": "23.0.2"
+        "version": "23.0.3"
     },
     {
         "id": "node-red",
