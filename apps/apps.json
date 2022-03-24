@@ -39,7 +39,7 @@
         "id": "code-server",
         "name": "code-server",
         "repo": "https://github.com/cdr/code-server",
-        "version": "4.1.0"
+        "version": "4.2.0"
     },
     {
         "id": "jam",
