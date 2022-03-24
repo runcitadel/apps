@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Social
   name: Synapse
-  version: 1.55.0
+  version: 1.55.1
   tagline: Matrix homeserver
   description: Description is coming soon.
   developer: Matrix
@@ -22,7 +22,7 @@ metadata:
     - 3.jpg
   torOnly: false
 containers:
-  - image: matrixdotorg/synapse:v1.55.0@sha256:4b750f7a4d0ddb9d1b20838e4005b885017e2a317aa3654821de5251b37ef485
+  - image: matrixdotorg/synapse:v1.55.1@sha256:642279841b19248cf33f4ddc05ca9892619c1de33c08cd922871e8d8187c5b51
     entrypoint: bash
     command: -c './start.py generate && ./start.py migrate_config && exec ./start.py'
     port: 8008
@@ -31,9 +31,9 @@ containers:
       GID: "1000"
       SYNAPSE_HTTP_PORT: 8008
       SYNAPSE_SERVER_NAME: ${APP_HIDDEN_SERVICE}
-      SYNAPSE_REPORT_STATS: "yes"
-      SYNAPSE_ENABLE_REGISTRATION: "yes"
-      SYNAPSE_NO_TLS: "yes"
+      SYNAPSE_REPORT_STATS: yes
+      SYNAPSE_ENABLE_REGISTRATION: yes
+      SYNAPSE_NO_TLS: yes
     name: server
     data:
       - data/synapse:/data
