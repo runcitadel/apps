@@ -8,7 +8,7 @@ version: 1
 metadata:
   category: Social
   name: Squeaknode
-  version: 0.2.14
+  version: 0.2.15
   tagline: A peer-to-peer status feed with Lightning monetization
   description: >-
     The Squeaknode app allows you to create, view, buy, and sell squeaks. A
@@ -31,7 +31,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: web
-    image: ghcr.io/squeaknode/squeaknode:v0.2.14@sha256:830af4c42020f9a2507020aca31e617042197001de73caa6aabbb421c9886584
+    image: ghcr.io/squeaknode/squeaknode:v0.2.15@sha256:0f48e3497994e3e2e69930ef96fd855744c04affb68cc2e6600fb9da8cca729c
     stop_grace_period: 1m
     port: 12994
     ports:
