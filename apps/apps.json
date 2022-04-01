@@ -33,7 +33,7 @@
         "id": "btcpay-server",
         "name": "BTCPay Server",
         "repo": "https://github.com/btcpayserver/btcpayserver",
-        "version": "1.4.8"
+        "version": "1.4.9"
     },
     {
         "id": "code-server",
