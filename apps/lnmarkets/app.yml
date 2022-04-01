@@ -49,6 +49,8 @@ containers:
     environment:
       APP_URL: 0.0.0.0
       API_PORT: 1234
+      APP_DOMAIN: $APP_DOMAIN
+      APP_HIDDEN_SERVICE: $APP_HIDDEN_SERVICE
       APP_PASSWORD: $APP_SEED
 
       LND_IP: $LND_IP
