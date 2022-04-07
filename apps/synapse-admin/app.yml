@@ -25,5 +25,5 @@ metadata:
     - 3.jpg
 containers:
   - name: main
-    image: awesometechnologies/synapse-admin:0.8.4@sha256:2d67dc0a7c9d59f290cfddf7d51e5d9125f3cb88c48d97c605b3330c2bf6a69b
+    image: awesometechnologies/synapse-admin:0.8.5@sha256:e2598994cf3b6fca4ed7bac781519b099f8233b512f80d806eb704f53981e849
     port: 80

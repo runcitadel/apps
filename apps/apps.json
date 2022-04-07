@@ -66,6 +66,12 @@
         "version": "0.6.5-alpha"
     },
     {
+        "id": "lnbits-c-lightning",
+        "name": "LNbits",
+        "repo": "https://github.com/lnbits/lnbits",
+        "version": "latest"
+    },
+    {
         "id": "lndg",
         "name": "LNDg",
         "repo": "https://github.com/cryptosharks131/lndg",
@@ -100,6 +106,12 @@
         "name": "Node-RED",
         "repo": "https://github.com/node-red/node-red",
         "version": "2.2.2"
+    },
+    {
+        "id": "ride-the-c-lightning",
+        "name": "Ride The C-Lightning",
+        "repo": "https://github.com/Ride-The-Lightning/RTL",
+        "version": "0.12.1"
     },
     {
         "id": "ride-the-lightning",
