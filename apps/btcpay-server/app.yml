@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 2
+version: 3
+
 metadata:
   category: Payments
   name: BTCPay Server
@@ -41,8 +42,7 @@ containers:
       NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
     data:
       - data/nbxplorer:/data
-    permissions:
-      - bitcoind
+
   - name: main
     image: btcpayserver/btcpayserver:1.4.9@sha256:3310ef8c5fecb3a1c66507b97ebc84a3475fc77e63cd3bd29ab8b76474214566
     port: 1234
@@ -68,8 +68,7 @@ containers:
     data:
       - data/nbxplorer:/data/.nbxplorer
       - data/btcpay:/data
-    permissions:
-      - lnd
+
     user: 1000:1000
   - name: postgres
     image: postgres:14.1-bullseye@sha256:1fe27b334443793af98d7eb320ad6f9f30fcc9bc068f545cb46ec01cefe9c8ee

@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 2
+version: 3
 metadata:
   category: Explorers
   name: Bitfeed
@@ -28,6 +28,7 @@ metadata:
   updateContainer:
     - main
     - api
+
 containers:
   - name: main
     image: ghcr.io/bitfeed-project/bitfeed-client:v2.2.1@sha256:70c89d49d20ba3da21c648c259f45a4b89e06bfe1d97374a092dce6f891d03c6
@@ -40,6 +41,7 @@ containers:
       TARGET: citadel
       BACKEND_HOST: $APP_BITFEED_API_IP
       BACKEND_PORT: "3000"
+
   - name: api
     image: ghcr.io/bitfeed-project/bitfeed-server:v2.2.1@sha256:60eae8109d3d6a377aec8a954f93b6be9ee48de717c9ab5810c2a5afcf688554
     user: 1000:1000
@@ -58,5 +60,3 @@ containers:
       RPC_POOL_SIZE: 4
     data:
       - data:/app/data
-    permissions:
-      - bitcoind

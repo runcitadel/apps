@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Social
   name: Sphinx Relay
@@ -47,5 +48,3 @@ containers:
     port: 3300
     data:
       - data:/relay/.lnd/
-    permissions:
-      - lnd

@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Social
   name: Squeaknode
@@ -34,8 +35,8 @@ containers:
     image: ghcr.io/squeaknode/squeaknode:v0.2.16@sha256:25d9bd4ce22b4265979d64ce9a2417c883492cd8dce7f171fc5488d27db6c809
     stop_grace_period: 1m
     port: 12994
-    ports:
-      - 8994:8994
+    requiredPorts:
+      - 8994
     user: 1000:1000
     environment:
       SQUEAKNODE_BITCOIN_RPC_HOST: $BITCOIN_IP
@@ -59,9 +60,6 @@ containers:
       DEBUG: squeaknode:*
     data:
       - sqk:/sqk
-    permissions:
-      - bitcoind
-      - lnd
     hiddenServicePorts:
       p2p:
         - 8555

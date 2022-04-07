@@ -3,9 +3,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Social
   name: Usocial
@@ -32,8 +33,6 @@ containers:
     port: 5000
     data:
       - data:/instance
-    permissions:
-      - lnd
     environment:
       USOCIAL_JOB: WEB
       APP_PASSWORD: ${APP_SEED}

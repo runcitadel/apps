@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Explorers
   name: BTC RPC Explorer
@@ -28,12 +29,10 @@ metadata:
     - 2.jpg
     - 3.jpg
   defaultPassword: $APP_SEED
+
 containers:
   - name: main
     image: ghcr.io/runcitadel/btc-rpc-explorer:v3.3.0@sha256:01ecdf20d75cfe758c2c0908492ed938f89da55dd6ee98e61cacc4c73ef8cef1
-    permissions:
-      - electrum
-      - bitcoind
     port: 3002
     environment:
       BTCEXP_HOST: 0.0.0.0

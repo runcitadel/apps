@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 2
+version: 3
+
 metadata:
   category: Lightning Node Management
   name: LNDg
@@ -31,7 +32,8 @@ containers:
     image: ghcr.io/cryptosharks131/lndg:v1.0.5@sha256:cebb3cb42ebc26e7d148792e9f191dea78016cd514940a19143d3e51b5e023d2
     restart: on-failure
     stop_grace_period: 1m
-    lnd_mount_dir: /root/.lnd
+    mounts:
+      lnd: /root/.lnd
     data:
       - data:/lndg/data
     command:
@@ -40,5 +42,4 @@ containers:
       - python initialize.py -net '${BITCOIN_NETWORK}' -server
         '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord &&
         python manage.py runserver 0.0.0.0:${APP_LNDG_WEB_PORT}
-    permissions:
-      - lnd
+

@@ -1,5 +1,11 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
-version: "2"
+# yaml-language-server: $schema=../../app-standard-v3.yml
+
+version: 3
+
 metadata:
   category: Wallets
   name: JAM
@@ -51,5 +57,4 @@ containers:
       jm_network: $BITCOIN_NETWORK
       jm_max_cj_fee_abs: 300000
       jm_max_cj_fee_rel: 0.0003
-    permissions:
-      - bitcoind
+

@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Wallets
   name: Specter Desktop
@@ -59,8 +60,8 @@ containers:
       BTC_RPC_PROTOCOL: http
     name: web
     port: 25441
+    preferredOutsidePort: 25441
     data:
       - data:/data
-    bitcoin_mount_dir: /data/.bitcoin
-    permissions:
-      - bitcoind
+    mounts: 
+      bitcoin: /data/.bitcoin
