@@ -66,6 +66,12 @@
         "version": "0.6.5-alpha"
     },
     {
+        "id": "lnbits",
+        "name": "LNbits",
+        "repo": "https://github.com/lnbits/lnbits",
+        "version": "baf55af"
+    },
+    {
         "id": "lndg",
         "name": "LNDg",
         "repo": "https://github.com/cryptosharks131/lndg",

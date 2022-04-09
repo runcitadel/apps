@@ -12,8 +12,8 @@ metadata:
   version: 23.0.2
   tagline: A VPN to access your Citadel from anywhere
   description: No description yet.
-  developer: Tailscale Inc.
-  website: https://tailscale.com
+  developers: 
+    Tailscale Inc.: https://tailscale.com
   dependencies: []
   repo: https://github.com/tailscale/tailscale
   support: https://github.com/tailscale/tailscale/issues

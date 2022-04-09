@@ -17,8 +17,8 @@ metadata:
     other tools (like Electrum servers) to achieve a full-featured explorer.
 
     Whatever reasons you may have for running a full node (trustlessness, technical curiosity, supporting the network, etc) it's valuable to appreciate the fullness of your node. With this explorer, you can explore not just the blockchain database, but also explore all of the functional capabilities of your own node.
-  developer: Dan Janosik
-  website: https://explorer.btc21.org
+  developers: 
+    Dan Janosik: https://explorer.btc21.org
   dependencies:
     - electrum
     - bitcoind

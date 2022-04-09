@@ -14,8 +14,8 @@ metadata:
     payment processor.
   description: "BTCPay Server is a free and open-source Bitcoin payment processor
     which allows you to accept bitcoin without fees or intermediaries. "
-  developer: BTCPay Server Foundation
-  website: https://btcpayserver.org
+  developers: 
+    BTCPay Server Foundation: https://btcpayserver.org
   dependencies:
     - lnd
     - bitcoind

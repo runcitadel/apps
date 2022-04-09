@@ -14,8 +14,8 @@ metadata:
   description: "This app allows you to manage your synapse server. It currently
     requires some manual work inside Synapse's Docker container,  so it's not
     usable for most users yet. "
-  developer: Awesome Technologies
-  website: https://awesome-technologies.de/https://awesome-technologies.de/
+  developers: 
+    Awesome Technologies: https://awesome-technologies.de/https://awesome-technologies.de/
   dependencies: []
   repo: https://github.com/Awesome-Technologies/synapse-admin
   support: https://github.com/Awesome-Technologies/synapse-admin

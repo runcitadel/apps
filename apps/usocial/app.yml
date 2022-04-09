@@ -14,8 +14,8 @@ metadata:
   tagline: Read. Listen. Pay back.
   description: The minimalist self-hosted feed reader and podcast client for your
     personal server. With Lightning Network support.
-  developer: Ioan Bizău
-  website: http://usocial.me
+  developers: 
+    Ioan Bizău: http://usocial.me
   dependencies:
     - lnd
   repo: https://github.com/ibz/usocial

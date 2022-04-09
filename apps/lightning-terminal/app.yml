@@ -24,8 +24,8 @@ metadata:
       - Access a preview release of the Pool UI
 
       - Use Pool to earn sats by opening channels to those needing inbound liquidity
-  developer: Lightning Labs
-  website: https://lightning.engineering
+  developers: 
+    Lightning Labs: https://lightning.engineering
   dependencies:
     - lnd
   repo: https://github.com/lightninglabs/lightning-terminal

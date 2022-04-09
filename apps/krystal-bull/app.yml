@@ -26,8 +26,8 @@ metadata:
     
     WARNING: This version of Krystal Bull is an early alpha release for testing.
     It's not secure, please don't use it for anything serious.
-  developer: SuredBits
-  website: https://suredbits.com/
+  developers: 
+    SuredBits: https://suredbits.com/
   dependencies: []
   repo: https://github.com/bitcoin-s/krystal-bull
   support: https://join.slack.com/t/suredbits/shared_invite/zt-eavycu0x-WQL7XOakzQo8tAy7jHHZUw

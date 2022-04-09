@@ -11,8 +11,8 @@ metadata:
   version: 23.0.3
   tagline: Your personal cloud
   description: No description yet.
-  developer: Nextcloud GmbH
-  website: https://nextcloud.com
+  developers: 
+    Nextcloud GmbH: https://nextcloud.com
   dependencies: []
   repo: https://github.com/nextcloud/server
   support: https://help.nextcloud.com/categories

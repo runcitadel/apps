@@ -20,8 +20,8 @@ metadata:
 
 
     Managing and monitoring your node has never been easier with transaction reports, graphs and a huge assortment of different features all bundled inside of this great tool.
-  developer: Anthony Potdevin
-  website: https://apotdevin.com
+  developers: 
+    Anthony Potdevin: https://apotdevin.com
   dependencies:
     - lnd
   repo: https://github.com/apotdevin/thunderhub

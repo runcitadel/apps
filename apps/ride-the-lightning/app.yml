@@ -11,8 +11,8 @@ metadata:
   version: 0.12.2
   tagline: Manage lightning node operations better
   description: Haven't written a desription yet for this, sorry.
-  developer: Shahana and Suheb
-  website: ridethelightning.info
+  developers: 
+    Shahana and Suheb: ridethelightning.info
   dependencies:
     - lnd
     - bitcoind
