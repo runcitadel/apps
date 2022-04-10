@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 2
+version: 3
 
 metadata:
   category: Tor
