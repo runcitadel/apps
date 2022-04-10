@@ -1,13 +1,14 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Payments
   name: BitcartCC
   version: 0.6.5.1
-  tagline: BitcartCC is a self-hosted payment processor and developer solutions platform for cryptocurrencies
-  description: "BitcartCC provides light-weight, but secure and easy-to-use solutions for merchants and developers"
+  tagline: BitcartCC is a self-hosted payment processor and developer solutions
+    platform for cryptocurrencies
+  description: BitcartCC provides light-weight, but secure and easy-to-use
+    solutions for merchants and developers
   developers:
     BitcartCC: https://bitcartcc.com
   repo: https://github.com/bitcartcc/bitcart
@@ -16,7 +17,6 @@ metadata:
     - 1.png
     - 2.png
     - 3.png
-
 containers:
   - name: admin
     restart: unless-stopped
@@ -25,7 +25,6 @@ containers:
     environment:
       BITCART_ADMIN_LOG_FILE: bitcart.log
       BITCART_ADMIN_API_URL: http://$APP_BITCARTCC_BACKEND_IP:8000
-
   - name: backend
     depends_on:
       - bitcoin
@@ -46,7 +45,6 @@ containers:
     user: 1000:1000
     data:
       - data/bitcart:/datadir
-
   - name: bitcoin
     restart: unless-stopped
     image: bitcartcc/bitcart-btc:stable
@@ -64,18 +62,15 @@ containers:
       POSTGRES_HOST_AUTH_METHOD: trust
     data:
       - data/postgres:/var/lib/postgresql/data
-
   - name: redis
     restart: unless-stopped
     image: redis:alpine
-
   - name: store
     restart: unless-stopped
     image: bitcartcc/bitcart-store:stable
     command: yarn start
     environment:
       BITCART_STORE_API_URL: http://$APP_BITCARTCC_BACKEND_IP:8000
-
   - name: worker
     depends_on:
       - backend
@@ -94,10 +89,9 @@ containers:
     user: 1000:1000
     data:
       - data/bitcart:/datadir
-
   - image: nginx:1.21.3-alpine@sha256:1ff1364a1c4332341fc0a854820f1d50e90e11bb0b93eb53b47dc5e10c680116
     init: true
     port: 80
     name: main
     data:
-    - nginx/nginx.conf:/etc/nginx/nginx.conf
+      - nginx/nginx.conf:/etc/nginx/nginx.conf
