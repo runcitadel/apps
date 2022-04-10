@@ -6,7 +6,6 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Social
   name: Usocial
@@ -14,7 +13,7 @@ metadata:
   tagline: Read. Listen. Pay back.
   description: The minimalist self-hosted feed reader and podcast client for your
     personal server. With Lightning Network support.
-  developers: 
+  developers:
     Ioan Bizău: http://usocial.me
   dependencies:
     - lnd
