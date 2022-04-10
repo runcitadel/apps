@@ -19,7 +19,6 @@ jobs:
 
       - name: Check for updates
         run: |
-          ./update.py
           export GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           git clone https://github.com/runcitadel/dev-tools
           cd dev-tools
