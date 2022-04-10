@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
 
 metadata:
   category: Finance
@@ -27,8 +27,8 @@ metadata:
     
     
     Thank you for your support and let's keep building the future of finance together!
-  developer: LN Markets
-  website: https://lnmarkets.com
+  developers: 
+    LN Markets: https://lnmarkets.com
   dependencies:
       - lnd
   repo: https://github.com/ln-markets/umbrel
@@ -58,5 +58,3 @@ containers:
       LND_REST_PORT: $LND_REST_PORT
 
       BITCOIN_NETWORK: $BITCOIN_NETWORK
-    permissions:
-      - "lnd"

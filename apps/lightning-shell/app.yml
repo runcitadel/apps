@@ -14,8 +14,8 @@ metadata:
   description: |-
     This app allows you to access a lot of terminal apps directly on the web.
     The default username for this app is "citadel".
-  developer: Ioan Bizău
-  website: https://lightningshell.app
+  developers: 
+    Ioan Bizău: https://lightningshell.app
   dependencies:
     - lnd
   repo: https://github.com/ibz/lightning-shell

@@ -15,8 +15,8 @@ metadata:
   description: LNDg is your command center for running a profitable and efficient
     routing node. From quickly viewing your node's health, automated
     rebalancing, selecting new potential peers and much more.
-  developer: cryptosharks131
-  website: https://github.com/cryptosharks131
+  developers: 
+    cryptosharks131: https://github.com/cryptosharks131
   dependencies:
     - lnd
   repo: https://github.com/cryptosharks131/lndg

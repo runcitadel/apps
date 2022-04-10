@@ -9,7 +9,7 @@ version: 3
 metadata:
   category: Lightning Node Management
   name: ThunderHub
-  version: 0.13.7
+  version: 0.13.10
   tagline: Take full control of your Lightning node
   description: >-
     ThunderHub allows you to take full control of your Lightning node with a
@@ -20,8 +20,8 @@ metadata:
 
 
     Managing and monitoring your node has never been easier with transaction reports, graphs and a huge assortment of different features all bundled inside of this great tool.
-  developer: Anthony Potdevin
-  website: https://apotdevin.com
+  developers: 
+    Anthony Potdevin: https://apotdevin.com
   dependencies:
     - lnd
   repo: https://github.com/apotdevin/thunderhub
@@ -32,7 +32,7 @@ metadata:
     - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - image: ghcr.io/runcitadel/thunderhub:master@sha256:26e30158e354b4c1897f1017371b286026ec48f575d8cb836cc7d9a1fce27ae2
+  - image: apotdevin/thunderhub:v0.13.10@sha256:1fe379cad2e7fe83b8c351304a41791e0bc4e58eb207cb31ed5e3dc575af8100
     environment:
       NO_VERSION_CHECK: "true"
       LOG_LEVEL: debug

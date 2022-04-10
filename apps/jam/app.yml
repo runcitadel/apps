@@ -16,8 +16,8 @@ metadata:
     bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and
     privacy for all. The app provides sensible defaults and is easy to use for
     beginners while still providing the features advanced users expect.
-  developer: JAM developers
-  website: https://github.com/joinmarket-webui/joinmarket-webui
+  developers: 
+    JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
   dependencies:
     - bitcoind
   repo: https://github.com/joinmarket-webui/joinmarket-webui

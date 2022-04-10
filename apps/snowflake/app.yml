@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 2
+version: 3
 
 metadata:
   category: Tor
@@ -17,8 +17,8 @@ metadata:
 
     By running the Snowflake app on Citadel, you can help people who 
     live in countries which censor Tor.
-  developer: The Tor project
-  website: https://torproject.org/
+  developers: 
+    The Tor project: https://torproject.org/
   repo: https://github.com/runcitadel/docker-snowflake
   support: https://t.me/runcitadel
   dependencies: []

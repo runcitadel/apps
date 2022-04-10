@@ -2,17 +2,18 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# yaml-language-server: $schema=../../app-standard-v2.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 2
+version: 3
+
 metadata:
   category: Files
   name: Nextcloud
   version: 23.0.3
   tagline: Your personal cloud
   description: No description yet.
-  developer: Nextcloud GmbH
-  website: https://nextcloud.com
+  developers: 
+    Nextcloud GmbH: https://nextcloud.com
   dependencies: []
   repo: https://github.com/nextcloud/server
   support: https://help.nextcloud.com/categories

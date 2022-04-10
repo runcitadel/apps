@@ -18,8 +18,8 @@ metadata:
 
     You can pair multiple BlueWallet accounts, so your friends and family can pair
     their BlueWallet with your Citadel for a trust-minimized setup.
-  developer: BlueWallet
-  website: https://lndhub.io
+  developers: 
+    BlueWallet: https://lndhub.io
   dependencies:
   - lnd
   repo: https://github.com/BlueWallet/LndHub

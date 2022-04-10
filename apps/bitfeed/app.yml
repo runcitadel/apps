@@ -15,8 +15,8 @@ metadata:
     transactions drop into your node's mempool, before being packaged into newly
     mined blocks. Monitor Bitcoin network activity, explore the composition of
     the latest block, or simply enjoy a soothing Bitcoin screensaver.
-  developer: Mononaut
-  website: https://monospace.live
+  developers: 
+    Mononaut: https://monospace.live
   dependencies:
     - bitcoind
   repo: https://github.com/bitfeed-project/bitfeed

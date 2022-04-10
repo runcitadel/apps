@@ -12,8 +12,8 @@ metadata:
   version: 4.2.0
   tagline: Run VS Code on your Citadel
   description: This app doesn't  have a description yet.
-  developer: Coder
-  website: https://coder.com
+  developers: 
+    Coder: https://coder.com
   dependencies: []
   repo: https://github.com/cdr/code-server
   support: https://github.com/cdr/code-server/discussions

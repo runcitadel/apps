@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Explorers
   name: Mempool
@@ -40,8 +41,8 @@ metadata:
     - Multiple languages support
 
     - JSON APIs
-  developer: mempool.space
-  website: https://mempool.space/about
+  developers: 
+    mempool.space: https://mempool.space/about
   dependencies:
     - electrum
     - bitcoind
@@ -83,9 +84,6 @@ containers:
       MEMPOOL_CLEAR_PROTECTION_MINUTES: "20"
     data:
       - data:/backend/cache
-    permissions:
-      - electrum
-      - bitcoind
   - name: mariadb
     image: mariadb:10.7.1@sha256:a469ba5edc9267eb3f32f5a6773376677274b09d36bbe742b448fc4c787e6b37
     user: 1000:1000

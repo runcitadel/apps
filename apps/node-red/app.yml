@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v1.json
+# yaml-language-server: $schema=../../app-standard-v3.yml
 
-version: 1
+version: 3
+
 metadata:
   category: Automation
   name: Node-RED
@@ -22,8 +23,8 @@ metadata:
 
 
     Warning: Node-RED on Citadel is able to connect directly to Bitcoin Core, LND and Electrum, due to this you should be careful when installing third-party Node-RED nodes.
-  developer: OpenJS Foundation
-  website: https://nodered.org
+  developers: 
+    OpenJS Foundation: https://nodered.org
   dependencies:
     - bitcoind
     - electrum
@@ -54,7 +55,3 @@ containers:
       LND_GRPC_PORT: $LND_GRPC_PORT
       ELECTRUM_IP: $ELECTRUM_IP
       ELECTRUM_PORT: $ELECTRUM_PORT
-    permissions:
-      - lnd
-      - bitcoind
-      - electrum

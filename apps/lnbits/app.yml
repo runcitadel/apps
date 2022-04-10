@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2021 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v3.yml
+
+version: 3
+metadata:
+  category: Lightning Node Management
+  name: LNbits
+  version: baf55af
+  tagline: Multi-user wallet management system
+  description: Description coming soon.
+  developers:
+    LNbits: https://github.com/lnbits/lnbits
+  dependencies:
+    - - lnd
+      - c-lightning
+  repo: https://github.com/lnbits/lnbits
+  support: https://t.me/lnbits
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  defaultPassword: $APP_SEED
+containers:
+  - image: ghcr.io/runcitadel/lnbits-legends:feat-admin-password@sha256:f484cf3531d1bb14d95159fe2e7596f738e0991163190a7a346d594ec9bb80e5
+    user: 1000:1000
+    init: true
+    port: 5000
+    environment:
+      LNBITS_DATA_FOLDER: /data
+      LNBITS_BACKEND_WALLET_CLASS: LndRestWallet
+      LND_REST_ENDPOINT: https://$LND_IP:$LND_REST_PORT/
+      LND_REST_CERT: /lnd/tls.cert
+      LND_REST_MACAROON: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
+      LNBITS_SITE_TITLE: LNbits on Citadel
+      LNBITS_DEFAULT_WALLET_NAME: LNbits wallet
+      LNBITS_DISABLED_EXTENSIONS: amilk
+      LNBITS_ADMIN_LOGIN_KEY: $APP_SEED
+      LNBITS_ADMIN_EXTENSIONS: ngrok
+    name: main-lnd
+    data:
+      - data:/data
+    restart: on-failure
+    requires:
+      - lnd
+  - image: ghcr.io/runcitadel/lnbits-legends:feat-admin-password@sha256:f484cf3531d1bb14d95159fe2e7596f738e0991163190a7a346d594ec9bb80e5
+    user: 1000:1000
+    init: true
+    port: 5000
+    environment:
+      LNBITS_DATA_FOLDER: /data
+      LNBITS_BACKEND_WALLET_CLASS: CLightningWallet
+      CLIGHTNING_RPC: /c-lightning/bitcoin/lightning-rpc
+      LNBITS_SITE_TITLE: LNbits (c-lightning)
+      LNBITS_DEFAULT_WALLET_NAME: LNbits wallet
+      LNBITS_DISABLED_EXTENSIONS: amilk
+      LNBITS_ADMIN_LOGIN_KEY: $APP_SEED
+      LNBITS_ADMIN_EXTENSIONS: ngrok
+    name: main-c-lightning
+    data:
+      - data:/data
+    requires:
+      - c-lightning
+    restart: on-failure
