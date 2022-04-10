@@ -41,7 +41,7 @@ containers:
   - name: fetcher
     depends_on:
       - main
-    image: ghcr.io/ibz/usocial:v0.1.4-buster@sha256:a74b562b974bcafca4c5ab15e1a41c269709a9f7e09154c9b66685e9d84ec6af
+    image: ghcr.io/ibz/usocial:v0.1.6-buster@sha256:c4ad3524a0eaccf505f3e477ab8ac2eb4e79ddca7f4266e4af0afd49caba389a
     restart: on-failure
     stop_grace_period: 1m
     data:
