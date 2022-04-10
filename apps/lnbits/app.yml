@@ -5,14 +5,12 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Lightning Node Management
   name: LNbits
   version: baf55af
   tagline: Multi-user wallet management system
-  description: >-
-    Description coming soon.
+  description: Description coming soon.
   developers:
     LNbits: https://github.com/lnbits/lnbits
   dependencies:
@@ -47,7 +45,6 @@ containers:
     restart: on-failure
     requires:
       - lnd
-
   - image: ghcr.io/runcitadel/lnbits-legends:feat-admin-password@sha256:f484cf3531d1bb14d95159fe2e7596f738e0991163190a7a346d594ec9bb80e5
     user: 1000:1000
     init: true
@@ -67,4 +64,3 @@ containers:
     requires:
       - c-lightning
     restart: on-failure
-  
