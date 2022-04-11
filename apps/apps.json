@@ -123,7 +123,7 @@
         "id": "sphinx-relay",
         "name": "Sphinx Relay",
         "repo": "https://github.com/stakwork/sphinx-relay",
-        "version": "2.2.6"
+        "version": "2.2.7"
     },
     {
         "id": "spigot-mc",
