@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: Social
   name: Synapse
-  version: 1.56.0
+  version: 1.57.0
   tagline: Matrix homeserver
   description: Description is coming soon.
   developer: Matrix
@@ -22,7 +22,7 @@ metadata:
     - 3.jpg
   torOnly: false
 containers:
-  - image: matrixdotorg/synapse:v1.56.0@sha256:70fdddfcba9058d2471ae7764f887b6db781d7527debcb75a1b8083217c342f1
+  - image: matrixdotorg/synapse:v1.57.0@sha256:07530cb617034d5999788ab6f1615a60210b48f2d7aa88cf01508fbed9fd98a0
     entrypoint: bash
     command: -c './start.py generate && ./start.py migrate_config && exec ./start.py'
     port: 8008
