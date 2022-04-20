@@ -141,7 +141,7 @@
         "id": "synapse",
         "name": "Synapse",
         "repo": "https://github.com/matrix-org/synapse",
-        "version": "1.57.0"
+        "version": "1.57.1"
     },
     {
         "id": "synapse-admin",
