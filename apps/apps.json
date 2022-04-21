@@ -75,7 +75,7 @@
         "id": "lnmarkets",
         "name": "LN Markets",
         "repo": "https://github.com/ln-markets/umbrel",
-        "version": "1.2.0"
+        "version": "1.2.2"
     },
     {
         "id": "lnme",
