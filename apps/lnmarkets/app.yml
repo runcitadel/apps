@@ -8,7 +8,7 @@ version: 1
 metadata:
   category: Finance
   name: LN Markets
-  version: 1.1.5
+  version: 1.2.0
   tagline: Trade Bitcoin derivatives on Lightning
   description: >-
     LN Markets is the first Lightning-native Bitcoin derivatives trading
@@ -20,7 +20,9 @@ metadata:
       Since March 2020, we have processed over $200 million of trading volume,
       with a median fee of 1 sat for instant P&L delivery to your wallet.
 
+
       
+
 
       
     This app gives you another way to interact with LN Markets:
@@ -42,7 +44,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: lnmarkets
-    image: ghcr.io/ln-markets/umbrel:v1.1.5@sha256:94b2259e4c2445d518cabc4bd6c0519c5fae87a3fb3c0bb564522e805d63bd89
+    image: ghcr.io/ln-markets/umbrel:v1.2.0@sha256:f52fa83df76289d50ae8958eafd2b62a5ecbfdaa645fb735a3e45540fe6ed6fc
     user: 1000:1000
     init: true
     stop_grace_period: 1m
