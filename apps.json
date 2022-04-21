@@ -63,7 +63,7 @@
         "id": "lightning-terminal",
         "name": "Lightning Terminal",
         "repo": "https://github.com/lightninglabs/lightning-terminal",
-        "version": "0.6.5-alpha"
+        "version": "0.6.7-alpha"
     },
     {
         "id": "lndg",
