@@ -70,7 +70,7 @@ containers:
     user: 1000:1000
 
   - name: postgres
-    image: postgres:14.1-bullseye@sha256:1fe27b334443793af98d7eb320ad6f9f30fcc9bc068f545cb46ec01cefe9c8ee
+    image: ghcr.io/runcitadel/postgres:main@sha256:dae0ad86c75ef738203dda98e93b01a8c30923023a156caf7770e3c11242fcd2
     user: 1000:1000
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
