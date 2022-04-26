@@ -5,11 +5,10 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Social
   name: Squeaknode
-  version: 0.2.16
+  version: 0.2.20
   tagline: A peer-to-peer status feed with Lightning monetization
   description: >-
     The Squeaknode app allows you to create, view, buy, and sell squeaks. A
@@ -17,7 +16,7 @@ metadata:
 
 
     The Squeaknode timeline is ordered by the height of the block hash embedded in each squeak. Each squeak is signed with a digital signature of the private key of the author. Squeaks can be downloaded from any peer to any peer, but they remain locked until the downloader makes a Lightning payment to decrypt the content.
-  developers: 
+  developers:
     Jonathan Zernik: https://github.com/yzernik
   dependencies:
     - bitcoind
@@ -32,7 +31,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: web
-    image: ghcr.io/squeaknode/squeaknode:v0.2.16@sha256:25d9bd4ce22b4265979d64ce9a2417c883492cd8dce7f171fc5488d27db6c809
+    image: ghcr.io/squeaknode/squeaknode:v0.2.20@sha256:5bb90140af7cfaaaca7173c7742c3021fb577a381aaa68b521040de1e7478b04
     stop_grace_period: 1m
     port: 12994
     requiredPorts:

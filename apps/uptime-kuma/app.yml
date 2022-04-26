@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Networking
   name: Uptime Kuma
-  version: 1.13.2
+  version: 1.15.0
   tagline: Self-hosted uptime monitoring tool
   description: >
     Uptime Kuma is a self-hosted monitoring tool like Uptime Robot.
@@ -43,7 +43,7 @@ metadata:
     - 3.jpg
 containers:
   - name: main
-    image: louislam/uptime-kuma:1.13.2@sha256:4ba58d4c6e1ea2c3702b46a673a2127f740733857178e3c4a53b3fcbad7f0510
+    image: louislam/uptime-kuma:1.15.0@sha256:4c1cfd7fffcbf05f837b1f81af20dd90320cac9668c6a61f31407e5bf7b0be4f
     restart: on-failure
     stop_grace_period: 1m
     port: 3001

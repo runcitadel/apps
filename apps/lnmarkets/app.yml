@@ -5,43 +5,44 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Finance
   name: LN Markets
-  version: 1.1.5
+  version: 1.2.2
   tagline: Trade Bitcoin derivatives on Lightning
   description: >-
-    LN Markets is the first Lightning-native Bitcoin derivatives trading platform.
-    
-    
+    LN Markets is the first Lightning-native Bitcoin derivatives trading
+    platform.
+
+
     LN Markets enables traders to take minimal counterparty risk:
       you can trade directly from your Lightning wallet for instant and almost costless transactions.
       Since March 2020, we have processed over $200 million of trading volume,
       with a median fee of 1 sat for instant P&L delivery to your wallet.
+
       
+
       
     This app gives you another way to interact with LN Markets:
       you can directly deposit, withdraw, get trading stats and get instantly connected to your account to take positions as usual.
       More features may come in the future!
-    
-    
+
+
     Thank you for your support and let's keep building the future of finance together!
-  developers: 
+  developers:
     LN Markets: https://lnmarkets.com
   dependencies:
-      - lnd
+    - lnd
   repo: https://github.com/ln-markets/umbrel
   support: https://www.t.me/lnmarkets
   gallery:
-      - 1.jpg
-      - 2.jpg
-      - 3.jpg
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
   defaultPassword: $APP_SEED
-
 containers:
   - name: lnmarkets
-    image: ghcr.io/ln-markets/umbrel:v1.1.5@sha256:94b2259e4c2445d518cabc4bd6c0519c5fae87a3fb3c0bb564522e805d63bd89
+    image: ghcr.io/ln-markets/umbrel:v1.2.2@sha256:43e2b3c410816cbdb0fa253b3dc3de277d136092f64b3c6745ffb74bb8fcae8e
     user: 1000:1000
     init: true
     stop_grace_period: 1m
@@ -52,9 +53,7 @@ containers:
       APP_DOMAIN: $APP_DOMAIN
       APP_HIDDEN_SERVICE: $APP_HIDDEN_SERVICE
       APP_PASSWORD: $APP_SEED
-
       LND_IP: $LND_IP
       LND_GRPC_PORT: $LND_GRPC_PORT
       LND_REST_PORT: $LND_REST_PORT
-
       BITCOIN_NETWORK: $BITCOIN_NETWORK
