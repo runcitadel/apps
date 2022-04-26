@@ -27,7 +27,7 @@ metadata:
     - 3.jpg
 containers:
   - name: nbxplorer
-    image: nicolasdorier/nbxplorer:2.2.20@sha256:8f0e7f68513596e0a2555990d262169088a70204abe397bf18ba921f9b0608f3
+    image: nicolasdorier/nbxplorer:2.3.19@sha256:f12c8fddef6a8a1faf2ad16e0b0e0120e85520695f6b6c2dd55d61461dce0bb6
     user: 1000:1000
     environment:
       NBXPLORER_DATADIR: /data
@@ -70,7 +70,7 @@ containers:
     user: 1000:1000
 
   - name: postgres
-    image: ghcr.io/runcitadel/postgres:main@sha256:dae0ad86c75ef738203dda98e93b01a8c30923023a156caf7770e3c11242fcd2
+    image: ghcr.io/runcitadel/postgres:main@sha256:8f25afe966a63fd3f11a1052e73f30b9de5ddc0876bebaaf944d485374c73c01
     user: 1000:1000
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
