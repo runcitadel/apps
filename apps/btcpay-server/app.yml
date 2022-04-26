@@ -40,6 +40,8 @@ containers:
       NBXPLORER_BTCNODEENDPOINT: $BITCOIN_IP:$BITCOIN_P2P_PORT
       NBXPLORER_BTCRPCUSER: $BITCOIN_RPC_USER
       NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
+      # TODO: Switch to postgres
+      NBXPLORER_DBTRIE: "1"
     data:
       - data/nbxplorer:/data
 
