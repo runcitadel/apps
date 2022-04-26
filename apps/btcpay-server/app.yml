@@ -45,7 +45,6 @@ containers:
 
   - name: main
     image: btcpayserver/btcpayserver:1.4.9@sha256:3310ef8c5fecb3a1c66507b97ebc84a3475fc77e63cd3bd29ab8b76474214566
-    port: 1234
     depends_on:
       - nbxplorer
       - postgres
@@ -60,7 +59,7 @@ containers:
       BTCPAY_POSTGRES: User
         ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Database=btcpayserver$BITCOIN_NETWORK
       BTCPAY_NETWORK: $BITCOIN_NETWORK
-      BTCPAY_BIND: 0.0.0.0:1234
+      BTCPAY_BIND: 0.0.0.0:$APP_BTCPAY_SERVER_MAIN_PORT
       BTCPAY_CHAINS: btc
       BTCPAY_BTCEXPLORERURL: http://$APP_BTCPAY_SERVER_NBXPLORER_IP:32838
       BTCPAY_BTCLIGHTNING: type=lnd-rest;server=https://$LND_IP:$LND_REST_PORT/;macaroonfilepath=/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon;allowinsecure=true
@@ -68,8 +67,8 @@ containers:
     data:
       - data/nbxplorer:/data/.nbxplorer
       - data/btcpay:/data
-
     user: 1000:1000
+
   - name: postgres
     image: postgres:14.1-bullseye@sha256:1fe27b334443793af98d7eb320ad6f9f30fcc9bc068f545cb46ec01cefe9c8ee
     user: 1000:1000
