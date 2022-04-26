@@ -40,6 +40,8 @@ containers:
       NBXPLORER_BTCNODEENDPOINT: $BITCOIN_IP:$BITCOIN_P2P_PORT
       NBXPLORER_BTCRPCUSER: $BITCOIN_RPC_USER
       NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
+      # TODO: Switch to postgres
+      NBXPLORER_DBTRIE: "1"
     data:
       - data/nbxplorer:/data
 
@@ -71,7 +73,7 @@ containers:
 
   - name: postgres
     image: ghcr.io/runcitadel/postgres:main@sha256:8f25afe966a63fd3f11a1052e73f30b9de5ddc0876bebaaf944d485374c73c01
-    user: 1000:1000
+    #user: 1000:1000
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
     data:
