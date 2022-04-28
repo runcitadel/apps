@@ -40,13 +40,14 @@ containers:
       NBXPLORER_BTCNODEENDPOINT: $BITCOIN_IP:$BITCOIN_P2P_PORT
       NBXPLORER_BTCRPCUSER: $BITCOIN_RPC_USER
       NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
-      # TODO: Switch to postgres
-      NBXPLORER_DBTRIE: "1"
+      NBXPLORER_POSTGRES: User ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Application Name=nbxplorer;MaxPoolSize=20;Database=nbxplorer${BITCOIN_NETWORK:-mainnet}
+      NBXPLORER_AUTOMIGRATE: 1
+      NBXPLORER_NOMIGRATEEVTS: 1
     data:
       - data/nbxplorer:/data
 
   - name: main
-    image: btcpayserver/btcpayserver:1.4.9@sha256:3310ef8c5fecb3a1c66507b97ebc84a3475fc77e63cd3bd29ab8b76474214566
+    image: btcpayserver/btcpayserver:1.5.0@sha256:39dd98c8ec0a0a10f2800a100a413936af016856a6c47c68f73309a95eb3d528
     depends_on:
       - nbxplorer
       - postgres
@@ -59,7 +60,7 @@ containers:
       BTCPAY_PLUGINDIR: /data/plugins
       BTCPAY_DOCKERDEPLOYMENT: "false"
       BTCPAY_POSTGRES: User
-        ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Database=btcpayserver$BITCOIN_NETWORK
+        ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Application Name=btcpayserver;Database=btcpayserver$BITCOIN_NETWORK
       BTCPAY_NETWORK: $BITCOIN_NETWORK
       BTCPAY_BIND: 0.0.0.0:$APP_BTCPAY_SERVER_MAIN_PORT
       BTCPAY_CHAINS: btc
