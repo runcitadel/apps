@@ -5,14 +5,13 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Development
   name: code-server
-  version: 4.2.0
+  version: 4.3.0
   tagline: Run VS Code on your Citadel
   description: This app doesn't  have a description yet.
-  developers: 
+  developers:
     Coder: https://coder.com
   dependencies: []
   repo: https://github.com/cdr/code-server
@@ -24,7 +23,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: server
-    image: codercom/code-server:4.2.0@sha256:944e31d8a0f58a0d2121034c9646bea437042e0ce88d7e72213f1913c6e8fa12
+    image: codercom/code-server:4.3.0@sha256:9337ea40035a7c75f5ead93badb541d135cfa6bca9ca7af35ec39b8e4f407056
     user: 1000:1000
     environment:
       PASSWORD: $APP_SEED

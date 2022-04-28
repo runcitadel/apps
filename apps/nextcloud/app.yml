@@ -5,14 +5,13 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Files
   name: Nextcloud
   version: 23.0.3
   tagline: Your personal cloud
   description: No description yet.
-  developers: 
+  developers:
     Nextcloud GmbH: https://nextcloud.com
   dependencies: []
   repo: https://github.com/nextcloud/server
