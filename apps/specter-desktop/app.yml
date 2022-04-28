@@ -5,7 +5,6 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Wallets
   name: Specter Desktop
@@ -36,7 +35,7 @@ metadata:
 
 
     Specter Desktop also supports using the Bitcoin Core on your Citadel as a hot wallet, by importing or generating a random BIP39 mnemonic, but this feature is experimental and we do not recommend using it at this stage. We plan to add support for other hardware wallets as they come up.
-  developers: 
+  developers:
     Crypto Advance: https://specter.solutions
   dependencies:
     - bitcoind
@@ -63,5 +62,5 @@ containers:
     preferredOutsidePort: 25441
     data:
       - data:/data
-    mounts: 
+    mounts:
       bitcoin: /data/.bitcoin
