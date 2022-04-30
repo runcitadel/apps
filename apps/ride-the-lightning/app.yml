@@ -15,7 +15,7 @@ metadata:
   developers: 
     Shahana and Suheb: ridethelightning.info
   dependencies:
-    - lnd
+    - [lnd, c-lightning]
     - bitcoind
   repo: https://github.com/Ride-The-Lightning/RTL
   support: https://twitter.com/RTL_App
@@ -25,7 +25,7 @@ metadata:
     - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - name: web
+  - name: main-lnd
     image: shahanafarooqui/rtl:0.12.2@sha256:049df155cc7bb0ad5554b16eda6c3c9703001c76d83a4b6b55d68ba89fba0de2
     user: 1000:1000
     port: 3000
@@ -46,6 +46,9 @@ containers:
       - loop:/loop
       - boltz:/boltz
       - rtl:/data
+    requires:
+      - lnd
+
   - name: loop
     image: ghcr.io/runcitadel/loop:v0.17.0-beta@sha256:be434e96905e8bc158e13b46b2e425ff140b04218286c11bf8124e1a8f65e2a1
     user: 1000:1000
@@ -59,6 +62,9 @@ containers:
       - --restlisten=0.0.0.0:8081
     data:
       - loop:/data
+    requires:
+      - lnd
+
   - name: boltz
     image: boltz/boltz-lnd:1.2.6@sha256:01a56dd357a2460bfd0ecdd726d6db3ab59d78ee691250831d09ba5de3fec7ce
     user: 1000:1000
@@ -73,3 +79,23 @@ containers:
       - --lnd.certificate="/lnd/tls.cert"
       - --rpc.rest.host="$APP_RIDE_THE_LIGHTNING_BOLTZ_IP"
       - --rpc.rest.port="9003"
+    requires:
+      - lnd
+
+  - name: main-cln
+    image: shahanafarooqui/rtl:0.12.2@sha256:049df155cc7bb0ad5554b16eda6c3c9703001c76d83a4b6b55d68ba89fba0de2
+    user: 1000:1000
+    port: 3000
+    environment:
+      PORT: 3000
+      RTL_CONFIG_PATH: /data
+      CHANNEL_BACKUP_PATH: /data/backup
+      LN_IMPLEMENTATION: CLT
+      LN_SERVER_URL: https://$C_LIGHTNING_IP:3001
+      MACAROON_PATH: /c-lightning/certs
+      CONFIG_PATH: /c-lightning/config
+      APP_PASSWORD: $APP_SEED
+    data:
+      - rtl:/data
+    requires:
+      - c-lightning
