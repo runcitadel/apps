@@ -79,3 +79,5 @@ containers:
       POSTGRES_HOST_AUTH_METHOD: trust
     data:
       - data/postgres:/var/lib/postgresql/data
+    # Workaround for some crashes
+    restart: always
