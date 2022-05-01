@@ -5,17 +5,17 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Lightning Node Management
   name: Ride The Lightning
-  version: 0.12.2
+  version: 0.12.3
   tagline: Manage lightning node operations better
   description: Haven't written a desription yet for this, sorry.
-  developers: 
+  developers:
     Shahana and Suheb: ridethelightning.info
   dependencies:
-    - [lnd, c-lightning]
+    - - lnd
+      - c-lightning
     - bitcoind
   repo: https://github.com/Ride-The-Lightning/RTL
   support: https://twitter.com/RTL_App
@@ -26,7 +26,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: main-lnd
-    image: shahanafarooqui/rtl:0.12.2@sha256:049df155cc7bb0ad5554b16eda6c3c9703001c76d83a4b6b55d68ba89fba0de2
+    image: shahanafarooqui/rtl:0.12.3@sha256:b1327ecfddae5f40c4c985e31c2bc158c4697a274b61bf84acfb27486d05c5bf
     user: 1000:1000
     port: 3000
     environment:
@@ -48,7 +48,6 @@ containers:
       - rtl:/data
     requires:
       - lnd
-
   - name: loop
     image: ghcr.io/runcitadel/loop:v0.17.0-beta@sha256:be434e96905e8bc158e13b46b2e425ff140b04218286c11bf8124e1a8f65e2a1
     user: 1000:1000
@@ -64,7 +63,6 @@ containers:
       - loop:/data
     requires:
       - lnd
-
   - name: boltz
     image: boltz/boltz-lnd:1.2.6@sha256:01a56dd357a2460bfd0ecdd726d6db3ab59d78ee691250831d09ba5de3fec7ce
     user: 1000:1000
@@ -81,7 +79,6 @@ containers:
       - --rpc.rest.port="9003"
     requires:
       - lnd
-
   - name: main-cln
     image: shahanafarooqui/rtl:0.12.2@sha256:049df155cc7bb0ad5554b16eda6c3c9703001c76d83a4b6b55d68ba89fba0de2
     user: 1000:1000
