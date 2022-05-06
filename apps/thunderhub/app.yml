@@ -5,7 +5,6 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Lightning Node Management
   name: ThunderHub
@@ -20,7 +19,7 @@ metadata:
 
 
     Managing and monitoring your node has never been easier with transaction reports, graphs and a huge assortment of different features all bundled inside of this great tool.
-  developers: 
+  developers:
     Anthony Potdevin: https://apotdevin.com
   dependencies:
     - lnd
