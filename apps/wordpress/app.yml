@@ -31,8 +31,8 @@ containers:
     restart: always
     environment:
       WORDPRESS_DB_HOST: $APP_WORDPRESS_DB_IP
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: somewordpress
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD','direct');
