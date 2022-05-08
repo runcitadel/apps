@@ -22,7 +22,7 @@ metadata:
     - "3.png"
 containers:
   - name: main
-    image: wordpress:5.9-php8.1-fpm@sha256:9826b63bda38b3022ec81ef385405f31cbd80fb73c7fd02f02f022251e7ba98c
+    image: wordpress:5.9.3-php8.1-apache@sha256:e9919ae91d250e953f8e1f8943b9cd7b970ed85a1410f02988f682f935704aa8
     depends_on:
       - db
     data:
@@ -37,7 +37,7 @@ containers:
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD','direct');
   - name: db
-    image: mariadb:10.7.3-focal
+    image: mariadb:10.7.3-focal@sha256:07e06f2e7ae9dfc63707a83130a62e00167c827f08fcac7a9aa33f4b6dc34e0e
     data:
       - data/db:/var/lib/mysql
     restart: always
