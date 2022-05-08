@@ -8,7 +8,7 @@ version: 2
 metadata:
   category: C-Lightning
   name: Ride The C-Lightning
-  version: 0.12.2
+  version: 0.12.3
   tagline: RTL with c-lightning (WIP)
   description: This app allows you to test the c-lightning integration on Citadel.
   developer: Shahana and Suheb
@@ -24,7 +24,7 @@ metadata:
     - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - image: shahanafarooqui/rtl:0.12.2@sha256:049df155cc7bb0ad5554b16eda6c3c9703001c76d83a4b6b55d68ba89fba0de2
+  - image: shahanafarooqui/rtl:0.12.3@sha256:b1327ecfddae5f40c4c985e31c2bc158c4697a274b61bf84acfb27486d05c5bf
     user: 1000:1000
     port: 3000
     environment:
