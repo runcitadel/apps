@@ -5,7 +5,6 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Wallets
   name: LnMe
@@ -20,24 +19,21 @@ metadata:
 
     Your lightning address is <your-name-or-anything-you-like-it-doesn't-matter>@<the-onion-url-of-this-app>.onion.
 
-    If you contact the Citadel team, you can also get a shorter and easier to use @ln.runcitadel.space address. To receive one, contact
-    us on forum.runcitadel.space with your prefered address and also, share the onion URL of the LnMe app (not of your node, the app will have a differen one)
-    or DM us on Twitter (https://twitter.com/runcitadel)
-  developers: 
+    If you contact the Citadel team, you can also get a shorter and easier to use @ln.runcitadel.space address. To receive one, contact us on forum.runcitadel.space with your prefered address and also, share the onion URL of the LnMe app (not of your node, the app will have a differen one) or DM us on Twitter (https://twitter.com/runcitadel)
+  developers:
     Michael Bumann: https://ln.michaelbumann.com/
   dependencies:
-  - lnd
+    - lnd
   repo: https://github.com/bumi/lnme
   support: https://github.com/bumi/lnme/issues
   gallery:
     - https://raw.githubusercontent.com/bumi/lnme/master/lnme-demo.gif
-
 containers:
-- name: web
-  image: ghcr.io/bumi/lnme:master@sha256:e131a8584d2b6d1dd01723164cebad0fa2a47b4e30fe0c6fdac83ffb386de518
-  port: 1323
-  user: 1000:1000
-  environment:
-    LNME_LND_ADDRESS: $LND_IP:$LND_GRPC_PORT
-    LNME_LND_CERT_PATH: /lnd/tls.cert
-    LNME_LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/invoice.macaroon
+  - name: web
+    image: ghcr.io/bumi/lnme:master@sha256:e131a8584d2b6d1dd01723164cebad0fa2a47b4e30fe0c6fdac83ffb386de518
+    port: 1323
+    user: 1000:1000
+    environment:
+      LNME_LND_ADDRESS: $LND_IP:$LND_GRPC_PORT
+      LNME_LND_CERT_PATH: /lnd/tls.cert
+      LNME_LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/invoice.macaroon
