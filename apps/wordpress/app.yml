@@ -1,0 +1,48 @@
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v3.yml
+
+version: 3
+
+metadata:
+  name: WordPress
+  version: 5.9.3
+  category: Blog
+  tagline: Host a blog on your Citadel
+  description: WordPress
+  developers:
+    WordPress Developers: https://wordpress.org
+  repo: https://github.com/WordPress/WordPress
+  support: https://wordpress.org
+  gallery:
+    - "1.png"
+    - "2.png"
+    - "3.png"
+containers:
+  - name: main
+    image: wordpress:5.9-php8.1-fpm@sha256:9826b63bda38b3022ec81ef385405f31cbd80fb73c7fd02f02f022251e7ba98c
+    depends_on:
+      - db
+    data:
+      - data/wp:/var/www/html
+    port: 80
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: $APP_WORDPRESS_DB_IP
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('FS_METHOD','direct');
+  - name: db
+    image: mariadb:10.7.3-focal
+    data:
+      - data/db:/var/lib/mysql
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: somewordpress
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
