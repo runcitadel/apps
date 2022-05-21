@@ -5,7 +5,6 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Wallets
   name: JAM
@@ -16,7 +15,7 @@ metadata:
     bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and
     privacy for all. The app provides sensible defaults and is easy to use for
     beginners while still providing the features advanced users expect.
-  developers: 
+  developers:
     JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
   dependencies:
     - bitcoind
@@ -57,4 +56,3 @@ containers:
       jm_network: $BITCOIN_NETWORK
       jm_max_cj_fee_abs: 300000
       jm_max_cj_fee_rel: 0.0003
-
