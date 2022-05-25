@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: 2021 Aaron Dewes <aaron.dewes@protonmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v3.yml
+
+version: 3
+
+metadata:
+  name: Tallycoin Connect
+  version: 1.7.3
+  tagline: Connect Tallycoin with your node
+  description: Receive Tallycoin Lightning payouts directly to your own node.
+  category: Finance
+  developers:
+    djbooth007: https://github.com/djbooth007/tallycoin_connect
+  repo: https://github.com/djbooth007/tallycoin_connect
+  support: https://github.com/djbooth007/tallycoin_connect/issues
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  dependencies:
+    - lnd
+
+containers:
+  - name: web
+    image: dennisreimann/tallycoin_connect:v1.7.3@sha256:802a53da7591473c1a8d97e145a717781c152657343498f62ef3f53e56c86c67
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    port: 8123
+    data:
+      - data:/data
+    environment:
+      LND_SOCKET: "$LND_IP:$LND_GRPC_PORT"
+      LND_MACAROON_PATH: "/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon"
+      LND_TLSCERT_PATH: "/lnd/tls.cert"
+      CONFIG_FILE: "/data/tallycoin_api.key"
