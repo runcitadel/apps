@@ -1,0 +1,33 @@
+# SPDX-FileCopyrightText: Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v3.yml
+
+version: 3
+metadata:
+  category: Lightning Node Management
+  name: Ringtools
+  version: 0.0.1
+  tagline: Build your Ring of Fire
+  description: Ringtools is a set of tools which help to set up and manage Rings of Fire, a concept of Bitcoin Lightning Networks. 
+  developers:
+     Djuri Baars: https://rof.tools/
+  dependencies:
+    - lnd
+  repo: https://github.com/ringtools/ringtools-server-ts
+  support: https://t.me/ringtools_support
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  defaultPassword: $APP_SEED
+containers:
+  - name: main
+    image: ghcr.io/runcitadel/ringtools:main@sha256:9dca53ae92b962299bd26fe7855d7cc3810975fc42d8c3039ea256404811813d
+    environment:
+      PORT: $APP_RINGTOOLS_MAIN_PORT
+      LND_REST_API_WS: wss://$LND_IP:$LND_REST_PORT
+      LND_REST_API: https://$LND_IP:$LND_REST_PORT
+      MACAROON_FILE: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/readonly.macaroon
+      TLS_CERT_FILE: /lnd/tls.cert

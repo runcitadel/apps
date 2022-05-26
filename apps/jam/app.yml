@@ -5,18 +5,17 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Wallets
   name: JAM
-  version: 0.0.5
+  version: 0.0.6
   tagline: JoinMarket's awesome, man
   description: JAM (JoinMarket's awesome, man) is a web-interface for JoinMarket
     with focus on user-friendliness. It's time for top-notch privacy for your
     bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and
     privacy for all. The app provides sensible defaults and is easy to use for
     beginners while still providing the features advanced users expect.
-  developers: 
+  developers:
     JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
   dependencies:
     - bitcoind
@@ -31,7 +30,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: joinmarket-webui
-    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.5-clientserver-v0.9.5
+    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.6-clientserver-v0.9.6
     restart: on-failure
     stop_grace_period: 1m
     init: true
@@ -57,4 +56,3 @@ containers:
       jm_network: $BITCOIN_NETWORK
       jm_max_cj_fee_abs: 300000
       jm_max_cj_fee_rel: 0.0003
-
