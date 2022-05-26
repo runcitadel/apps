@@ -22,7 +22,7 @@ metadata:
     - 3.jpg
   torOnly: false
 containers:
-  - image: matrixdotorg/synapse:v1.59.1@sha256:9a23eab1bbc66d466173cff749fe10d9818eec0d5931595edb89254214769d18
+  - image: ghcr.io/runcitadel/synapse:develop@sha256:9baa8cb96ab6b844fb47714c51ec683b8962a3a90de3de3daa6f88fddc5e3bdb
     entrypoint: bash
     command: -c './start.py generate && ./start.py migrate_config && exec ./start.py'
     port: 8008
