@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Lightning Node Management
   name: ThunderHub
-  version: 0.13.11
+  version: 0.13.13
   tagline: Take full control of your Lightning node
   description: >-
     ThunderHub allows you to take full control of your Lightning node with a
@@ -31,7 +31,7 @@ metadata:
     - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - image: apotdevin/thunderhub:v0.13.11@sha256:6606cd8622270d8f4c1529a7dffbab80da51b477a78fa4a7a3efb57c3465ea9e
+  - image: apotdevin/thunderhub:v0.13.13@sha256:df8a654ef13ea14944c378827946a5feb7b2dd6ddeda38066d3748edff42adf9
     environment:
       NO_VERSION_CHECK: "true"
       LOG_LEVEL: debug
