@@ -38,6 +38,7 @@ containers:
         define('FS_METHOD','direct');
   - name: db
     image: mariadb:10.7.3-focal@sha256:07e06f2e7ae9dfc63707a83130a62e00167c827f08fcac7a9aa33f4b6dc34e0e
+    user: 1000:1000
     data:
       - data/db:/var/lib/mysql
     restart: always
