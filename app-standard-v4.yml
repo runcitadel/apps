@@ -1,0 +1,245 @@
+---
+$schema: "http://json-schema.org/draft-07/schema#"
+title: AppYml
+description: Citadel app definition
+type: object
+required:
+  - citadel_version
+  - metadata
+  - services
+properties:
+  citadel_version:
+    type: integer
+    format: uint8
+    minimum: 0.0
+  metadata:
+    $ref: "#/definitions/Metadata"
+  services:
+    type: object
+    additionalProperties:
+      $ref: "#/definitions/Container"
+definitions:
+  Command:
+    anyOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  Container:
+    type: object
+    required:
+      - image
+    properties:
+      command:
+        anyOf:
+          - $ref: "#/definitions/Command"
+          - type: "null"
+      depends_on:
+        type:
+          - array
+          - "null"
+        items:
+          type: string
+      enable_networking:
+        default: true
+        type: boolean
+      entrypoint:
+        anyOf:
+          - $ref: "#/definitions/Command"
+          - type: "null"
+      environment:
+        type:
+          - object
+          - "null"
+        additionalProperties:
+          type: string
+      hidden_services:
+        anyOf:
+          - $ref: "#/definitions/HiddenServices"
+          - type: "null"
+      image:
+        type: string
+      init:
+        type:
+          - boolean
+          - "null"
+      mounts:
+        anyOf:
+          - $ref: "#/definitions/Mounts"
+          - type: "null"
+      network_mode:
+        type:
+          - string
+          - "null"
+      port:
+        type:
+          - integer
+          - "null"
+        format: uint16
+        minimum: 0.0
+      port_priority:
+        anyOf:
+          - $ref: "#/definitions/PortPriority"
+          - type: "null"
+      required_ports:
+        anyOf:
+          - $ref: "#/definitions/PortsDefinition"
+          - type: "null"
+      requires:
+        description: "Unlike depends_on, this is dependencies (defined in metadata) that are required for this container The container gets ignored without them"
+        type:
+          - array
+          - "null"
+        items:
+          type: string
+      restart:
+        type:
+          - string
+          - "null"
+      stop_grace_period:
+        type:
+          - string
+          - "null"
+      stop_signal:
+        type:
+          - string
+          - "null"
+      user:
+        type:
+          - string
+          - "null"
+  HiddenServices:
+    anyOf:
+      - type: object
+        additionalProperties:
+          type: integer
+          format: uint16
+          minimum: 0.0
+      - type: object
+        additionalProperties:
+          type: object
+          additionalProperties:
+            type: integer
+            format: uint16
+            minimum: 0.0
+  Metadata:
+    type: object
+    required:
+      - category
+      - developers
+      - name
+      - repo
+      - support
+      - tagline
+      - version
+    properties:
+      category:
+        description: The category for the app
+        type: string
+      defaultPassword:
+        description: "The app's default password. Can also be $APP_SEED for a random password"
+        type:
+          - string
+          - "null"
+      developers:
+        type: object
+        additionalProperties:
+          type: string
+      gallery:
+        description: A list of promo images for the apps
+        type:
+          - array
+          - "null"
+        items:
+          type: string
+      name:
+        description: The name of the app
+        type: string
+      path:
+        description: "The path the \"Open\" link on the dashboard should lead to"
+        type:
+          - string
+          - "null"
+      permissions:
+        description: Permissions the app requires
+        default: []
+        type: array
+        items:
+          $ref: "#/definitions/Permissions"
+      repo:
+        description: App repository name -> repo URL
+        type: object
+        additionalProperties:
+          type: string
+      support:
+        description: A support link for the app
+        type: string
+      tagline:
+        description: A short tagline for the app
+        type: string
+      torOnly:
+        description: True if the app only works over Tor
+        default: false
+        type: boolean
+      updateContainers:
+        description: A list of containers to update automatically (still validated by the Citadel team)
+        type:
+          - array
+          - "null"
+        items:
+          type: string
+      version:
+        description: The version of the app
+        type: string
+  Mounts:
+    type: object
+    properties:
+      bitcoin:
+        type:
+          - string
+          - "null"
+      c_lightning:
+        type:
+          - string
+          - "null"
+      data:
+        type:
+          - object
+          - "null"
+        additionalProperties:
+          type: string
+      lnd:
+        type:
+          - string
+          - "null"
+  Permissions:
+    anyOf:
+      - type: string
+      - type: array
+        items:
+          type: string
+  PortPriority:
+    type: string
+    enum:
+      - Optional
+      - Recommended
+      - Required
+  PortsDefinition:
+    type: object
+    properties:
+      tcp:
+        type:
+          - object
+          - "null"
+        additionalProperties:
+          type: integer
+          format: uint16
+          minimum: 0.0
+      udp:
+        type:
+          - object
+          - "null"
+        additionalProperties:
+          type: integer
+          format: uint16
+          minimum: 0.0
