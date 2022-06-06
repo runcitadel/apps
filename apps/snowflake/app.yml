@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: 2020-2021 Umbrel. https://getumbrel.com
+# SPDX-FileCopyrightText: Citadel and contributors
 #
-# SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
+# SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v3.yml
+# yaml-language-server: $schema=../../app-standard-v4.yml
 
-version: 3
+citadel_version: 4
 
 metadata:
   category: Tor
@@ -19,23 +19,24 @@ metadata:
     live in countries which censor Tor.
   developers: 
     The Tor project: https://torproject.org/
-  repo: https://github.com/runcitadel/docker-snowflake
-  support: https://t.me/runcitadel
-  dependencies: []
+  repo:
+    Snowflake: https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/
+    Container: https://github.com/runcitadel/docker-snowflake
+  support: https://t.me/runcitadel/
   gallery:
   - 1.jpg
   - 2.jpg
   - 3.jpg
 
-containers:
-  - image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
+services:
+  main:
+    image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
     init: true
     port: 80
-    name: main
     data:
     - nginx/snowflake:/var/www/snowflake
     - nginx/nginx.conf:/etc/nginx/nginx.conf
 
-  - name: proxy
+  proxy:
     image: ghcr.io/runcitadel/snowflake:v2.1.0@sha256:43ecbea41715fb2040c8e528152dabde27ffdaa16cd1c07f2895232619b1d18f
     network_mode: host

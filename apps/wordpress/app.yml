@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v3.yml
+# yaml-language-server: $schema=../../app-standard-v4.yml
 
-version: 3
+citadel_version: 4
 
 metadata:
   name: WordPress
@@ -14,15 +14,18 @@ metadata:
   description: WordPress
   developers:
     WordPress Developers: https://wordpress.org
-  repo: https://github.com/WordPress/WordPress
+  repo:
+    WordPress: https://github.com/WordPress/WordPress
+    Container: https://github.com/docker-library/wordpress
   support: https://wordpress.org
   gallery:
     - "1.png"
     - "2.png"
     - "3.png"
-containers:
-  - name: main
-    image: wordpress:5.9.3-php8.1-apache@sha256:e9919ae91d250e953f8e1f8943b9cd7b970ed85a1410f02988f682f935704aa8
+
+services:
+  main:
+    image: wordpress:6.0.0-php8.1-apache@sha256:52cd45d183f98d406e4c01a79346216437480aa475ea04d3aaa0e64c6b1093d7
     depends_on:
       - db
     data:
@@ -36,11 +39,12 @@ containers:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD','direct');
-  - name: db
+  db:
     image: mariadb:10.7.3-focal@sha256:07e06f2e7ae9dfc63707a83130a62e00167c827f08fcac7a9aa33f4b6dc34e0e
     user: 1000:1000
-    data:
-      - data/db:/var/lib/mysql
+    mounts:
+      data:
+        data/db: /var/lib/mysql
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: somewordpress
