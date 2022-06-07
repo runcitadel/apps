@@ -1,10 +1,11 @@
-# SPDX-FileCopyrightText: 2021 Citadel and contributors
+# SPDX-FileCopyrightText: 2021-2022 Citadel and contributors
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# yaml-language-server: $schema=../../app-standard-v3.yml
+# yaml-language-server: $schema=../../app-standard-v4.yml
 
-version: 3
+citadel_version: 4
+
 metadata:
   category: Wallets
   name: JAM
@@ -19,7 +20,8 @@ metadata:
     JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
   dependencies:
     - bitcoind
-  repo: https://github.com/joinmarket-webui/joinmarket-webui
+  repo:
+    Public: https://github.com/joinmarket-webui/joinmarket-webui
   support: https://t.me/JoinMarketWebUI
   gallery:
     - 1.jpg
@@ -28,22 +30,24 @@ metadata:
     - 4.jpg
     - 5.jpg
   defaultPassword: $APP_SEED
-containers:
-  - name: joinmarket-webui
+
+services:
+  main:
     image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.6-clientserver-v0.9.6
     restart: on-failure
     stop_grace_period: 1m
     init: true
     port: 80
-    data:
-      - data/joinmarket:/root/.joinmarket
+    mounts:
+      data:
+        data/joinmarket: /root/.joinmarket
     environment:
-      ENSURE_WALLET: 1
-      RESTORE_DEFAULT_CONFIG: 1
+      ENSURE_WALLET: "1"
+      RESTORE_DEFAULT_CONFIG: "1"
       APP_USER: citadel
       APP_PASSWORD: ${APP_SEED}
       jm_tor_control_host: $TOR_PROXY_IP
-      jm_tor_control_port: 29051
+      jm_tor_control_port: "29051"
       jm_onion_socks5_host: $TOR_PROXY_IP
       jm_onion_socks5_port: $TOR_PROXY_PORT
       jm_socks5_host: $TOR_PROXY_IP
@@ -54,5 +58,5 @@ containers:
       jm_rpc_password: ${BITCOIN_RPC_PASS}
       jm_rpc_wallet_file: jm_webui_default
       jm_network: $BITCOIN_NETWORK
-      jm_max_cj_fee_abs: 300000
-      jm_max_cj_fee_rel: 0.0003
+      jm_max_cj_fee_abs: "300000"
+      jm_max_cj_fee_rel: "0.0003"
