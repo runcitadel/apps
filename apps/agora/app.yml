@@ -1,0 +1,76 @@
+# SPDX-FileCopyrightText: 2022 Jonathan Zernik
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v4.yml
+
+citadel_version: 4
+
+metadata:
+  category: Files
+  name: Agora
+  version: v0.1.2
+  tagline: Sell your files for Bitcoin
+  description: >-
+    Agora is a project that allows anyone to sell files on the web for bitcoin using the Lightning Network.\n\nAgora serves the contents of a local directory, providing file listings and downloads over HTTP.
+    For example, you can point it at a directory full of PDFs, allowing users to browse and view the PDFs in their web browser.
+    If Agora is connected to an LND node, it can be configured to require Lightning Network payments for downloads.
+  developers:
+    Casey Rodarmor & Sönke Hahn: https://agora-org.github.io/agora/
+  dependencies:
+    - lnd
+  repo:
+    Public: https://github.com/agora-org/agora
+  support: "https://t.me/agoradiscussion"
+  port: 12080
+  gallery: ["1.jpg", "2.jpg", "3.jpg"]
+  path: /admin/
+  defaultPassword: $APP_SEED
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:v2.21.1@sha256:6da71bfffc1345075a5cc06e0a7ae270098186407c62f4f71994e079677364d0
+    user: 1000:1000
+    restart: on-failure
+    stop_grace_period: 1m
+    mounts:
+      data:
+        data/files: /srv
+        database/filebrowser.db: /database.db
+        data/entrypoint.sh: /citadel-entrypoint.sh
+    environment:
+      APP_PASSWORD: "$APP_SEED"
+    entrypoint: /citadel-entrypoint.sh
+
+  agora:
+    image: ghcr.io/agora-org/agora:sha-bb037f2@sha256:ab5538638fa5c6c709c5dd295df1dd57e419abdbd2328075843ce6fbe0951820
+    restart: on-failure
+    stop_grace_period: 1m
+    mounts:
+      data:
+        files: /files
+        lnd: /lnd
+    user: "1000:1000"
+    environment:
+      # LND environment variables
+      LND_RPC_AUTHORITY: "$LND_IP:$LND_GRPC_PORT"
+      TLS_CERT_PATH: "/lnd/tls.cert"
+      INVOICES_MACAROON_PATH: "/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/invoice.macaroon"
+
+      # App specific environment variables
+      FILES_DIR: "/files"
+      AGORA_PORT: "8080"
+
+  nginx:
+    image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
+    init: true
+    restart: on-failure
+    mounts:
+      data:
+        data/nginx.conf: /etc/nginx/nginx.conf
+        data/www: /usr/share/nginx/html
+    port: 80
+    depends_on:
+      - agora
+      - filebrowser
