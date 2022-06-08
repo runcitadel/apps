@@ -18,11 +18,11 @@ metadata:
     If Agora is connected to an LND node, it can be configured to require Lightning Network payments for downloads.
   developers:
     Casey Rodarmor & Sönke Hahn: https://agora-org.github.io/agora/
-  dependencies:
+  permissions:
     - lnd
   repo:
     Public: https://github.com/agora-org/agora
-  support: "https://t.me/agoradiscussion"
+  support: https://t.me/agoradiscussion
   port: 12080
   gallery: ["1.jpg", "2.jpg", "3.jpg"]
   path: /admin/

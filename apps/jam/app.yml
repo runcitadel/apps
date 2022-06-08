@@ -18,7 +18,7 @@ metadata:
     beginners while still providing the features advanced users expect.
   developers:
     JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
-  dependencies:
+  permissions:
     - bitcoind
   repo:
     Public: https://github.com/joinmarket-webui/joinmarket-webui
