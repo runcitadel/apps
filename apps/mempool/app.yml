@@ -9,7 +9,7 @@ version: 3
 metadata:
   category: Explorers
   name: Mempool
-  version: 2.3.1
+  version: 2.4.0
   tagline: A mempool visualizer, explorer and fee estimator
   description: >-
     Mempool is the official self-hosted version of the fully featured explorer,
@@ -54,7 +54,7 @@ metadata:
     - 3.jpg
 containers:
   - name: main
-    image: mempool/frontend:v2.3.1@sha256:38c955caeb58014b266904b059bfabbdab8321d20b11e7cccb139be6dfc8e36e
+    image: mempool/frontend:v2.4.0@sha256:f71722f1e3abfb3d8a3df6f2a32e384d39434e311bb83d810629077b4fa6ffaf
     user: 1000:1000
     init: true
     command: ./wait-for mariadb:3306 --timeout=720 -- nginx -g 'daemon off;'
@@ -62,7 +62,7 @@ containers:
       FRONTEND_HTTP_PORT: $APP_MEMPOOL_MAIN_PORT
       BACKEND_MAINNET_HTTP_HOST: $APP_MEMPOOL_API_IP
   - name: api
-    image: mempool/backend:v2.3.1@sha256:f7b16a6b00ea8aabf3b71a34ec05bb373fa0b6f1d31c7981b767edb2d1b7cf89
+    image: mempool/backend:v2.4.0@sha256:6036cc6866b782efadc765e8189958940202b3fa1770eb35c35210c86efd2f47
     user: 1000:1000
     init: true
     command: ./wait-for-it.sh mariadb:3306 --timeout=720 --strict -- ./start.sh
