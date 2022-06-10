@@ -41,7 +41,7 @@ services:
         data/entrypoint.sh: /citadel-entrypoint.sh
     environment:
       APP_PASSWORD: "$APP_SEED"
-    entrypoint: /citadel-entrypoint.sh
+    entrypoint: sh /citadel-entrypoint.sh
 
   agora:
     image: ghcr.io/agora-org/agora:sha-bb037f2@sha256:ab5538638fa5c6c709c5dd295df1dd57e419abdbd2328075843ce6fbe0951820
@@ -50,7 +50,7 @@ services:
     mounts:
       data:
         files: /files
-        lnd: /lnd
+      lnd: /lnd
     user: "1000:1000"
     environment:
       # LND environment variables
