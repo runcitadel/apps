@@ -36,7 +36,7 @@ services:
     mounts:
       data:
         data/files: /srv
-        database/filebrowser.db: /database.db
+        data/database/filebrowser.db: /database.db
         data/entrypoint.sh: /citadel-entrypoint.sh
     environment:
       APP_PASSWORD: "$APP_SEED"
@@ -48,7 +48,7 @@ services:
     stop_grace_period: 1m
     mounts:
       data:
-        files: /files
+        data/files: /files
       lnd: /lnd
     user: "1000:1000"
     environment:
