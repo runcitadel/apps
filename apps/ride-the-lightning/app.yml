@@ -102,7 +102,7 @@ services:
       CONFIG_PATH: /c-lightning/config
       APP_PASSWORD: $APP_SEED
     mounts:
-      c-lightning: /c-lightning
+      c_lightning: /c-lightning
       data:
         rtl: /data
     requires:
