@@ -18,7 +18,7 @@ metadata:
     the latest block, or simply enjoy a soothing Bitcoin screensaver.
   developers: 
     Mononaut: https://monospace.live
-  dependencies:
+  permissions:
     - bitcoind
   repo:
     Public: https://github.com/bitfeed-project/bitfeed
