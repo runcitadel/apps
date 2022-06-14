@@ -2,9 +2,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v3.yml
+# yaml-language-server: $schema=../../app-standard-v4.yml
 
-version: 3
+citadel_version: 4
+
 metadata:
   category: Explorers
   name: Bitfeed
@@ -19,7 +20,8 @@ metadata:
     Mononaut: https://monospace.live
   dependencies:
     - bitcoind
-  repo: https://github.com/bitfeed-project/bitfeed
+  repo:
+    Public: https://github.com/bitfeed-project/bitfeed
   support: https://github.com/bitfeed-project/bitfeed/issues
   gallery:
     - 1.jpg
@@ -29,8 +31,8 @@ metadata:
     - main
     - api
 
-containers:
-  - name: main
+services:
+  main:
     image: ghcr.io/bitfeed-project/bitfeed-client:v2.2.1@sha256:70c89d49d20ba3da21c648c259f45a4b89e06bfe1d97374a092dce6f891d03c6
     restart: on-failure
     stop_grace_period: 1m
@@ -42,7 +44,7 @@ containers:
       BACKEND_HOST: $APP_BITFEED_API_IP
       BACKEND_PORT: "3000"
 
-  - name: api
+  api:
     image: ghcr.io/bitfeed-project/bitfeed-server:v2.2.1@sha256:60eae8109d3d6a377aec8a954f93b6be9ee48de717c9ab5810c2a5afcf688554
     user: 1000:1000
     restart: on-failure
@@ -56,7 +58,8 @@ containers:
       BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
       BITCOIN_RPC_USER: $BITCOIN_RPC_USER
       BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
-      RPC_POOLS: 3
-      RPC_POOL_SIZE: 4
-    data:
-      - data:/app/data
+      RPC_POOLS: "3"
+      RPC_POOL_SIZE: "4"
+    mounts:
+      data:
+        data: /app/data
