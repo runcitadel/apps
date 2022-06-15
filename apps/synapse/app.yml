@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Social
   name: Synapse
-  version: 1.60.0
+  version: 1.61.0
   tagline: Matrix homeserver
   description: Description is coming soon.
   developers:
