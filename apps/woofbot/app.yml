@@ -18,7 +18,7 @@ metadata:
   developers:
     WoofBotApp: https://github.com/woofbotapp
   permissions:
-    - bitcoin
+    - bitcoind
   repo:
     Public: https://github.com/woofbotapp/woofbotapp
   support: https://github.com/woofbotapp/woofbotapp/discussions
