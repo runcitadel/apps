@@ -30,10 +30,11 @@ metadata:
   defaultPassword: $APP_SEED
 
 services:
-  web:
+  main:
     image: woofbot/woofbot:v0.2.0@sha256:bfcc02f752963eaf9f9c3bf2776e032194d218b0037f3c54ed19d8872a7f241b
     restart: on-failure
     stop_grace_period: 1m
+    port: 8080
     environment:
       MONGODB_URI: "mongodb://${APP_WOOFBOT_MONGODB_IP}:27017/woofbot"
       APP_PORT: "8080"
