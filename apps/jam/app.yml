@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Wallets
   name: JAM
-  version: 0.0.6
+  version: 0.0.8
   tagline: JoinMarket's awesome, man
   description: JAM (JoinMarket's awesome, man) is a web-interface for JoinMarket
     with focus on user-friendliness. It's time for top-notch privacy for your
@@ -30,7 +30,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: joinmarket-webui
-    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.6-clientserver-v0.9.6
+    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.8-clientserver-v0.9.6
     restart: on-failure
     stop_grace_period: 1m
     init: true
