@@ -29,7 +29,7 @@ metadata:
 
 services:
   main-lnd:
-    image: shahanafarooqui/rtl:0.12.3@sha256:b1327ecfddae5f40c4c985e31c2bc158c4697a274b61bf84acfb27486d05c5bf
+    image: ghcr.io/runcitadel/rtl:master@sha256:53b1fa3099667609fd92167cc0d3b9dabc60fdb0bcb44feff60002a13355371b
     user: 1000:1000
     port: 3000
     environment:
@@ -89,7 +89,7 @@ services:
     requires:
       - lnd
   main-cln:
-    image: shahanafarooqui/rtl:0.12.2@sha256:049df155cc7bb0ad5554b16eda6c3c9703001c76d83a4b6b55d68ba89fba0de2
+    image: ghcr.io/runcitadel/rtl:master@sha256:53b1fa3099667609fd92167cc0d3b9dabc60fdb0bcb44feff60002a13355371b
     user: 1000:1000
     port: 3000
     environment:
@@ -101,6 +101,7 @@ services:
       MACAROON_PATH: /c-lightning/certs
       CONFIG_PATH: /c-lightning/config
       APP_PASSWORD: $APP_SEED
+      ENABLE_OFFERS: "true"
     mounts:
       c_lightning: /c-lightning
       data:
