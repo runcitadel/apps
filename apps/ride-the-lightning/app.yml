@@ -54,7 +54,7 @@ services:
     requires:
       - lnd
   loop:
-    image: ghcr.io/runcitadel/loop:v0.17.0-beta@sha256:be434e96905e8bc158e13b46b2e425ff140b04218286c11bf8124e1a8f65e2a1
+    image: ghcr.io/runcitadel/loop:main@sha256:9d57e9f6906741b643266735b8d1a63404475856ffaa8d12fcccd28bf8cf79fd
     user: 1000:1000
     environment:
       HOME: /data
