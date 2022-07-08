@@ -29,7 +29,7 @@ metadata:
 
 services:
   main-lnd:
-    image: ghcr.io/runcitadel/rtl:master@sha256:53b1fa3099667609fd92167cc0d3b9dabc60fdb0bcb44feff60002a13355371b
+    image: ghcr.io/runcitadel/rtl:master@sha256:307cd8a9c449f2891ed21efa347bc0a51b132deff996920974ef41c5a39f633e
     user: 1000:1000
     port: 3000
     environment:
@@ -89,7 +89,7 @@ services:
     requires:
       - lnd
   main-cln:
-    image: ghcr.io/runcitadel/rtl:master@sha256:53b1fa3099667609fd92167cc0d3b9dabc60fdb0bcb44feff60002a13355371b
+    image: ghcr.io/runcitadel/rtl:master@sha256:307cd8a9c449f2891ed21efa347bc0a51b132deff996920974ef41c5a39f633e
     user: 1000:1000
     port: 3000
     environment:
