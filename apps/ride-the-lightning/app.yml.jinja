@@ -1,0 +1,110 @@
+# SPDX-FileCopyrightText: Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v4.yml
+
+citadel_version: 4
+
+metadata:
+  category: Lightning Node Management
+  name: Ride The Lightning
+  version: 0.12.3
+  tagline: Manage lightning node operations better
+  description: Haven't written a description yet for this, sorry.
+  developers:
+    Shahana and Suheb: ridethelightning.info
+  permissions:
+  {% if services is containing("lnd") %}
+    - lnd
+  {% elif services is containing("c-lightning") %}
+    - c-lightning
+  {% else %}
+    - - lnd
+      - c-lightning
+  {% endif %}
+    - bitcoind
+  repo:
+    Public: https://github.com/Ride-The-Lightning/RTL
+  support: https://twitter.com/RTL_App
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  defaultPassword: $APP_SEED
+
+services:
+  {% if services is containing("lnd") %}
+  loop:
+    image: ghcr.io/runcitadel/loop:main@sha256:9d57e9f6906741b643266735b8d1a63404475856ffaa8d12fcccd28bf8cf79fd
+    user: 1000:1000
+    environment:
+      HOME: /data
+    command:
+      - --network=$BITCOIN_NETWORK
+      - --lnd.host="$LND_IP:$LND_GRPC_PORT"
+      - --lnd.macaroonpath="/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon"
+      - --lnd.tlspath="/lnd/tls.cert"
+      - --restlisten=0.0.0.0:8081
+    mounts:
+      lnd: /lnd
+      data:
+        loop: /data
+    requires:
+      - lnd
+  boltz:
+    image: boltz/boltz-lnd:1.2.6@sha256:01a56dd357a2460bfd0ecdd726d6db3ab59d78ee691250831d09ba5de3fec7ce
+    user: 1000:1000
+    restart: on-failure
+    environment:
+      HOME: /data
+    mounts:
+      lnd: /lnd
+      data:
+          boltz: /data
+    command:
+      - --lnd.host="$LND_IP"
+      - --lnd.macaroon="/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon"
+      - --lnd.certificate="/lnd/tls.cert"
+      - --rpc.rest.host="$APP_RIDE_THE_LIGHTNING_BOLTZ_IP"
+      - --rpc.rest.port="9003"
+    requires:
+      - lnd
+    {% endif %}
+  main:
+    image: ghcr.io/runcitadel/rtl:master@sha256:307cd8a9c449f2891ed21efa347bc0a51b132deff996920974ef41c5a39f633e
+    user: 1000:1000
+    port: 3000
+    environment:
+      PORT: "3000"
+      RTL_CONFIG_PATH: /data
+      CHANNEL_BACKUP_PATH: /data/backup
+      APP_PASSWORD: $APP_SEED
+    {% if services is containing("lnd") %}
+      LN_IMPLEMENTATION: LND
+      LN_SERVER_URL: https://$LND_IP:$LND_REST_PORT
+      MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK
+      CONFIG_PATH: /lnd/lnd.conf
+      SWAP_SERVER_URL: https://$APP_RIDE_THE_LIGHTNING_LOOP_IP:8081
+      SWAP_MACAROON_PATH: /loop/.loop/$BITCOIN_NETWORK
+      BOLTZ_SERVER_URL: https://$APP_RIDE_THE_LIGHTNING_BOLTZ_IP:9003
+      BOLTZ_MACAROON_PATH: /boltz/.boltz-lnd/macaroons
+    {% elif services is containing("c-lightning") %}
+      LN_IMPLEMENTATION: CLT
+      LN_SERVER_URL: https://$C_LIGHTNING_IP:3001
+      MACAROON_PATH: /c-lightning/certs
+      CONFIG_PATH: /c-lightning/config
+      ENABLE_OFFERS: "true"
+    {% endif %}
+    mounts:
+    {% if services is containing("lnd") %}
+      lnd: /lnd
+    {% elif services is containing("c-lightning") %}
+      c_lightning: /c-lightning
+    {% endif %}
+      data:
+    {% if services is containing("lnd") %}
+        loop: /loop
+        boltz: /boltz
+    {% endif %}
+        rtl: /data
