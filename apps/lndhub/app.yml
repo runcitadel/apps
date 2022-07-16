@@ -1,0 +1,53 @@
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v4.yml
+
+citadel_version: 4
+
+metadata:
+  category: Wallet Servers
+  name: LNDHub.go
+  version: 0.9.0
+  tagline: Give access to BlueWallet & Alby for friends
+  description: >-
+    Run BlueWallet & Alby in the most private and secure way possible by removing
+    3rd parties and connecting it directly to your Citadel's Lightning node.
+
+
+    This app automatically manages accounts, so you can easily share your node with friends and family. 
+  developers: 
+    BlueWallet: https://lndhub.io
+  dependencies:
+  - lnd
+  repo:
+    Public: https://github.com/getAlby/lndhub.go
+  support: https://t.me/getalby
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+
+services:
+  main:
+    image: ghcr.io/runcitadel/lndhub.go:main@sha256:ab0eb387a731d0ff067dc04075aebeeda6b967473499f01adcc26d0942d7c0aa
+    entrypoint: /entry.sh
+    environment:
+      DATABASE_URI: postgresql://citadel:freedom@$APP_LNDHUB_POSTGRES_IP:5432/lndhub?sslmode=disable
+      JWT_SECRET: $APP_SEED
+      LND_ADDRESS: $LND_IP:$LND_PORT
+    port: 3000
+    user: 1000:1000
+    mounts:
+      lnd: /lnd
+      data:
+        entry.sh: /entry.sh
+  postgres:
+    image: postgres:14.4-bullseye
+    user: 1000:1000
+    environment:
+      POSTGRES_USER: citadel
+      POSTGRES_PASSWORD: freedom
+    data:
+      - data/postgres:/var/lib/postgresql/data
