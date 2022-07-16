@@ -18,8 +18,8 @@ metadata:
 
     This app automatically manages accounts, so you can easily share your node with friends and family. 
   developers: 
-    BlueWallet: https://lndhub.io
-  dependencies:
+    Alby: https://getalby.com
+  permissions:
   - lnd
   repo:
     Public: https://github.com/getAlby/lndhub.go
