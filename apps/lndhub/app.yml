@@ -43,6 +43,7 @@ services:
       lnd: /lnd
       data:
         entry.sh: /entry.sh
+    restart: on-failure
   postgres:
     image: postgres:14.4-bullseye
     user: 1000:1000
