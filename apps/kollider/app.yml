@@ -19,7 +19,7 @@ metadata:
     More features coming soon!
   developers:
     Kollider: https://kollider.xyz
-  dependencies:
+  permissions:
     - lnd
   repo:
     Public: https://github.com/kolliderhq/kollider-lite-app
