@@ -42,6 +42,7 @@ services:
     mounts:
       data:
         data/cache/images: /app/.next/cache/images
+    port: 3000
 
   backend:
     image: kolliderhq/kollider-lite-backend:v1.0.6@sha256:5558948e716fe31956ef1e3985aede704b0bcd9b3af2532395c8774cffdf1666

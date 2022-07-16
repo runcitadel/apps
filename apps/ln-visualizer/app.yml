@@ -49,4 +49,4 @@ services:
     environment:
       LND_CERT_FILE: "/lnd/tls.cert"
       LND_MACAROON_FILE: "/lnd/data/chain/bitcoin/${APP_BITCOIN_NETWORK}/readonly.macaroon"
-      LND_SOCKET: "${LIGHTNING_IP}:${LIGHTNING_GRPC_PORT}"
+      LND_SOCKET: "${LND_IP}:${LND_GRPC_PORT}"
