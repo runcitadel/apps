@@ -26,7 +26,7 @@ metadata:
     - 3.jpg
 containers:
   - name: nbxplorer
-    image: nicolasdorier/nbxplorer:2.3.19@sha256:f12c8fddef6a8a1faf2ad16e0b0e0120e85520695f6b6c2dd55d61461dce0bb6
+    image: nicolasdorier/nbxplorer:2.3.28@sha256:62333c578aa85487f8f8e292b4a434272fd919ce8f2e58b2d23af6342dd92778
     user: 1000:1000
     environment:
       NBXPLORER_DATADIR: /data
