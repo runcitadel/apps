@@ -49,5 +49,6 @@ services:
     environment:
       POSTGRES_USER: citadel
       POSTGRES_PASSWORD: freedom
-    data:
-      - data/postgres:/var/lib/postgresql/data
+    mounts:
+      data:
+        data/postgres: /var/lib/postgresql/data
