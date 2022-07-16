@@ -5,10 +5,9 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   name: WordPress
-  version: 5.9.3
+  version: 6.0.1
   category: Blog
   tagline: Host a blog on your Citadel
   description: WordPress
@@ -17,12 +16,12 @@ metadata:
   repo: https://github.com/WordPress/WordPress
   support: https://wordpress.org
   gallery:
-    - "1.png"
-    - "2.png"
-    - "3.png"
+    - 1.png
+    - 2.png
+    - 3.png
 containers:
   - name: main
-    image: wordpress:5.9.3-php8.1-apache@sha256:e9919ae91d250e953f8e1f8943b9cd7b970ed85a1410f02988f682f935704aa8
+    image: wordpress:6.0.1@sha256:999392cfea3cee05633a0a9026fc46df637d8291e631a1afa85099ad2553e3eb
     depends_on:
       - db
     data:
