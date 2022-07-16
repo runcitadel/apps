@@ -1,0 +1,75 @@
+# SPDX-FileCopyrightText: 2022 Citadel and contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+# yaml-language-server: $schema=../../app-standard-v4.yml
+
+citadel_version: 4
+
+metadata:
+  category: Finance
+  name: Kollider
+  version: "1.0.6"
+  tagline: Lightning-fast derivative trading
+  description: >-
+    Kollider lets you instantly trade perpetual contracts with low fees
+    and up to 100x buying power.
+    No need to pre-fund a trading account, each trade settles directly from your own wallet or even from your own lightning node in milliseconds.
+    The Kollider Umbrel App lets you use the Lightning Network to get instant exposure to a range of products using Bitcoin, directly from your Umbrel node.
+    More features coming soon!
+  developers:
+    Kollider: https://kollider.xyz
+  dependencies:
+    - lnd
+  repo:
+    Public: https://github.com/kolliderhq/kollider-lite-app
+  support: https://t.me/kolliderhq
+  port: 4243
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  defaultPassword: $APP_SEED
+
+services:
+  web:
+    image: kolliderhq/kollider-lite-app:v1.0.6@sha256:f5bbbea86ed4d03c9a7c66527edbcda05228986ba5721e65c08a885edb74151a
+    init: true
+    user: 1000:1000
+    restart: on-failure
+    stop_grace_period: 1m
+    mounts:
+      data:
+        data/cache/images: /app/.next/cache/images
+
+  backend:
+    image: kolliderhq/kollider-lite-backend:v1.0.6@sha256:5558948e716fe31956ef1e3985aede704b0bcd9b3af2532395c8774cffdf1666
+    init: true
+    user: 1000:1000
+    restart: on-failure
+    stop_grace_period: 1m
+    mounts:
+      lnd: /lnd
+      data:
+        data/logs: /app/logs
+    environment:
+      LND_IP: $APP_LIGHTNING_NODE_IP
+      LND_ZMQ_SUB_ADDRESS: "tcp://${APP_KOLLIDER_WS_IP}:5556"
+  
+  ws:
+    image: kolliderhq/kollider-ws-client:v1.0.6@sha256:05f3d1ddf9949b377788e442a1050457559291a50510f5d6dfa66a28c283a80a
+    init: true
+    user: 1000:1000
+    restart: on-failure
+    stop_grace_period: 1m
+    required_ports:
+      tcp:
+        4244: 8080
+    environment:
+      APP_PASSWORD: $APP_SEED
+      KOLLIDER_ZMQ_PUB_ADDRESS: "tcp://*:5556"
+      KOLLIDER_ZMQ_SUB_ADDRESS: "tcp://${APP_KOLLIDER_BACKEND_IP}:5557"
+      KOLLIDER_ZMQ_HEDGER_ADDRESS: "tcp://${APP_KOLLIDER_BACKEND_IP}:5558"
+      KOLLIDER_ZMQ_HEDGER_SUB_ADDRESS: "tcp://${APP_KOLLIDER_BACKEND_IP}:5559"
+
+  
