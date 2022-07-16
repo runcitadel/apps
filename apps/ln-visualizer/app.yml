@@ -19,7 +19,7 @@ metadata:
   developers:
     Max Kotlan: https://lnvisualizer.com
   dependencies:
-    - lightning
+    - lnd
   repo:
     Public: https://github.com/MaxKotlan/LN-Visualizer
   support: lnvisualizer@gmail.com
