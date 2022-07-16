@@ -36,7 +36,7 @@ services:
     environment:
       DATABASE_URI: postgresql://citadel:freedom@$APP_LNDHUB_POSTGRES_IP:5432/lndhub?sslmode=disable
       JWT_SECRET: $APP_SEED
-      LND_ADDRESS: $LND_IP:$LND_PORT
+      LND_ADDRESS: $LND_IP:$LND_GRPC_PORT
     port: 3000
     user: 1000:1000
     mounts:
