@@ -50,6 +50,7 @@ services:
     environment:
       POSTGRES_USER: citadel
       POSTGRES_PASSWORD: freedom
+      POSTGRES_DB: lndhub
     mounts:
       data:
         data/postgres: /var/lib/postgresql/data
