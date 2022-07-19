@@ -1,10 +1,11 @@
-# SPDX-FileCopyrightText: 2021 Citadel and contributors
+# SPDX-FileCopyrightText: Citadel and contributors
 #
-# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-License-Identifier: AGPL-3.0-only
 
-# yaml-language-server: $schema=../../app-standard-v3.yml
+# yaml-language-server: $schema=../../app-standard-v4.yml
 
-version: 3
+citadel_version: 4
+
 metadata:
   category: Payments
   name: BTCPay Server
@@ -15,38 +16,26 @@ metadata:
     which allows you to accept bitcoin without fees or intermediaries. "
   developers:
     BTCPay Server Foundation: https://btcpayserver.org
-  dependencies:
+  permissions:
+  {% if services is containing("lnd") %}
     - lnd
+  {% elif services is containing("c-lightning") %}
+    - c-lightning
+  {% else %}
+    - - lnd
+      - c-lightning
+  {% endif %}
     - bitcoind
-  repo: https://github.com/btcpayserver/btcpayserver
+  repo:
+    Public: https://github.com/btcpayserver/btcpayserver
   support: https://chat.btcpayserver.org
   gallery:
     - 1.jpg
     - 2.jpg
     - 3.jpg
-containers:
-  - name: nbxplorer
-    image: nicolasdorier/nbxplorer:2.3.28@sha256:62333c578aa85487f8f8e292b4a434272fd919ce8f2e58b2d23af6342dd92778
-    user: 1000:1000
-    environment:
-      NBXPLORER_DATADIR: /data
-      NBXPLORER_NETWORK: $BITCOIN_NETWORK
-      NBXPLORER_PORT: 32838
-      NBXPLORER_BIND: 0.0.0.0
-      NBXPLORER_CHAINS: btc
-      NBXPLORER_SIGNALFILEDIR: /data
-      NBXPLORER_BTCRPCURL: http://$BITCOIN_IP:$BITCOIN_RPC_PORT
-      NBXPLORER_BTCNODEENDPOINT: $BITCOIN_IP:$BITCOIN_P2P_PORT
-      NBXPLORER_BTCRPCUSER: $BITCOIN_RPC_USER
-      NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
-      NBXPLORER_POSTGRES: User
-        ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Application
-        Name=nbxplorer;MaxPoolSize=20;Database=nbxplorer${BITCOIN_NETWORK}
-      NBXPLORER_AUTOMIGRATE: 1
-      NBXPLORER_NOMIGRATEEVTS: 1
-    data:
-      - data/nbxplorer:/data
-  - name: main
+
+services:
+  main:
     image: btcpayserver/btcpayserver:1.6.2@sha256:7dd9787c2a7d1fe5c74ead76aa3fe152c6a41625536f5b8079700f39e748c3b7
     depends_on:
       - nbxplorer
@@ -66,16 +55,46 @@ containers:
       BTCPAY_BIND: 0.0.0.0:$APP_BTCPAY_SERVER_MAIN_PORT
       BTCPAY_CHAINS: btc
       BTCPAY_BTCEXPLORERURL: http://$APP_BTCPAY_SERVER_NBXPLORER_IP:32838
+      {% if services is containing("lnd") %}
       BTCPAY_BTCLIGHTNING: type=lnd-rest;server=https://$LND_IP:$LND_REST_PORT/;macaroonfilepath=/lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon;allowinsecure=true
+      {% elif services is containing("c-lightning") %}
+      BTCPAY_BTCLIGHTNING: type=clightning;server=unix://c-lightning/bitcoin/lightning-rpc
+      {%endif %}
       BTCPAY_SOCKSENDPOINT: $TOR_PROXY_IP:$TOR_PROXY_PORT
-    data:
-      - data/nbxplorer:/data/.nbxplorer
-      - data/btcpay:/data
+    mounts:
+      data:
+        data/nbxplorer: /data/.nbxplorer
+        data/btcpay: /data
     user: 1000:1000
-  - name: postgres
+  nbxplorer:
+    depends_on:
+      - postgres
+    image: nicolasdorier/nbxplorer:2.3.28@sha256:62333c578aa85487f8f8e292b4a434272fd919ce8f2e58b2d23af6342dd92778
+    user: 1000:1000
+    environment:
+      NBXPLORER_DATADIR: /data
+      NBXPLORER_NETWORK: $BITCOIN_NETWORK
+      NBXPLORER_PORT: "32838"
+      NBXPLORER_BIND: 0.0.0.0
+      NBXPLORER_CHAINS: btc
+      NBXPLORER_SIGNALFILEDIR: /data
+      NBXPLORER_BTCRPCURL: http://$BITCOIN_IP:$BITCOIN_RPC_PORT
+      NBXPLORER_BTCNODEENDPOINT: $BITCOIN_IP:$BITCOIN_P2P_PORT
+      NBXPLORER_BTCRPCUSER: $BITCOIN_RPC_USER
+      NBXPLORER_BTCRPCPASSWORD: $BITCOIN_RPC_PASS
+      NBXPLORER_POSTGRES: User
+        ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Application
+        Name=nbxplorer;MaxPoolSize=20;Database=nbxplorer${BITCOIN_NETWORK}
+      NBXPLORER_AUTOMIGRATE: "1"
+      NBXPLORER_NOMIGRATEEVTS: "1"
+    mounts:
+      data:
+        data/nbxplorer: /data
+  postgres:
     image: ghcr.io/runcitadel/postgres:main@sha256:8f25afe966a63fd3f11a1052e73f30b9de5ddc0876bebaaf944d485374c73c01
     user: 1000:1000
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-    data:
-      - data/postgres:/var/lib/postgresql/data
+    mounts:
+      data:
+        data/postgres: /var/lib/postgresql/data
