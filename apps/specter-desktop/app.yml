@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Wallets
   name: Specter Desktop
-  version: 1.10.3
+  version: 1.10.4
   tagline: Multisig with hardware wallets made easy
   description: >-
     Specter Desktop connects to the Bitcoin Core running on your Citadel and
@@ -46,7 +46,7 @@ metadata:
     - 2.jpg
     - 3.jpg
 containers:
-  - image: lncm/specter-desktop:v1.10.3@sha256:00be87ab89dd68587b61aceb073acd84fc3009c137c2dbb8ef155c5e22305562
+  - image: lncm/specter-desktop:v1.10.4@sha256:cd239555e0eda4306d52dcb00a835c47dbb50be88d1da30ab8ebf2b0f844eda1
     stop_signal: SIGINT
     command:
       - --host=0.0.0.0
