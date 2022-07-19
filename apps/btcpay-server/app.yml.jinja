@@ -36,6 +36,7 @@ metadata:
 
 services:
   main:
+    port: 3000
     image: btcpayserver/btcpayserver:1.6.2@sha256:7dd9787c2a7d1fe5c74ead76aa3fe152c6a41625536f5b8079700f39e748c3b7
     depends_on:
       - nbxplorer
@@ -52,7 +53,7 @@ services:
         ID=postgres;Host=$APP_BTCPAY_SERVER_POSTGRES_IP;Port=5432;Application
         Name=btcpayserver;Database=btcpayserver$BITCOIN_NETWORK
       BTCPAY_NETWORK: $BITCOIN_NETWORK
-      BTCPAY_BIND: 0.0.0.0:$APP_BTCPAY_SERVER_MAIN_PORT
+      BTCPAY_BIND: 0.0.0.0:3000
       BTCPAY_CHAINS: btc
       BTCPAY_BTCEXPLORERURL: http://$APP_BTCPAY_SERVER_NBXPLORER_IP:32838
       {% if services is containing("lnd") %}
