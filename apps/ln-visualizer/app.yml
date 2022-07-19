@@ -18,7 +18,7 @@ metadata:
 
   developers:
     Max Kotlan: https://lnvisualizer.com
-  dependencies:
+  permissions:
     - lnd
   repo:
     Public: https://github.com/MaxKotlan/LN-Visualizer
