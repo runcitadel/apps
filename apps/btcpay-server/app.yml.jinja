@@ -63,6 +63,11 @@ services:
       {%endif %}
       BTCPAY_SOCKSENDPOINT: $TOR_PROXY_IP:$TOR_PROXY_PORT
     mounts:
+      {% if services is containing("lnd") %}
+      lnd: /lnd
+      {% elif services is containing("c-lightning") %}
+      c-lightning: /c-lightning
+      {%endif %}
       data:
         data/nbxplorer: /data/.nbxplorer
         data/btcpay: /data
