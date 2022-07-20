@@ -1,0 +1,44 @@
+# SPDX-License-Identifier: 0BSD
+
+# yaml-language-server: $schema=../../app-standard-v3.yml
+
+version: 3
+
+metadata:
+  category: Automation
+  name: Oak Node
+  version: "0.3.1"
+  tagline: Do more with your LND node
+  description: >-
+    Oak Node gives you Scheduled Payments. Now you can send sats to a Lightning Address on a schedule.
+    Support your favorite content creators every week, every day, or even every block! Up to you.
+    
+    
+    Oak Node also includes an optional bot module for more advanced users.
+  developers:
+    Carlos: https://oak-node.net
+  dependencies:
+    - lnd
+  repo: https://oak-node.net
+  support: https://oak-node.net/forum
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+
+containers:
+  - name: main
+    image: oak-node.net/oak:v0.3.1@sha256:f78f19763705dfb2237fd8a5c78f27052a848a5e56d89b3ffbcdc1edef0ba57e
+    user: "1000:1000"
+    restart: on-failure
+    stop_grace_period: 1m
+    data:
+      - data:/data
+      - log:/oak/log
+    environment:
+      ROCKET_ADDRESS: 0.0.0.0
+      ROCKET_PORT: $APP_OAK_NODE_MAIN_PORT
+      OAK_DATA_DIR: /data
+      OAK_LND_REST_API_URL: https://$LND_IP:$LND_REST_PORT
+      OAK_LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
+      OAK_LND_CERT_PATH: /lnd/tls.cert
