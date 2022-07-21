@@ -16,9 +16,6 @@ metadata:
     - 1.jpg
     - 2.jpg
     - 3.jpg
-  path: ""
-  defaultPassword: ""
-  torOnly: false
   description: "Oak Node gives you Scheduled Payments. Now you can send sats to a Lightning Address on a schedule.  Support your favorite content creators every week, every day, or even every block! Up to you.\n\nOak Node also includes an optional bot module for more advanced users."
 
 services:
@@ -29,7 +26,7 @@ services:
     restart: on-failure
     environment:
       ROCKET_ADDRESS: 0.0.0.0
-      ROCKET_PORT: $APP_OAK_NODE_PORT
+      ROCKET_PORT: 8100
       OAK_LND_MACAROON_PATH: /lnd-dir/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
       OAK_LND_REST_API_URL: "https://$LND_IP:$LND_REST_PORT"
       OAK_DATA_DIR: /data
