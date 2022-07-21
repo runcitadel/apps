@@ -2,7 +2,7 @@ citadel_version: 4
 
 metadata:
   name: Oak Node
-  version: 0.3.0
+  version: 0.3.1
   category: Automation
   tagline: Do more with your LND node
   developers:
@@ -20,7 +20,7 @@ metadata:
 
 services:
   web:
-    image: "oak-node.net/oak:v0.3@sha256:d4bf366d60235c0aa8149ed7741900cc26ad6884a4bd77b36196f3934dbb8dac"
+    image: "oak-node.net/oak:v0.3.1@sha256:f78f19763705dfb2237fd8a5c78f27052a848a5e56d89b3ffbcdc1edef0ba57e"
     user: "1000:1000"
     stop_grace_period: 1m
     restart: on-failure
