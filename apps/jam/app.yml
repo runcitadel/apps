@@ -16,10 +16,10 @@ metadata:
     privacy for all. The app provides sensible defaults and is easy to use for
     beginners while still providing the features advanced users expect.
   developers:
-    JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
+    JAM developers: https://github.com/joinmarket-webui/jam
   dependencies:
     - bitcoind
-  repo: https://github.com/joinmarket-webui/joinmarket-webui
+  repo: https://github.com/joinmarket-webui/jam
   support: https://t.me/JoinMarketWebUI
   gallery:
     - 1.jpg
