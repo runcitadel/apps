@@ -4,7 +4,7 @@ version: 3
 metadata:
   category: Payments
   name: BitcartCC
-  version: 0.6.5.1
+  version: 0.6.8.1
   tagline: BitcartCC is a self-hosted payment processor and developer solutions
     platform for cryptocurrencies
   description: BitcartCC provides light-weight, but secure and easy-to-use
@@ -25,6 +25,7 @@ containers:
     environment:
       BITCART_ADMIN_LOG_FILE: bitcart.log
       BITCART_ADMIN_API_URL: http://$APP_BITCARTCC_BACKEND_IP:8000
+      BITCART_ADMIN_ROOTPATH: /admin
   - name: backend
     depends_on:
       - bitcoin
@@ -32,19 +33,22 @@ containers:
       - redis
     restart: unless-stopped
     image: bitcartcc/bitcart:stable
-    entrypoint: /usr/local/bin/docker-entrypoint.sh
     command: bash -c "alembic upgrade head && gunicorn -c gunicorn.conf.py main:app"
     environment:
       IN_DOCKER: false
       LOG_FILE: bitcart.log
       BITCART_DATADIR: /datadir
+      BITCART_BACKUPS_DIR: /backups
+      BITCART_VOLUMES: /datadir /backups
       BTC_NETWORK: $BITCOIN_NETWORK
       BTC_LIGHTNING: true
       REDIS_HOST: redis://$APP_BITCARTCC_REDIS_IP
       DB_HOST: $APP_BITCARTCC_DATABASE_IP
-    user: 1000:1000
+      BTC_HOST: $APP_BITCARTCC_BITCOIN_IP
+      BITCART_BACKEND_ROOTPATH: /api
     data:
       - data/bitcart:/datadir
+      - data/backups:/backups
   - name: bitcoin
     restart: unless-stopped
     image: bitcartcc/bitcart-btc:stable
@@ -76,19 +80,21 @@ containers:
       - backend
     restart: unless-stopped
     image: bitcartcc/bitcart:stable
-    entrypoint: /usr/local/bin/docker-entrypoint.sh
     command: python3 worker.py
     environment:
       IN_DOCKER: false
       LOG_FILE: bitcart.log
       BITCART_DATADIR: /datadir
+      BITCART_BACKUPS_DIR: /backups
+      BITCART_VOLUMES: /datadir /backups
       BTC_NETWORK: $BITCOIN_NETWORK
       BTC_LIGHTNING: true
       REDIS_HOST: redis://$APP_BITCARTCC_REDIS_IP
       DB_HOST: $APP_BITCARTCC_DATABASE_IP
-    user: 1000:1000
+      BTC_HOST: $APP_BITCARTCC_BITCOIN_IP
     data:
       - data/bitcart:/datadir
+      - data/backups:/backups
   - image: nginx:1.21.3-alpine@sha256:1ff1364a1c4332341fc0a854820f1d50e90e11bb0b93eb53b47dc5e10c680116
     init: true
     port: 80
