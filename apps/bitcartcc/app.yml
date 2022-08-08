@@ -63,7 +63,7 @@ containers:
       - data/bitcoin:/data
   - name: database
     restart: unless-stopped
-    image: postgres:12-alpine
+    image: ghcr.io/runcitadel/postgres:main@sha256:8f25afe966a63fd3f11a1052e73f30b9de5ddc0876bebaaf944d485374c73c01
     environment:
       POSTGRES_DB: bitcart
       POSTGRES_HOST_AUTH_METHOD: trust
