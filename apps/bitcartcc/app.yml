@@ -28,7 +28,6 @@ containers:
       BITCART_ADMIN_LOG_FILE: bitcart.log
       BITCART_ADMIN_API_URL: http://$APP_BITCARTCC_BACKEND_IP:8000
       BITCART_ADMIN_ROOTPATH: /admin
-    user: 1000:1000
   - name: backend
     depends_on:
       - bitcoin
@@ -52,7 +51,6 @@ containers:
     data:
       - data/bitcart:/datadir
       - data/backups:/backups
-    user: 1000:1000
   - name: bitcoin
     restart: unless-stopped
     image: bitcartcc/bitcart-btc:stable
@@ -102,7 +100,6 @@ containers:
     data:
       - data/bitcart:/datadir
       - data/backups:/backups
-    user: 1000:1000
   - image: nginx:1.21.3-alpine@sha256:1ff1364a1c4332341fc0a854820f1d50e90e11bb0b93eb53b47dc5e10c680116
     init: true
     port: 80
