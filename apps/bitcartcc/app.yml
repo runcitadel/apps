@@ -17,6 +17,8 @@ metadata:
     - 1.png
     - 2.png
     - 3.png
+  dependencies:
+    - electrum
 containers:
   - name: admin
     restart: unless-stopped
@@ -56,6 +58,7 @@ containers:
       BTC_NETWORK: $BITCOIN_NETWORK
       BTC_LIGHTNING: true
       IN_DOCKER: false
+      BTC_SERVER: $ELECTRUM_IP:$ELECTRUM_PORT:t
     data:
       - data/bitcoin:/data
   - name: database
