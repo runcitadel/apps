@@ -26,7 +26,7 @@ containers:
     command: yarn start
     environment:
       BITCART_ADMIN_LOG_FILE: bitcart.log
-      BITCART_ADMIN_API_URL: http://$APP_DOMAIN:$APP_BITCARTCC_MAIN_IP/api
+      BITCART_ADMIN_API_URL: http://$APP_DOMAIN:$APP_BITCARTCC_MAIN_PORT/api
       BITCART_ADMIN_ROOTPATH: /admin
   - name: backend
     depends_on:
@@ -78,7 +78,7 @@ containers:
     image: bitcartcc/bitcart-store:stable
     command: yarn start
     environment:
-      BITCART_STORE_API_URL: http://$APP_DOMAIN:$APP_BITCARTCC_MAIN_IP/api
+      BITCART_STORE_API_URL: http://$APP_DOMAIN:$APP_BITCARTCC_MAIN_PORT/api
     user: 1000:1000
   - name: worker
     depends_on:
