@@ -28,6 +28,9 @@ containers:
       BITCART_ADMIN_LOG_FILE: bitcart.log
       BITCART_ADMIN_API_URL: http://$APP_DOMAIN:$APP_BITCARTCC_MAIN_PORT/api
       BITCART_ADMIN_ROOTPATH: /admin
+      BITCART_ADMIN_SOCKS_PROXY: socks5h://$TOR_PROXY_IP:$TOR_PROXY_PORT
+      BITCART_ADMIN_ONION_API_URL: http://$APP_HIDDEN_SERVICE/api
+      BITCART_ADMIN_ONION_HOST: http://$APP_HIDDEN_SERVICE
   - name: backend
     depends_on:
       - bitcoin
@@ -79,6 +82,9 @@ containers:
     command: yarn start
     environment:
       BITCART_STORE_API_URL: http://$APP_DOMAIN:$APP_BITCARTCC_MAIN_PORT/api
+      BITCART_STORE_SOCKS_PROXY: socks5h://$TOR_PROXY_IP:$TOR_PROXY_PORT
+      BITCART_STORE_ONION_API_URL: http://$APP_HIDDEN_SERVICE/api
+      BITCART_STORE_ONION_HOST: http://$APP_HIDDEN_SERVICE
     user: 1000:1000
   - name: worker
     depends_on:
