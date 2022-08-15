@@ -58,6 +58,7 @@ containers:
     restart: unless-stopped
     image: bitcartcc/bitcart-btc:stable
     environment:
+      BTC_HOST: $APP_BITCARTCC_BITCOIN_IP
       BTC_NETWORK: $BITCOIN_NETWORK
       BTC_LIGHTNING: true
       BTC_SERVER: $ELECTRUM_IP:$ELECTRUM_PORT:t
