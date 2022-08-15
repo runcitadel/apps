@@ -19,6 +19,7 @@ metadata:
     - 3.png
   dependencies:
     - electrum
+  path: /help/
 containers:
   - name: admin
     restart: unless-stopped
@@ -112,3 +113,4 @@ containers:
     name: main
     data:
       - nginx/nginx.conf:/etc/nginx/nginx.conf
+      - nginx/html:/usr/share/nginx/html/help
