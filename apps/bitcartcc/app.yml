@@ -60,7 +60,6 @@ containers:
     environment:
       BTC_NETWORK: $BITCOIN_NETWORK
       BTC_LIGHTNING: true
-      IN_DOCKER: false
       BTC_SERVER: $ELECTRUM_IP:$ELECTRUM_PORT:t
     data:
       - data/bitcoin:/data
