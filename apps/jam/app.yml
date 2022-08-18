@@ -9,7 +9,7 @@ citadel_version: 4
 metadata:
   category: Wallets
   name: JAM
-  version: 0.0.9
+  version: 0.0.10
   tagline: JoinMarket's awesome, man
   description: JAM (JoinMarket's awesome, man) is a web-interface for JoinMarket
     with focus on user-friendliness. It's time for top-notch privacy for your
@@ -17,11 +17,11 @@ metadata:
     privacy for all. The app provides sensible defaults and is easy to use for
     beginners while still providing the features advanced users expect.
   developers:
-    JAM developers: https://github.com/joinmarket-webui/joinmarket-webui
+    JAM developers: https://github.com/joinmarket-webui/jam
   permissions:
     - bitcoind
   repo:
-    Public: https://github.com/joinmarket-webui/joinmarket-webui
+    Public: https://github.com/joinmarket-webui/jam
   support: https://t.me/JoinMarketWebUI
   gallery:
     - 1.jpg
@@ -33,7 +33,7 @@ metadata:
 
 services:
   main:
-    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.9-clientserver-v0.9.6
+    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.10-clientserver-v0.9.6
     restart: on-failure
     stop_grace_period: 1m
     init: true
@@ -47,12 +47,6 @@ services:
       ENSURE_WALLET: "true"
       APP_USER: citadel
       APP_PASSWORD: ${APP_SEED}
-      jm_tor_control_host: $TOR_PROXY_IP
-      jm_tor_control_port: "29051"
-      jm_onion_socks5_host: $TOR_PROXY_IP
-      jm_onion_socks5_port: $TOR_PROXY_PORT
-      jm_socks5_host: $TOR_PROXY_IP
-      jm_socks5_port: $TOR_PROXY_PORT
       jm_rpc_host: $BITCOIN_IP
       jm_rpc_port: $BITCOIN_RPC_PORT
       jm_rpc_user: $BITCOIN_RPC_USER
