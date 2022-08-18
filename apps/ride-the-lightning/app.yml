@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Lightning Node Management
   name: Ride The Lightning
-  version: 0.12.3
+  version: 0.13.0
   tagline: Manage lightning node operations better
   description: Haven't written a desription yet for this, sorry.
   developers:
@@ -26,7 +26,7 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: main-lnd
-    image: shahanafarooqui/rtl:0.12.3@sha256:b1327ecfddae5f40c4c985e31c2bc158c4697a274b61bf84acfb27486d05c5bf
+    image: shahanafarooqui/rtl:0.13.0@sha256:65f0ba6a978bcf26c0e43a86c256abac1d8bfda80016327880b1dec2d39c538b
     user: 1000:1000
     port: 3000
     environment:
