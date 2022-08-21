@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Files
   name: Nextcloud
-  version: 24.0.2
+  version: 24.0.4
   tagline: Your personal cloud
   description: No description yet.
   developers:
@@ -44,7 +44,7 @@ containers:
     data:
       - data/redis:/data
   - name: web
-    image: nextcloud:24.0.2@sha256:b319922a34539cfe7894000e635318634eb044b69e6c0182e8eea8957f3b42e9
+    image: nextcloud:24.0.4@sha256:69a52f571dc72f9ebbe222fc810f09d016173ec94f4423ea5e3d628496c1a5d5
     port: 80
     environment:
       MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
@@ -60,7 +60,7 @@ containers:
       - redis
     data:
       - data/nextcloud:/var/www/html
-  - image: nextcloud:24.0.2@sha256:b319922a34539cfe7894000e635318634eb044b69e6c0182e8eea8957f3b42e9
+  - image: nextcloud:24.0.4@sha256:69a52f571dc72f9ebbe222fc810f09d016173ec94f4423ea5e3d628496c1a5d5
     entrypoint: /cron.sh
     depends_on:
       - db

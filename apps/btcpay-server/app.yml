@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Payments
   name: BTCPay Server
-  version: 1.6.2
+  version: 1.6.9
   tagline: Accept Bitcoin payments. Free, open-source & self-hosted, Bitcoin
     payment processor.
   description: "BTCPay Server is a free and open-source Bitcoin payment processor
@@ -47,7 +47,7 @@ containers:
     data:
       - data/nbxplorer:/data
   - name: main
-    image: btcpayserver/btcpayserver:1.6.2@sha256:7dd9787c2a7d1fe5c74ead76aa3fe152c6a41625536f5b8079700f39e748c3b7
+    image: btcpayserver/btcpayserver:1.6.9@sha256:1162bb6231cbdf0a8297107951afe8a44c60a86814d07454f24b4ccf05ba1f71
     depends_on:
       - nbxplorer
       - postgres
