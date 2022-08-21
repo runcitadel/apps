@@ -40,7 +40,7 @@ containers:
       LNBITS_DEFAULT_WALLET_NAME: LNbits wallet
       LNBITS_DISABLED_EXTENSIONS: amilk
       LNBITS_ADMIN_LOGIN_KEY: $APP_SEED
-      LNBITS_ADMIN_EXTENSIONS: ngrok
+      LNBITS_ADMIN_EXTENSIONS: ngrok,admin
     name: main-lnd
     data:
       - data:/data
@@ -61,7 +61,7 @@ containers:
       LNBITS_DEFAULT_WALLET_NAME: LNbits wallet
       LNBITS_DISABLED_EXTENSIONS: amilk
       LNBITS_ADMIN_LOGIN_KEY: $APP_SEED
-      LNBITS_ADMIN_EXTENSIONS: ngrok
+      LNBITS_ADMIN_EXTENSIONS: ngrok,admin
     name: main-c-lightning
     data:
       - data:/data
