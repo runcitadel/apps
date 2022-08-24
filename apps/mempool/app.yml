@@ -5,7 +5,6 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Explorers
   name: Mempool
@@ -41,7 +40,7 @@ metadata:
     - Multiple languages support
 
     - JSON APIs
-  developers: 
+  developers:
     mempool.space: https://mempool.space/about
   dependencies:
     - electrum
