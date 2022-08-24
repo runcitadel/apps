@@ -10,10 +10,8 @@ metadata:
   category: Electrum Servers
   name: Electrs
   version: 0.9.9
-  tagline: The electrum server for personal use with the lowest resource usage
-  description: >-
-    Electrs provides a fast Electrum server for personal use and to share with friends and family.
-    It is very fast and does not consume much resources.
+  tagline: The electrum server for personal use
+  description: Electrs provides a fast Electrum server for personal use and to share with friends and family. It is very fast and does not consume much resources.
   developers: 
     Roman Zeyde: https://romanzey.de/
   permissions:
@@ -39,8 +37,9 @@ services:
     port: 80
 
   electrum:
-    port_priority: "Required"
-    port: 50001
+    required_ports:
+      tcp:
+        50001: 50001
     image: ghcr.io/runcitadel/electrs:v0.9.9
     mounts:
       bitcoin: /bitcoin
