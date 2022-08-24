@@ -5,11 +5,10 @@
 # yaml-language-server: $schema=../../app-standard-v3.yml
 
 version: 3
-
 metadata:
   category: Automation
   name: Node-RED
-  version: 2.2.2
+  version: 3.0.2
   tagline: Wire together the Internet of Things
   description: >-
     Node-RED is a visual programming tool for wiring together hardware devices,
@@ -23,7 +22,7 @@ metadata:
 
 
     Warning: Node-RED on Citadel is able to connect directly to Bitcoin Core, LND and Electrum, due to this you should be careful when installing third-party Node-RED nodes.
-  developers: 
+  developers:
     OpenJS Foundation: https://nodered.org
   dependencies:
     - bitcoind
@@ -39,7 +38,7 @@ metadata:
   torOnly: false
 containers:
   - name: web
-    image: nodered/node-red:2.2.1@sha256:8a668a56151705ea30603ea00fc5c009de412d100238dfdfe399d4cd2d62e28e
+    image: nodered/node-red:3.0.2@sha256:524316b9b84cb5bbfe006c117f3dad31ee806804b12e4b866047a65e2080e92d
     stop_grace_period: 1m
     data:
       - data:/data

@@ -8,7 +8,7 @@ version: 3
 metadata:
   category: Development
   name: code-server
-  version: 4.5.0
+  version: 4.5.2
   tagline: Run VS Code on your Citadel
   description: This app doesn't  have a description yet.
   developers:
@@ -23,8 +23,9 @@ metadata:
   defaultPassword: $APP_SEED
 containers:
   - name: server
-    image: codercom/code-server:4.5.0@sha256:7f8ba3e52cef1ea675b32062f045bcecbb59a5d0c657474dde18d6b2e9c3f96e
+    image: codercom/code-server:4.5.2@sha256:98c374514bb8560b1005ae8ffa4f5f65a553d2b49f8787e4af76210596b9c7e1
     user: 1000:1000
+    port: 8080
     environment:
       PASSWORD: $APP_SEED
     data:

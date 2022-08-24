@@ -1,0 +1,40 @@
+citadel_version: 4
+
+metadata:
+  name: Oak Node
+  version: 0.3.1
+  category: Automation
+  tagline: Do more with your LND node
+  developers:
+    Carlos: "https://oak-node.net"
+  permissions:
+    - lnd
+  repo:
+    Public: "https://oak-node.net"
+  support: "https://oak-node.net/forum"
+  gallery:
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+  description: "Oak Node gives you Scheduled Payments. Now you can send sats to a Lightning Address on a schedule.  Support your favorite content creators every week, every day, or even every block! Up to you.\n\nOak Node also includes an optional bot module for more advanced users."
+
+services:
+  web:
+    image: "oak-node.net/oak:v0.3.1@sha256:f78f19763705dfb2237fd8a5c78f27052a848a5e56d89b3ffbcdc1edef0ba57e"
+    user: "1000:1000"
+    stop_grace_period: 1m
+    restart: on-failure
+    environment:
+      ROCKET_ADDRESS: 0.0.0.0
+      ROCKET_PORT: 8100
+      OAK_LND_MACAROON_PATH: /lnd-dir/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
+      OAK_LND_REST_API_URL: "https://$LND_IP:$LND_REST_PORT"
+      OAK_DATA_DIR: /data
+      OAK_LND_CERT_PATH: /lnd-dir/tls.cert
+    port: 8100
+
+    mounts:
+      lnd: /lnd-dir
+      data:
+        log: /oak/log
+        data: /data
