@@ -46,6 +46,11 @@ metadata:
   dependencies:
     - electrum
     - bitcoind
+  {% if services is containing("lnd") %}
+    - lnd
+  {% elif services is containing("c-lightning") %}
+    - c-lightning
+  {% endif %}
   repo:
     Public: https://github.com/mempool/mempool
   support: https://t.me/mempoolspace
@@ -84,7 +89,29 @@ services:
       MEMPOOL_HTTP_PORT: "8999"
       MEMPOOL_CACHE_DIR: /backend/cache
       MEMPOOL_CLEAR_PROTECTION_MINUTES: "20"
+      LIGHTNING_TOPOLOGY_FOLDER: "/lightning"
+      LIGHTNING_STATS_REFRESH_INTERVAL: 600
+      LIGHTNING_GRAPH_REFRESH_INTERVAL: 600
+      LIGHTNING_LOGGER_UPDATE_INTERVAL: 30
+    {% if services is containing("lnd") %}
+      LIGHTNING_ENABLED: true
+      LIGHTNING_BACKEND: lnd
+      LND_TLS_CERT_PATH: /lnd/tls.cert
+      LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
+      LND_REST_API_URL: https://$LND_IP:$LND_REST_PORT/
+    {% elif services is containing("c-lightning") %}
+      LIGHTNING_ENABLED: true
+      LIGHTNING_BACKEND: "cln"
+      CLN_SOCKET: "/c-lightning/bitcoin/lightning-rpc"
+    {% else %}
+      LIGHTNING_ENABLED: false
+    {% endif %}
     mounts:
+    {% if services is containing("lnd") %}
+      lnd: /lnd
+    {% elif services is containing("c-lightning") %}
+      c_lightning: /c-lightning
+    {% endif %}
       data:
         data: /backend/cache
   mariadb:
