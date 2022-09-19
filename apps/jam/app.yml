@@ -9,7 +9,7 @@ citadel_version: 4
 metadata:
   category: Wallets
   name: JAM
-  version: 0.0.10
+  version: 0.1.0
   tagline: JoinMarket's awesome, man
   description: JAM (JoinMarket's awesome, man) is a web-interface for JoinMarket
     with focus on user-friendliness. It's time for top-notch privacy for your
@@ -33,7 +33,7 @@ metadata:
 
 services:
   main:
-    image: ghcr.io/joinmarket-webui/joinmarket-webui-standalone:v0.0.10-clientserver-v0.9.6
+    image: ghcr.io/joinmarket-webui/jam-standalone:v0.1.0-clientserver-v0.9.8
     restart: on-failure
     stop_grace_period: 1m
     init: true
