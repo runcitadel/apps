@@ -1,53 +1,46 @@
-# SPDX-FileCopyrightText: 2022 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
   name: WordPress
   version: 6.0.1
   category: Blog
   tagline: Host a blog on your Citadel
-  description: WordPress
   developers:
     WordPress Developers: https://wordpress.org
+  permissions: []
   repo:
-    WordPress: https://github.com/WordPress/WordPress
     Container: https://github.com/docker-library/wordpress
+    WordPress: https://github.com/WordPress/WordPress
   support: https://wordpress.org
   gallery:
-    - "1.png"
-    - "2.png"
-    - "3.png"
-
+  - 1.png
+  - 2.png
+  - 3.png
+  defaultPassword: null
+  torOnly: false
+  description: WordPress
 services:
   main:
     image: wordpress:6.0.1-php8.1-apache@sha256:8419d1eb8f357530354c98c400afc11a967f6a3cca5517f64645b1cc90b2f7af
     depends_on:
-      - db
-    data:
-      - data/wp:/var/www/html
-    port: 80
+    - db
     restart: always
     environment:
       WORDPRESS_DB_HOST: $APP_WORDPRESS_DB_IP
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: somewordpress
       WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
       WORDPRESS_CONFIG_EXTRA: |
         define('FS_METHOD','direct');
+      WORDPRESS_DB_PASSWORD: somewordpress
+    port: 80
   db:
     image: mariadb:10.7.3-focal@sha256:07e06f2e7ae9dfc63707a83130a62e00167c827f08fcac7a9aa33f4b6dc34e0e
     user: 1000:1000
+    restart: always
+    environment:
+      MARIADB_USER: wordpress
+      MARIADB_ROOT_PASSWORD: somewordpress
+      MARIADB_DATABASE: wordpress
+      MARIADB_PASSWORD: wordpress
     mounts:
       data:
         data/db: /var/lib/mysql
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: somewordpress
-      MARIADB_DATABASE: wordpress
-      MARIADB_USER: wordpress
-      MARIADB_PASSWORD: wordpress

@@ -6,6 +6,7 @@ metadata:
   tagline: Simple and Private Bitcoin P2P Exchange
   developers:
     RoboSats: https://learn.robosats.com
+  permissions: []
   repo:
     Public: https://github.com/reckless-satoshi/robosats
   support: https://t.me/robosats
@@ -13,6 +14,7 @@ metadata:
   - 1.jpg
   - 2.jpg
   - 3.jpg
+  defaultPassword: null
   torOnly: false
   description: |-
     RoboSats is a simple and private app to exchange bitcoin for national currencies.  Robosats simplifies the P2P user experience and uses lightning hold invoices to  minimize custody and trust requirements. The deterministically generated robot  avatars help users stick to best privacy practices.

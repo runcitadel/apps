@@ -1,7 +1,4 @@
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
   name: ItchySats
   version: 0.6.1
