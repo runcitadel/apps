@@ -1,43 +1,32 @@
-# SPDX-FileCopyrightText: 2021 Kilian Botrel
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
-version: 3
+citadel_version: 4
 metadata:
-  category: Lightning Node Management
   name: LNDg
-  version: 1.2.1
-  tagline: Lite GUI web interface to analyze LND data and manage your node with
-    automation.
-  description: LNDg is your command center for running a profitable and efficient
-    routing node. From quickly viewing your node's health, automated
-    rebalancing, selecting new potential peers and much more.
+  version: 1.3.1
+  category: Lightning Node Management
+  tagline: Lite GUI web interface to analyze LND data and manage your node with automation.
   developers:
     cryptosharks131: https://github.com/cryptosharks131
-  dependencies:
-    - lnd
-  repo: https://github.com/cryptosharks131/lndg
+  permissions:
+  - lnd
+  repo:
+    Public: https://github.com/cryptosharks131/lndg
   support: https://t.me/+-RxoZdi7snk2ZGYx
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
-  path: ""
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  path: ''
   defaultPassword: $APP_SEED
-containers:
-  - name: web
-    image: ghcr.io/cryptosharks131/lndg:v1.2.1@sha256:4c06dcf97b0b80324d775acdb6272a12559fbb318fe7b0fb4549e29dd0b2a7a5
-    restart: on-failure
+  torOnly: false
+  description: LNDg is your command center for running a profitable and efficient routing node. From quickly viewing your node's health, automated rebalancing, selecting new potential peers and much more.
+services:
+  main:
+    image: ghcr.io/cryptosharks131/lndg:v1.3.1@sha256:b412bc37b6ed07c3c0335fedf409699ce019a928e69a3f6e7af9ffc8adcfcf99
     stop_grace_period: 1m
+    restart: on-failure
+    command:
+    - sh
+    - -c
+    - python initialize.py -net '${BITCOIN_NETWORK}' -server '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord && python manage.py runserver 0.0.0.0:${APP_LNDG_WEB_PORT}
     mounts:
       lnd: /root/.lnd
-    data:
-      - data:/lndg/data
-    command:
-      - sh
-      - -c
-      - python initialize.py -net '${BITCOIN_NETWORK}' -server
-        '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord &&
-        python manage.py runserver 0.0.0.0:${APP_LNDG_WEB_PORT}
