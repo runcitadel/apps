@@ -67,7 +67,7 @@ services:
     init: true
     command: ./wait-for mariadb:3306 --timeout=720 -- nginx -g 'daemon off;'
     environment:
-      FRONTEND_HTTP_PORT: 3000
+      FRONTEND_HTTP_PORT: "3000"
       BACKEND_MAINNET_HTTP_HOST: $APP_MEMPOOL_API_IP
   api:
     image: mempool/backend:v2.4.0@sha256:6036cc6866b782efadc765e8189958940202b3fa1770eb35c35210c86efd2f47
@@ -91,21 +91,21 @@ services:
       MEMPOOL_CACHE_DIR: /backend/cache
       MEMPOOL_CLEAR_PROTECTION_MINUTES: "20"
       LIGHTNING_TOPOLOGY_FOLDER: "/lightning"
-      LIGHTNING_STATS_REFRESH_INTERVAL: 600
-      LIGHTNING_GRAPH_REFRESH_INTERVAL: 600
-      LIGHTNING_LOGGER_UPDATE_INTERVAL: 30
+      LIGHTNING_STATS_REFRESH_INTERVAL: "600"
+      LIGHTNING_GRAPH_REFRESH_INTERVAL: "600"
+      LIGHTNING_LOGGER_UPDATE_INTERVAL: "30"
     {% if services is containing("lnd") %}
-      LIGHTNING_ENABLED: true
+      LIGHTNING_ENABLED: "true"
       LIGHTNING_BACKEND: lnd
       LND_TLS_CERT_PATH: /lnd/tls.cert
       LND_MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
       LND_REST_API_URL: https://$LND_IP:$LND_REST_PORT/
     {% elif services is containing("c-lightning") %}
-      LIGHTNING_ENABLED: true
+      LIGHTNING_ENABLED: "true"
       LIGHTNING_BACKEND: "cln"
       CLN_SOCKET: "/c-lightning/bitcoin/lightning-rpc"
     {% else %}
-      LIGHTNING_ENABLED: false
+      LIGHTNING_ENABLED: "false"
     {% endif %}
     mounts:
     {% if services is containing("lnd") %}
