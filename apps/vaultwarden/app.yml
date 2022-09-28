@@ -1,58 +1,36 @@
-# SPDX-FileCopyrightText: 2021 Jonathan Underwood <junderwood@bitcoinbank.co.jp>
-# SPDX-FileCopyrightText: 2022 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
-  category: Password Managers
   name: Vaultwarden
   version: 1.25.2
+  category: Password Managers
   tagline: Unofficial Bitwarden® compatible server
-  description: >-
-    Vaultwarden (formerly known as Bitwarden_RS) is an alternative
-    implementation of the Bitwarden® server API written in Rust, compatible
-    with upstream Bitwarden® clients*. Vaultwarden is perfect for self-hosting
-    all of your passwords in an\ encrypted vault on your Citadel. Vaultwarden is
-    a full implementation of Bitwarden® API that includes:
-
-    - Organizations support
-
-    - Attachments
-
-    - Vault API support
-
-    - Serving the static files for Vault interface
-
-    - Website icons API
-
-    - Authenticator and U2F support
-
-    - YubiKey and Duo support
-
-
-    Please note that Vaultwarden is not associated with the Bitwarden® project nor 8bit Solutions LLC. When using this app, please report any bugs or suggestions to us directly, regardless of whatever clients you are using (mobile, desktop, browser, etc), and do not use Bitwarden®'s official support channels.
   developers:
     Daniel García: https://github.com/dani-garcia
-  dependencies: []
+  permissions: []
   repo:
     Public: https://github.com/dani-garcia/vaultwarden
   support: https://vaultwarden.discourse.group/
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  defaultPassword: null
   torOnly: true
+  description: |-
+    Vaultwarden (formerly known as Bitwarden_RS) is an alternative implementation of the Bitwarden® server API written in Rust, compatible with upstream Bitwarden® clients*. Vaultwarden is perfect for self-hosting all of your passwords in an\ encrypted vault on your Citadel. Vaultwarden is a full implementation of Bitwarden® API that includes:
+    - Organizations support
+    - Attachments
+    - Vault API support
+    - Serving the static files for Vault interface
+    - Website icons API
+    - Authenticator and U2F support
+    - YubiKey and Duo support
 
+    Please note that Vaultwarden is not associated with the Bitwarden® project nor 8bit Solutions LLC. When using this app, please report any bugs or suggestions to us directly, regardless of whatever clients you are using (mobile, desktop, browser, etc), and do not use Bitwarden®'s official support channels.
 services:
   main:
     image: vaultwarden/server:1.25.2@sha256:39f34c5159a27dc9a16b2b7c07cec031622cdb174b4d99f09c8efefcd847d887
     user: 1000:1000
-    port: 3000
     environment:
-      ROCKET_PORT: "3000"
-    data:
-      - data:/data
+      ROCKET_PORT: '3000'
+    port: 3000

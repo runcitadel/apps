@@ -1,65 +1,51 @@
-# SPDX-FileCopyrightText: 2021 Aaron Dewes <aaron.dewes@protonmail.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
-  category: Explorers
   name: Bitfeed
   version: 2.3.4
+  category: Explorers
   tagline: A live visualization of your node's mempool
-  description: A self-hosted version of Bitfeed - the open source mempool & block
-    visualizer available at https://bits.monospace.live. Watch as new
-    transactions drop into your node's mempool, before being packaged into newly
-    mined blocks. Monitor Bitcoin network activity, explore the composition of
-    the latest block, or simply enjoy a soothing Bitcoin screensaver.
-  developers: 
+  developers:
     Mononaut: https://monospace.live
   permissions:
-    - bitcoind
+  - bitcoind
   repo:
     Public: https://github.com/bitfeed-project/bitfeed
   support: https://github.com/bitfeed-project/bitfeed/issues
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
-  updateContainer:
-    - main
-    - api
-
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  defaultPassword: null
+  torOnly: false
+  description: A self-hosted version of Bitfeed - the open source mempool & block visualizer available at https://bits.monospace.live. Watch as new transactions drop into your node's mempool, before being packaged into newly mined blocks. Monitor Bitcoin network activity, explore the composition of the latest block, or simply enjoy a soothing Bitcoin screensaver.
 services:
-  main:
-    image: ghcr.io/bitfeed-project/bitfeed-client:v2.3.4@sha256:5d57477e69a789d547b1c6c441e0ff49e2f5ed46bf4b5ab9ca9f5403f385e926
-    restart: on-failure
-    stop_grace_period: 1m
-    port: 80
-    depends_on:
-      - api
-    environment:
-      TARGET: citadel
-      BACKEND_HOST: $APP_BITFEED_API_IP
-      BACKEND_PORT: "3000"
-
   api:
     image: ghcr.io/bitfeed-project/bitfeed-server:v2.3.4@sha256:e38a2e07389cf6d0c519e856291e535fdd10a1e50143d528c82bfe0baf06894f
     user: 1000:1000
-    restart: on-failure
     stop_grace_period: 1m
+    restart: on-failure
     environment:
-      PORT: "3000"
-      BITCOIN_HOST: $BITCOIN_IP
-      BITCOIN_ZMQ_RAWTX_PORT: $BITCOIN_ZMQ_RAWTX_PORT
-      BITCOIN_ZMQ_RAWBLOCK_PORT: $BITCOIN_ZMQ_RAWBLOCK_PORT
       BITCOIN_ZMQ_SEQUENCE_PORT: $BITCOIN_ZMQ_SEQUENCE_PORT
-      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
       BITCOIN_RPC_USER: $BITCOIN_RPC_USER
+      RPC_POOLS: '3'
+      RPC_POOL_SIZE: '4'
+      BITCOIN_ZMQ_RAWTX_PORT: $BITCOIN_ZMQ_RAWTX_PORT
+      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
       BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
-      RPC_POOLS: "3"
-      RPC_POOL_SIZE: "4"
+      PORT: '3000'
+      BITCOIN_ZMQ_RAWBLOCK_PORT: $BITCOIN_ZMQ_RAWBLOCK_PORT
+      BITCOIN_HOST: $BITCOIN_IP
     mounts:
       data:
         data: /app/data
+  main:
+    image: ghcr.io/bitfeed-project/bitfeed-client:v2.3.4@sha256:5d57477e69a789d547b1c6c441e0ff49e2f5ed46bf4b5ab9ca9f5403f385e926
+    stop_grace_period: 1m
+    depends_on:
+    - api
+    restart: on-failure
+    environment:
+      BACKEND_HOST: $APP_BITFEED_API_IP
+      BACKEND_PORT: '3000'
+      TARGET: citadel
+    port: 80

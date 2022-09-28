@@ -1,42 +1,39 @@
-# SPDX-FileCopyrightText: 2022 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
-version: 3
+citadel_version: 4
 metadata:
-  category: Social
   name: Synapse
   version: 1.61.0
+  category: Social
   tagline: Matrix homeserver
-  description: Description is coming soon.
   developers:
     Matrix: https://matrix.org
-  dependencies: []
-  repo: https://github.com/matrix-org/synapse
+  permissions: []
+  repo:
+    Public: https://github.com/matrix-org/synapse
   support: https://matrix.to/#/#synapse:matrix.org
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  defaultPassword: null
   torOnly: false
-containers:
-  - image: ghcr.io/runcitadel/synapse:develop@sha256:80e15d6247e30d162758178aeb41bb9181e5d7ec9d73af35939bccbb3aecbab9
+  description: Description is coming soon.
+services:
+  server:
+    image: ghcr.io/runcitadel/synapse:develop@sha256:80e15d6247e30d162758178aeb41bb9181e5d7ec9d73af35939bccbb3aecbab9
     entrypoint: bash
     command: -c './start.py generate && ./start.py migrate_config && exec ./start.py'
-    port: 8008
     environment:
-      UID: "1000"
-      GID: "1000"
+      GID: '1000'
+      UID: '1000'
       SYNAPSE_HTTP_PORT: 8008
+      SYNAPSE_REPORT_STATS: yes
+      SYNAPSE_ENABLE_REGISTRATION: yes
+      SYNAPSE_NO_TLS: yes
       SYNAPSE_SERVER_NAME: ${APP_HIDDEN_SERVICE}
-      SYNAPSE_REPORT_STATS: "yes"
-      SYNAPSE_ENABLE_REGISTRATION: "yes"
-      SYNAPSE_NO_TLS: "yes"
-    name: server
-    data:
-      - data/synapse:/data
-    hiddenServicePorts:
-      - 80
-      - 8008
+    port: 8008
+    mounts:
+      data:
+        data/synapse: /data
+    hidden_services:
+      8008: 8008
+

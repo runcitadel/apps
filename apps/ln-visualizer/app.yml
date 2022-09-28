@@ -1,52 +1,40 @@
-# SPDX-FileCopyrightText: 2022 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
-  category: Explorers
   name: LnVisualizer
-  version: "0.0.20"
+  version: 0.0.25
+  category: Explorers
   tagline: View the Lightning Network from your node's perspective
-  description:
-    Your Lightning node is continuously receiving, storing, and transmitting graph information.
-    LnVisualizer takes this data and transforms it into an interactive, 3D graph.
-    Search for nodes, filter the graph, and write custom queries to help understand your position in the network.
-
   developers:
     Max Kotlan: https://lnvisualizer.com
   permissions:
-    - lnd
+  - lnd
   repo:
     Public: https://github.com/MaxKotlan/LN-Visualizer
   support: lnvisualizer@gmail.com
-  port: 5646
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
-  path: ""
-
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  path: ''
+  defaultPassword: null
+  torOnly: false
+  description: Your Lightning node is continuously receiving, storing, and transmitting graph information. LnVisualizer takes this data and transforms it into an interactive, 3D graph. Search for nodes, filter the graph, and write custom queries to help understand your position in the network.
 services:
   main:
-    image: maxkotlan/ln-visualizer-web:v0.0.20@sha256:9e4fff7600666ce27d1c835fa66e4a3fb34aabd7018506d749134baf9e8bc481
-    restart: on-failure
-    port: 80
+    image: maxkotlan/ln-visualizer-web:v0.0.25@sha256:c349a106a6fb69c6d56301ae87f9844687a5ec28df9a104fb0b7585a67264092
     stop_grace_period: 1m
+    restart: on-failure
     environment:
-      LN_VISUALIZER_API_URL: "http://${APP_LN_VISUALIZER_API_IP}:5647"
-
+      LN_VISUALIZER_API_URL: http://${APP_LN_VISUALIZER_API_IP}:5647
+    port: 80
   api:
     image: maxkotlan/ln-visualizer-api:v0.0.20@sha256:cfea255f3343dbacf96c5470dcd442f1cc034337dfb46ecfbbc6d5c1978da1a4
-    restart: on-failure
-    stop_grace_period: 1m
     user: 1000:1000
+    stop_grace_period: 1m
+    restart: on-failure
+    environment:
+      LND_CERT_FILE: /lnd/tls.cert
+      LND_MACAROON_FILE: /lnd/data/chain/bitcoin/${BITCOIN_NETWORK}/readonly.macaroon
+      LND_SOCKET: ${LND_IP}:${LND_GRPC_PORT}
     mounts:
       lnd: /lnd
-    environment:
-      LND_CERT_FILE: "/lnd/tls.cert"
-      LND_MACAROON_FILE: "/lnd/data/chain/bitcoin/${BITCOIN_NETWORK}/readonly.macaroon"
-      LND_SOCKET: "${LND_IP}:${LND_GRPC_PORT}"
