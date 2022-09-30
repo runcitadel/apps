@@ -1,9 +1,6 @@
 name: Check app updates
 
 on:
-  push:
-    branches: [ v3-dev, c-lightning-v3 ]
-
   workflow_dispatch:
   schedule: 
     - cron: "0 * * * *"
@@ -15,15 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@v1
+
       - name: Check for updates
         run: |
           export GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-          git clone https://github.com/runcitadel/dev-tools
-          cd dev-tools
-          yarn && yarn tsc
-          yarn citadel-dev --consumerkey ${{ secrets.TWITTER_CONSUMER_API_KEY }} --consumersecret ${{ secrets.TWITTER_CONSUMER_API_SECRET }} --accesstoken ${{ secrets.TWITTER_ACCESS_TOKEN }} --accesstokensecret ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} appcheck -d ../apps
+          git clone https://github.com/runcitadel/app-cli
+          cd app-cli
+          cargo run --features=cli,dev-tools -- update ../apps
           cd ..
-          rm -rf dev-tools
+          rm -rf app-cli
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git commit -a -m "Update apps"  || true
