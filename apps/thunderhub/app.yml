@@ -1,45 +1,34 @@
-# SPDX-FileCopyrightText: 2021 Anthony Potdevin
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
 version: 3
 metadata:
   category: Lightning Node Management
   name: ThunderHub
-  version: 0.13.15
+  version: 0.13.16
   tagline: Take full control of your Lightning node
-  description: >-
-    ThunderHub allows you to take full control of your Lightning node with a
-    slick and awesome UI. Explore all the options that ThunderHub has to offer,
-    from sending and receiving Lightning payments, to checking your node's
-    health statistics, and even more advanced options like channel rebalancing
-    and multi-path lightning payments.
-
+  description: |-
+    ThunderHub allows you to take full control of your Lightning node with a slick and awesome UI. Explore all the options that ThunderHub has to offer, from sending and receiving Lightning payments, to checking your node's health statistics, and even more advanced options like channel rebalancing and multi-path lightning payments.
 
     Managing and monitoring your node has never been easier with transaction reports, graphs and a huge assortment of different features all bundled inside of this great tool.
   developers:
     Anthony Potdevin: https://apotdevin.com
   dependencies:
-    - lnd
+  - lnd
   repo: https://github.com/apotdevin/thunderhub
   support: https://t.me/thunderhub
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - image: apotdevin/thunderhub:v0.13.15@sha256:38189f0ec3df0d56980b0595f7d8eaa446dac922f937d2cda04a88dfc1866a51
-    environment:
-      NO_VERSION_CHECK: "true"
-      LOG_LEVEL: debug
-      ACCOUNT_CONFIG_PATH: /data/thubConfig.yaml
-      YML_ENV_1: $LND_IP:$LND_GRPC_PORT
-      MASTER_PASSWORD_OVERRIDE: $APP_SEED
-      TOR_PROXY_SERVER: socks://$TOR_PROXY_IP:$TOR_PROXY_PORT
-    name: web
-    port: 3000
-    data:
-      - data:/data
+- name: web
+  image: apotdevin/thunderhub:v0.13.16@sha256:d45013f00eabd59aabb649bc1afb5aee40b25e96f3a86112fe7ff28cc89f5d62
+  data:
+  - data:/data
+  environment:
+    NO_VERSION_CHECK: 'true'
+    TOR_PROXY_SERVER: socks://$TOR_PROXY_IP:$TOR_PROXY_PORT
+    ACCOUNT_CONFIG_PATH: /data/thubConfig.yaml
+    YML_ENV_1: $LND_IP:$LND_GRPC_PORT
+    LOG_LEVEL: debug
+    MASTER_PASSWORD_OVERRIDE: $APP_SEED
+  port: 3000
