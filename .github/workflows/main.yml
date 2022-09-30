@@ -14,13 +14,15 @@ jobs:
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@v1
+        with:
+          toolchain: stable
 
       - name: Check for updates
         run: |
-          export GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
           git clone https://github.com/runcitadel/app-cli
           cd app-cli
-          cargo run --features=cli,dev-tools -- update ../apps
+          # TODO: Use prebuilts/Docker
+          cargo run --features=cli,dev-tools -- update ../apps --token "${{ secrets.GITHUB_TOKEN }}"
           cd ..
           rm -rf app-cli
           git config --global user.name "GitHub Actions"
