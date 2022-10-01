@@ -18,6 +18,7 @@ metadata:
   - 3.jpg
   defaultPassword: null
   torOnly: false
+  implements: electrum
 services:
   service:
     image: cculianu/fulcrum:latest@sha256:c0543f8b8a5bf6b0c447d8525d6b4360a6c07532f7741f19cc2c179968e71848
