@@ -8,7 +8,7 @@ metadata:
   developers:
     Roman Zeyde: https://github.com/romanz
   permissions:
-    - bitcoin
+    - bitcoind
   repo:
     Electrs: https://github.com/romanz/electrs
     Container: https://github.com/runcitadel/docker-electrs
