@@ -1,0 +1,44 @@
+citadel_version: 4
+
+metadata:
+  name: Fulcrum
+  version: 1.8.0
+  category: Electrum Servers
+  tagline: Fast Electrum server
+  developers:
+    Calin Culianu: https://github.com/cculianu/Fulcrum
+  permissions:
+    - bitcoin
+  repo:
+    Public: https://github.com/cculianu/Fulcrum
+  support: https://t.me/runcitadel
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  description: |-
+    Fulcrum is a very fast Electrum server. While it's faster than Electrs, it uses more CPU, RAM and disk space.
+
+services:
+  main:
+    image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
+    init: true
+    port: 80
+    mounts:
+      data:
+        nginx/snowflake: /var/www/snowflake
+        nginx/nginx.conf: /etc/nginx/nginx.conf
+
+  service:
+    image: cculianu/fulcrum:latest@sha256:c0543f8b8a5bf6b0c447d8525d6b4360a6c07532f7741f19cc2c179968e71848
+    command: /usr/bin/Fulcrum /data/fulcrum.conf
+    mounts:
+      data:
+        data: /data
+        fulcrum.conf: /data/electrs.toml
+    restart: on-failure
+    stop_grace_period: 5m
+    requiredPorts:
+      tcp:
+        50001: 50001
+        50003: 50003
