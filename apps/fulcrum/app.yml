@@ -28,7 +28,7 @@ services:
     mounts:
       data:
         data: /data
-        fulcrum.conf: /data/electrs.toml
+        fulcrum.conf: /data/fulcrum.conf
     required_ports:
       tcp:
         50001: 50001
