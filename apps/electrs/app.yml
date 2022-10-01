@@ -21,6 +21,7 @@ metadata:
     Electrs is a lightweight Electrum server for personal use.
     
     It's slower than Fulcrum, but uses less CPU, RAM and disk space.
+  implements: electrum
 
 services:
   main:
@@ -42,6 +43,6 @@ services:
         electrs.toml: /data/electrs.toml
     restart: on-failure
     stop_grace_period: 5m
-    requiredPorts:
+    required_ports:
       tcp:
         50001: 50001
