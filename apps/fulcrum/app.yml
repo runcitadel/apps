@@ -8,7 +8,7 @@ metadata:
     Calin Culianu: https://github.com/cculianu/Fulcrum
   description: Fulcrum is a very fast Electrum server. While it's faster than Electrs, it uses more CPU, RAM and disk space.
   permissions:
-  - bitcoin
+  - bitcoind
   repo:
     Public: https://github.com/cculianu/Fulcrum
   support: https://t.me/runcitadel
@@ -28,6 +28,10 @@ services:
       data:
         data: /data
         fulcrum.conf: /data/electrs.toml
+    required_ports:
+      tcp:
+        50001: 50001
+        50003: 50003
   main:
     image: nginx:1.8.1@sha256:9b3e9f189890ef9d6713c3384da3809731bdb0bff84e7b68da330ebadf533085
     init: true
