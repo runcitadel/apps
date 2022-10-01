@@ -1,7 +1,7 @@
 citadel_version: 4
 metadata:
   name: ItchySats
-  version: 0.6.1
+  version: 0.7.0
   category: Finance
   tagline: Peer-2-peer derivatives on Bitcoin
   developers:
@@ -15,7 +15,7 @@ metadata:
   - 1.jpg
   - 2.jpg
   - 3.jpg
-  defaultPassword: $APP_SEED
+  defaultPassword: "weareallsatoshi"
   torOnly: false
   description: |-
     ItchySats enables peer-2-peer CFD trading on Bitcoin using DLCs (discreet log contracts). No account needed, no trusted third-party - just you and your keys.
@@ -42,14 +42,15 @@ metadata:
     With 0.5.0 you can chose from different from leverage. Leverage choices are configured by the maker and might initially be restricted to x1, x2 and x3.
 
     With 0.6.0 you can open positions on BTCUSD and ETHUSD prices. #ShortTheMerge
+
+    With 0.7.0 we replaced basic authentication with cookie-based authentication. Password is not tied to app seed anymore; it has to be set up manually and backed up separately. Note: ItchySats wallet is still tied to the app seed.
 services:
   main:
-    image: ghcr.io/itchysats/itchysats/taker:0.6.1@sha256:5ad0baea350bee41b6e828030ff37f7bb61359d381c7afd15f874ee2bf9d6c62
+    image: ghcr.io/itchysats/itchysats/taker:0.7.0@sha256:0c29162897a6c2bc2093373306f920400a0718960e1e4b1d80bd44beb485a498
     stop_grace_period: 1m
     restart: on-failure
     command:
-    - --password=$APP_SEED
-    - --umbrel-seed=$APP_SEED_2
+    - --app-seed=$APP_SEED_2
     - $BITCOIN_NETWORK
     - --electrum=tcp://$ELECTRUM_IP:$ELECTRUM_PORT
     environment:
