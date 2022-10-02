@@ -61,7 +61,7 @@ metadata:
 
 services:
   main:
-    image: mempool/frontend:v2.4.0@sha256:f71722f1e3abfb3d8a3df6f2a32e384d39434e311bb83d810629077b4fa6ffaf
+    image: mempool/frontend:v2.5.0-dev1@sha256:065f72100a963d7fad6a02faf29edd3aa643f949a550dc813ae5d35be2315c4c
     user: 1000:1000
     port: 3000
     init: true
@@ -70,7 +70,7 @@ services:
       FRONTEND_HTTP_PORT: "3000"
       BACKEND_MAINNET_HTTP_HOST: $APP_MEMPOOL_API_IP
   api:
-    image: mempool/backend:v2.4.0@sha256:6036cc6866b782efadc765e8189958940202b3fa1770eb35c35210c86efd2f47
+    image: mempool/backend:v2.5.0-dev1@sha256:e0e206dcc81ad492344e28f9bc19d3d749bc93e8edbbd197511a8ebbd91b7565
     user: 1000:1000
     init: true
     command: ./wait-for-it.sh mariadb:3306 --timeout=720 --strict -- ./start.sh
@@ -103,7 +103,7 @@ services:
     {% elif services is containing("c-lightning") %}
       LIGHTNING_ENABLED: "true"
       LIGHTNING_BACKEND: "cln"
-      CLN_SOCKET: "/c-lightning/bitcoin/lightning-rpc"
+      CLIGHTNING_SOCKET: "/c-lightning/bitcoin/lightning-rpc"
     {% else %}
       LIGHTNING_ENABLED: "false"
     {% endif %}
