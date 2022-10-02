@@ -15,11 +15,7 @@ metadata:
 
     You can share the onion address of this app with others and they can dynamically generate an invoice using this app.
 
-    Using some apps, like BlueWallet, users can directly send tips to our Lightning address.
-
-    Your lightning address is <your-name-or-anything-you-like-it-doesn't-matter>@<the-onion-url-of-this-app>.onion.
-
-    If you contact the Citadel team, you can also get a shorter and easier to use @ln.runcitadel.space address. To receive one, contact us on forum.runcitadel.space with your prefered address and also, share the onion URL of the LnMe app (not of your node, the app will have a differen one) or DM us on Twitter (https://twitter.com/runcitadel)
+    This app also enables the Lightning Address feature on Citadel.
   developers:
     Michael Bumann: https://ln.michaelbumann.com/
   dependencies:
