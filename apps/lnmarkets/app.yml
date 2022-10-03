@@ -1,61 +1,35 @@
-# SPDX-FileCopyrightText: 2021 Kilian Botrel
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
 version: 3
 metadata:
   category: Finance
   name: LN Markets
-  version: 1.2.3
+  version: 1.2.5
   tagline: Trade Bitcoin derivatives on Lightning
-  description: >-
-    LN Markets is the first Lightning-native Bitcoin derivatives trading
-    platform.
-
-
-    LN Markets enables traders to take minimal counterparty risk:
-      you can trade directly from your Lightning wallet for instant and almost costless transactions.
-      Since March 2020, we have processed over $200 million of trading volume,
-      with a median fee of 1 sat for instant P&L delivery to your wallet.
-
-
-      
-
-
-      
-    This app gives you another way to interact with LN Markets:
-      you can directly deposit, withdraw, get trading stats and get instantly connected to your account to take positions as usual.
-      More features may come in the future!
-
-
-    Thank you for your support and let's keep building the future of finance together!
+  description: "LN Markets is the first Lightning-native Bitcoin derivatives trading platform.\n\nLN Markets enables traders to take minimal counterparty risk:\n  you can trade directly from your Lightning wallet for instant and almost costless transactions.\n  Since March 2020, we have processed over $200 million of trading volume,\n  with a median fee of 1 sat for instant P&L delivery to your wallet.\n\n\n  \n\n\n  \nThis app gives you another way to interact with LN Markets:\n  you can directly deposit, withdraw, get trading stats and get instantly connected to your account to take positions as usual.\n  More features may come in the future!\n\n\nThank you for your support and let's keep building the future of finance together!"
   developers:
     LN Markets: https://lnmarkets.com
   dependencies:
-    - lnd
+  - lnd
   repo: https://github.com/ln-markets/umbrel
   support: https://www.t.me/lnmarkets
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - name: lnmarkets
-    image: ghcr.io/ln-markets/umbrel:v1.2.3@sha256:c11ec6d28d1b1d11d82ae8b33916732686a296beb21c9c3eaee80c823bd2d00f
-    user: 1000:1000
-    init: true
-    stop_grace_period: 1m
-    port: 1234
-    environment:
-      APP_URL: 0.0.0.0
-      API_PORT: 1234
-      APP_DOMAIN: $APP_DOMAIN
-      APP_HIDDEN_SERVICE: $APP_HIDDEN_SERVICE
-      APP_PASSWORD: $APP_SEED
-      LND_IP: $LND_IP
-      LND_GRPC_PORT: $LND_GRPC_PORT
-      LND_REST_PORT: $LND_REST_PORT
-      BITCOIN_NETWORK: $BITCOIN_NETWORK
+- name: lnmarkets
+  image: ghcr.io/ln-markets/umbrel:v1.2.3@sha256:c11ec6d28d1b1d11d82ae8b33916732686a296beb21c9c3eaee80c823bd2d00f
+  environment:
+    API_PORT: 1234
+    LND_REST_PORT: $LND_REST_PORT
+    APP_PASSWORD: $APP_SEED
+    APP_DOMAIN: $APP_DOMAIN
+    APP_HIDDEN_SERVICE: $APP_HIDDEN_SERVICE
+    APP_URL: 0.0.0.0
+    LND_IP: $LND_IP
+    LND_GRPC_PORT: $LND_GRPC_PORT
+    BITCOIN_NETWORK: $BITCOIN_NETWORK
+  init: true
+  port: 1234
+  stop_grace_period: 1m
+  user: 1000:1000
