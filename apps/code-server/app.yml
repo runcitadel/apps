@@ -1,36 +1,29 @@
-# SPDX-FileCopyrightText: 2022 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
-  category: Development
   name: code-server
-  version: 4.6.0
+  version: 4.7.1
+  category: Development
   tagline: Run VS Code on your Citadel
-  description: This app doesn't  have a description yet.
   developers:
     Coder: https://coder.com
-  dependencies: []
+  description: This app doesn't  have a description yet.
+  permissions: []
   repo:
     Public: https://github.com/cdr/code-server
   support: https://github.com/cdr/code-server/discussions
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
   defaultPassword: $APP_SEED
-
+  torOnly: false
 services:
   main:
-    image: codercom/code-server:4.6.0@sha256:b87de935cbd1ec8dcc8b42af53ac37d68236137a02b743563383cb0da31d59d1
+    image: codercom/code-server:4.7.1@sha256:cbe4f6c6b1dc898e8884b6eb01552cb67717e3edba2e1e23c5fdebfed785860d
     user: 1000:1000
-    port: 8080
     environment:
       PASSWORD: $APP_SEED
+    port: 8080
     mounts:
       data:
         data: /home/coder

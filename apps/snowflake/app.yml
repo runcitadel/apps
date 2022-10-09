@@ -1,24 +1,12 @@
-# SPDX-FileCopyrightText: Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v4.yml
-
 citadel_version: 4
-
 metadata:
-  category: Tor
   name: Snowflake
   version: 2.1.0
+  category: Tor
   tagline: Help users in countries which censor online.
-  description: >-
-    Snowflake is a system to defeat internet censorship.
-    People who are censored can use Snowflake to access the internet.
-
-    By running the Snowflake app on Citadel, you can help people who 
-    live in countries which censor Tor.
-  developers: 
+  developers:
     The Tor project: https://torproject.org/
+  permissions: []
   repo:
     Snowflake: https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/
     Container: https://github.com/runcitadel/docker-snowflake
@@ -27,15 +15,20 @@ metadata:
   - 1.jpg
   - 2.jpg
   - 3.jpg
-
+  defaultPassword: null
+  torOnly: false
+  description: |-
+    Snowflake is a system to defeat internet censorship. People who are censored can use Snowflake to access the internet.
+    By running the Snowflake app on Citadel, you can help people who  live in countries which censor Tor.
 services:
   main:
     image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
     init: true
     port: 80
-    data:
-    - nginx/snowflake:/var/www/snowflake
-    - nginx/nginx.conf:/etc/nginx/nginx.conf
+    mounts:
+      data:
+        nginx/snowflake: /var/www/snowflake
+        nginx/nginx.conf: /etc/nginx/nginx.conf
 
   proxy:
     image: ghcr.io/runcitadel/snowflake:v2.1.0@sha256:43ecbea41715fb2040c8e528152dabde27ffdaa16cd1c07f2895232619b1d18f

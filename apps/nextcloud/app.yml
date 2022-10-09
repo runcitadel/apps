@@ -1,14 +1,8 @@
-# SPDX-FileCopyrightText: 2021 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
 version: 3
 metadata:
   category: Files
   name: Nextcloud
-  version: 24.0.4
+  version: 24.0.6
   tagline: Your personal cloud
   description: No description yet.
   developers:
@@ -17,54 +11,50 @@ metadata:
   repo: https://github.com/nextcloud/server
   support: https://help.nextcloud.com/categories
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
   path: /login?user=citadel
   defaultPassword: $APP_SEED
-  updateContainer:
-    - web
-    - cron
 containers:
-  - name: db
-    image: mariadb:10.7.1@sha256:832c6e488f49720f484f87ee9f2cd4487321b373db07ac77037860bcd97d92bb
-    user: 1000:1000
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
-      --skip-innodb-read-only-compressed
-    environment:
-      MARIADB_ROOT_PASSWORD: password123
-      MARIADB_PASSWORD: password123
-      MARIADB_DATABASE: nextcloud
-      MARIADB_USER: nextcloud
-    data:
-      - data/db:/var/lib/mysql
-  - image: redis:6.2.6-bullseye@sha256:0c0484b1d1ff36faace984fe9d8e0fe58892ecc34a4859b97171045b9cd343e1
-    user: 1000:1000
-    name: redis
-    data:
-      - data/redis:/data
-  - name: web
-    image: nextcloud:24.0.4@sha256:69a52f571dc72f9ebbe222fc810f09d016173ec94f4423ea5e3d628496c1a5d5
-    port: 80
-    environment:
-      MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
-      REDIS_HOST: ${APP_NEXTCLOUD_REDIS_IP}
-      MYSQL_PASSWORD: password123
-      MYSQL_DATABASE: nextcloud
-      MYSQL_USER: nextcloud
-      NEXTCLOUD_ADMIN_USER: citadel
-      NEXTCLOUD_ADMIN_PASSWORD: $APP_SEED
-      NEXTCLOUD_TRUSTED_DOMAINS: ${APP_DOMAIN}:${APP_NEXTCLOUD_WEB_PORT} ${APP_HIDDEN_SERVICE}
-    depends_on:
-      - db
-      - redis
-    data:
-      - data/nextcloud:/var/www/html
-  - image: nextcloud:24.0.4@sha256:69a52f571dc72f9ebbe222fc810f09d016173ec94f4423ea5e3d628496c1a5d5
-    entrypoint: /cron.sh
-    depends_on:
-      - db
-      - redis
-    name: cron
-    data:
-      - data/nextcloud:/var/www/html
+- name: db
+  image: mariadb:10.7.1@sha256:832c6e488f49720f484f87ee9f2cd4487321b373db07ac77037860bcd97d92bb
+  command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --skip-innodb-read-only-compressed
+  data:
+  - data/db:/var/lib/mysql
+  environment:
+    MARIADB_ROOT_PASSWORD: password123
+    MARIADB_DATABASE: nextcloud
+    MARIADB_USER: nextcloud
+    MARIADB_PASSWORD: password123
+  user: 1000:1000
+- name: redis
+  image: redis:6.2.6-bullseye@sha256:0c0484b1d1ff36faace984fe9d8e0fe58892ecc34a4859b97171045b9cd343e1
+  data:
+  - data/redis:/data
+  user: 1000:1000
+- name: web
+  image: nextcloud:24.0.6@sha256:14632f0ac1b5081f4df50ec97eefc610e0eb22019589b638e605e3c4e76ec1a5
+  data:
+  - data/nextcloud:/var/www/html
+  depends_on:
+  - db
+  - redis
+  environment:
+    NEXTCLOUD_ADMIN_USER: citadel
+    NEXTCLOUD_TRUSTED_DOMAINS: ${APP_DOMAIN}:${APP_NEXTCLOUD_WEB_PORT} ${APP_HIDDEN_SERVICE}
+    MYSQL_DATABASE: nextcloud
+    REDIS_HOST: ${APP_NEXTCLOUD_REDIS_IP}
+    MYSQL_USER: nextcloud
+    NEXTCLOUD_ADMIN_PASSWORD: $APP_SEED
+    MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
+    MYSQL_PASSWORD: password123
+  port: 80
+- name: cron
+  image: nextcloud:24.0.4@sha256:69a52f571dc72f9ebbe222fc810f09d016173ec94f4423ea5e3d628496c1a5d5
+  data:
+  - data/nextcloud:/var/www/html
+  depends_on:
+  - db
+  - redis
+  entrypoint: /cron.sh
