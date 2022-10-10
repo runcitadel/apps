@@ -27,6 +27,7 @@ services:
     command:
     - sh
     - -c
-    - python initialize.py -net '${BITCOIN_NETWORK}' -server '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord && python manage.py runserver 0.0.0.0:${APP_LNDG_WEB_PORT}
+    - python initialize.py -net '${BITCOIN_NETWORK}' -server '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord && python manage.py runserver 0.0.0.0:3000
     mounts:
       lnd: /root/.lnd
+    port: 3000
