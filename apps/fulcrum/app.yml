@@ -35,11 +35,15 @@ services:
         50003: 50003
     hidden_services:
       50001: 50001
+      50003: 50003
   main:
-    image: nginx:1.8.1@sha256:9b3e9f189890ef9d6713c3384da3809731bdb0bff84e7b68da330ebadf533085
+    image: ghcr.io/runcitadel/electrum-ui:main@sha256:f31042f3b462beb69da7e29d54d79cab2035f0bd7e2e1778e221146cb71a58a0
     init: true
     port: 80
-    mounts:
-      data:
-        nginx/snowflake: /var/www/snowflake
-        nginx/nginx.conf: /etc/nginx/nginx.conf
+    environment:
+      BITCOIN_IP: $BITCOIN_IP
+      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
+      BITCOIN_RPC_USER: $BITCOIN_RPC_USER
+      BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
+      ELECTRUM_IP: $APP_FULCRUM_SERVICE_IP
+      ELECTRUM_PORT: 50001
