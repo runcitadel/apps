@@ -39,7 +39,7 @@ services:
   main:
     image: ghcr.io/runcitadel/electrum-ui:main@sha256:f31042f3b462beb69da7e29d54d79cab2035f0bd7e2e1778e221146cb71a58a0
     init: true
-    port: 80
+    port: 8000
     environment:
       BITCOIN_IP: $BITCOIN_IP
       BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
