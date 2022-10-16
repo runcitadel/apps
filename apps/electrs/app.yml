@@ -27,13 +27,17 @@ metadata:
 
 services:
   main:
-    image: nginx:1.21.6@sha256:2834dc507516af02784808c5f48b7cbe38b8ed5d0f4837f16e78d00deb7e7767
+    image: ghcr.io/runcitadel/electrum-ui:main@sha256:8b56005aad078697801030ccd780a6cca2b5b87a6a0e2430df975d496eec0e2c
     init: true
-    port: 80
-    mounts:
-      data:
-        nginx/snowflake: /var/www/snowflake
-        nginx/nginx.conf: /etc/nginx/nginx.conf
+    port: 8000
+    environment:
+      BITCOIN_IP: $BITCOIN_IP
+      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
+      BITCOIN_RPC_USER: $BITCOIN_RPC_USER
+      BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
+      ELECTRUM_IP: $APP_ELECTRS_SERVICE_IP
+      ELECTRUM_PORT: 50001
+    restart: on-failure
 
   service:
     image: ghcr.io/runcitadel/electrs:v0.9.9@sha256:9751e0d16130cab592dc18ddf2677300600c51843a86bb677821df912d532d52
