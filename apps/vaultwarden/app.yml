@@ -1,21 +1,11 @@
 citadel_version: 4
 metadata:
   name: Vaultwarden
-  version: 1.25.2
+  version: 1.26.0
   category: Password Managers
   tagline: Unofficial Bitwarden® compatible server
   developers:
     Daniel García: https://github.com/dani-garcia
-  permissions: []
-  repo:
-    Public: https://github.com/dani-garcia/vaultwarden
-  support: https://vaultwarden.discourse.group/
-  gallery:
-  - 1.jpg
-  - 2.jpg
-  - 3.jpg
-  defaultPassword: null
-  torOnly: true
   description: |-
     Vaultwarden (formerly known as Bitwarden_RS) is an alternative implementation of the Bitwarden® server API written in Rust, compatible with upstream Bitwarden® clients*. Vaultwarden is perfect for self-hosting all of your passwords in an\ encrypted vault on your Citadel. Vaultwarden is a full implementation of Bitwarden® API that includes:
     - Organizations support
@@ -27,9 +17,20 @@ metadata:
     - YubiKey and Duo support
 
     Please note that Vaultwarden is not associated with the Bitwarden® project nor 8bit Solutions LLC. When using this app, please report any bugs or suggestions to us directly, regardless of whatever clients you are using (mobile, desktop, browser, etc), and do not use Bitwarden®'s official support channels.
+  permissions: []
+  repo:
+    Public: https://github.com/dani-garcia/vaultwarden
+  support: https://vaultwarden.discourse.group/
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  defaultPassword: null
+  torOnly: true
+  compatible: false
 services:
   main:
-    image: vaultwarden/server:1.25.2@sha256:39f34c5159a27dc9a16b2b7c07cec031622cdb174b4d99f09c8efefcd847d887
+    image: vaultwarden/server:1.26.0@sha256:09afd9808194c97ce6ff80d29778d5b6dec335b48f3bd0a3de3c9e02f1b19652
     user: 1000:1000
     environment:
       ROCKET_PORT: '3000'
