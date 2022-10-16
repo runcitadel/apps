@@ -47,3 +47,4 @@ services:
       BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
       ELECTRUM_IP: $APP_FULCRUM_SERVICE_IP
       ELECTRUM_PORT: 50001
+    restart: on-failure
