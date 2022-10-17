@@ -37,7 +37,7 @@ services:
       50001: 50001
       50003: 50003
   main:
-    image: ghcr.io/runcitadel/electrum-ui:main@sha256:e6319c4462c24ca83cfe573af99cad199c8f82b495d986aaa791dcdf37f74e9b
+    image: ghcr.io/runcitadel/electrum-ui:main@sha256:eea9424e5a987fb2e6a4e6929b3c534ad2943df18c4766a0d71f73073ebff067
     init: true
     port: 8000
     environment:
