@@ -27,7 +27,7 @@ metadata:
 
 services:
   main:
-    image: ghcr.io/runcitadel/electrum-ui:main@sha256:e6319c4462c24ca83cfe573af99cad199c8f82b495d986aaa791dcdf37f74e9b
+    image: ghcr.io/runcitadel/electrum-ui:main@sha256:e49c921c8e53315e49fd194a89bae0a572572a615e8115f398ff862ac522357e
     init: true
     port: 8000
     environment:
