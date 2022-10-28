@@ -29,6 +29,9 @@ services:
       data:
         data: /data
         fulcrum.conf: /data/fulcrum.conf
+    environment:
+      RPCUSER: $BITCOIN_RPC_USER
+      RPCPASSWORD: $BITCOIN_RPC_PASS
     required_ports:
       tcp:
         50001: 50001
