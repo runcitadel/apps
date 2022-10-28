@@ -1,11 +1,11 @@
 citadel_version: 4
 metadata:
-  name: JAM
-  version: 0.1.1
+  name: Jam
+  version: 0.1.2
   category: Wallets
   tagline: Your sats. Your privacy. Your profit.
   developers:
-    JAM developers: https://github.com/joinmarket-webui/jam
+    Jam developers: https://github.com/joinmarket-webui/jam
   permissions:
   - bitcoind
   repo:
@@ -22,7 +22,7 @@ metadata:
   description: Jam is a user-interface for JoinMarket with focus on user-friendliness. It's time for top-notch privacy for your bitcoin. Widespread use of JoinMarket improves bitcoin's fungibility and privacy for all. The app provides sensible defaults and is easy to use for beginners while still providing the features advanced users expect.
 services:
   main:
-    image: ghcr.io/joinmarket-webui/jam-standalone:v0.1.1-clientserver-v0.9.8
+    image: ghcr.io/joinmarket-webui/jam-standalone:v0.1.2-clientserver-v0.9.8
     stop_grace_period: 1m
     restart: on-failure
     init: true
