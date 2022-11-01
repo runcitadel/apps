@@ -1,7 +1,7 @@
 citadel_version: 4
 metadata:
   name: Synapse
-  version: 1.69.0
+  version: 1.70.1
   category: Social
   tagline: Matrix homeserver
   developers:
@@ -24,13 +24,13 @@ services:
     entrypoint: bash
     command: -c './start.py generate && ./start.py migrate_config && exec ./start.py'
     environment:
-      SYNAPSE_REPORT_STATS: yes
-      SYNAPSE_HTTP_PORT: 8008
-      GID: '1000'
       SYNAPSE_NO_TLS: yes
       SYNAPSE_ENABLE_REGISTRATION: yes
-      SYNAPSE_SERVER_NAME: ${APP_HIDDEN_SERVICE}
+      SYNAPSE_REPORT_STATS: yes
       UID: '1000'
+      GID: '1000'
+      SYNAPSE_SERVER_NAME: ${APP_HIDDEN_SERVICE}
+      SYNAPSE_HTTP_PORT: 8008
     port: 8008
     mounts:
       data:
