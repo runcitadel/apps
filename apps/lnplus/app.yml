@@ -1,0 +1,40 @@
+citadel_version: 4
+metadata:
+  name: Lightning Network+
+  version: 0.1.23
+  category: Lightning Node Management
+  tagline: Get incoming liquidity and double your channels for free
+  developers:
+    Lightning Network+: https://lightningnetwork.plus
+  description: |-
+    Lightning Network Plus (LN+) is a free app that helps lightning node operators to team up and create liquidity swaps.
+
+    We will walk you through each step to make it an easy process. You will get incoming liquidity, and will be able to grow your channel count and capacity twice as fast, without any extra costs.
+
+    The app will automatically log you in with your node. You can join a swap or you can create a new one. You can chat with other node operators. LN+ will help you open the channel with a single click, or you can open the channel manually with the app of your choice. You can rate swap participants, and you will receive ratings to build your node's reputation.
+  permissions:
+  - lnd
+  repo:
+    Public: https://github.com/Lightning-Network-Plus/lnpclient
+  support: https://github.com/Lightning-Network-Plus/lnpclient/discussions
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+
+services:
+  main:
+    image: lightningnetworkplus/lnpclient:v0.1.23@sha256:87812db57da64a223adfa7d3fe9f47e5f86a2900a40ba286f7bc572fc9a77a6d
+    stop_grace_period: 1m
+    restart: on-failure
+    environment:
+      API_URL: https://lightningnetwork.plus/api/2/
+      LN_IMPLEMENTATION: LND
+      LN_SERVER_URL: $LND_IP:$LND_GRPC_PORT/
+      MACAROON_PATH: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
+      CONFIG_PATH: /lnd/lnd.conf
+      RAILS_ENV: development
+      CERTIFICATE_PATH: /lnd/tls.cert
+    port: 3777
+    mounts:
+      lnd: /lnd
