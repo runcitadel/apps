@@ -5,8 +5,7 @@ metadata:
   category: Payments
   name: BitcartCC
   version: 0.6.9.1
-  tagline: BitcartCC is a self-hosted payment processor and developer solutions
-    platform for cryptocurrencies
+  tagline: Run your own online shop
   description: BitcartCC provides light-weight, but secure and easy-to-use
     solutions for merchants and developers
   developers:
