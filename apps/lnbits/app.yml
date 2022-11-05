@@ -24,7 +24,7 @@ metadata:
     - 3.jpg
   defaultPassword: $APP_SEED
 containers:
-  - image: ghcr.io/runcitadel/lnbits-legends:feat-admin-password@sha256:6bac25967c407f6c25d3194107baf916bddc076c072c958b0977c88bfa074a32
+  - image: lnbitsdocker/lnbits-legend:0.9.4@sha256:0dbcc5ad5c5d4439c4ee5148206ecd3fbc28422aec2847a3f17e968205dab68b
     command: sh -c 'uvicorn lnbits.__main__:app --port 5000 --proxy-headers --host
       0.0.0.0 --forwarded-allow-ips "*"'
     user: 1000:1000
@@ -47,7 +47,7 @@ containers:
     restart: on-failure
     requires:
       - lnd
-  - image: ghcr.io/runcitadel/lnbits-legends:feat-admin-password@sha256:6bac25967c407f6c25d3194107baf916bddc076c072c958b0977c88bfa074a32
+  - image: lnbitsdocker/lnbits-legend:0.9.4@sha256:0dbcc5ad5c5d4439c4ee5148206ecd3fbc28422aec2847a3f17e968205dab68b
     command: sh -c 'uvicorn lnbits.__main__:app --port 5000 --proxy-headers --host
       0.0.0.0 --forwarded-allow-ips "*"'
     user: 1000:1000
