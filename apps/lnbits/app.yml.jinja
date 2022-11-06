@@ -1,0 +1,58 @@
+citadel_version: 4
+metadata:
+  name: LNbits
+  version: baf55af
+  category: Lightning Node Management
+  tagline: Multi-user wallet management system
+  developers:
+    LNbits: https://github.com/lnbits/lnbits
+  permissions:
+  {% if services is containing("lnd") %}
+    - lnd
+  {% elif services is containing("c-lightning") %}
+    - c-lightning
+  {% else %}
+    - - lnd
+      - c-lightning
+  {% endif %}
+  repo:
+    Public: https://github.com/lnbits/lnbits
+  support: https://t.me/lnbits
+  gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+  defaultPassword: $APP_SEED
+  torOnly: false
+  description: Description coming soon.
+services:
+  main-lnd:
+    image: lnbitsdocker/lnbits-legend:0.9.4@sha256:0dbcc5ad5c5d4439c4ee5148206ecd3fbc28422aec2847a3f17e968205dab68b
+    user: 1000:1000
+    restart: on-failure
+    init: true
+    command: sh -c 'uvicorn lnbits.__main__:app --port 5000 --proxy-headers --host 0.0.0.0 --forwarded-allow-ips "*"'
+    environment:
+      LNBITS_DEFAULT_WALLET_NAME: LNbits wallet
+      LNBITS_DISABLED_EXTENSIONS: amilk
+      LNBITS_ADMIN_EXTENSIONS: ngrok,admin
+      LNBITS_DATA_FOLDER: /data
+      LNBITS_SITE_TITLE: LNbits
+    {% if services is containing("lnd") %}
+      LNBITS_BACKEND_WALLET_CLASS: LndRestWallet
+      LND_REST_CERT: /lnd/tls.cert
+      LND_REST_MACAROON: /lnd/data/chain/bitcoin/$BITCOIN_NETWORK/admin.macaroon
+      LND_REST_ENDPOINT: https://$LND_IP:$LND_REST_PORT/
+    {% elif services is containing("c-lightning") %}
+      CLIGHTNING_RPC: /c-lightning/bitcoin/lightning-rpc
+      LNBITS_BACKEND_WALLET_CLASS: CLightningWallet
+    {% endif %}
+    port: 5000
+    mounts:
+    {% if services is containing("lnd") %}
+      lnd: /lnd
+    {% elif services is containing("c-lightning") %}
+      c_lightning: /c-lightning
+    {% endif %}
+      data:
+        data: /data
