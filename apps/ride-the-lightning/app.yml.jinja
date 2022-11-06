@@ -9,9 +9,10 @@ citadel_version: 4
 metadata:
   category: Lightning Node Management
   name: Ride The Lightning
-  version: 0.13.0
+  version: 0.13.1
   tagline: Manage lightning node operations better
-  description: Haven't written a description yet for this, sorry.
+  description: >-
+    Ride the Lightning makes it easier to manage your Lightning node.
   developers:
     Shahana and Suheb: ridethelightning.info
   permissions:
@@ -72,14 +73,13 @@ services:
       - lnd
     {% endif %}
   main:
-    image: ghcr.io/runcitadel/rtl:master@sha256:c7b5201e98390d9a70bebbaf2704734c34b11ad6b98a58e410749ed520dd6942
+    image: shahanafarooqui/rtl:0.13.1@sha256:68f837be0acae9a19fed4c4e6de0408f809b8866a360fc39e274ea2a2d61cc88
     user: 1000:1000
     port: 3000
     environment:
       PORT: "3000"
       RTL_CONFIG_PATH: /data
       CHANNEL_BACKUP_PATH: /data/backup
-      APP_PASSWORD: $APP_SEED
     {% if services is containing("lnd") %}
       LN_IMPLEMENTATION: LND
       LN_SERVER_URL: https://$LND_IP:$LND_REST_PORT
@@ -108,3 +108,5 @@ services:
         boltz: /boltz
     {% endif %}
         rtl: /data
+        RTL-Config.json: /data/RTL-Config.json
+
