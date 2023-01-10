@@ -1,7 +1,7 @@
 citadel_version: 4
 metadata:
   name: LNDg
-  version: 1.3.1
+  version: 1.5.0
   category: Lightning Node Management
   tagline: Lite GUI web interface to analyze LND data and manage your node with automation.
   developers:
@@ -21,7 +21,7 @@ metadata:
   description: LNDg is your command center for running a profitable and efficient routing node. From quickly viewing your node's health, automated rebalancing, selecting new potential peers and much more.
 services:
   main:
-    image: ghcr.io/cryptosharks131/lndg:v1.3.1@sha256:b412bc37b6ed07c3c0335fedf409699ce019a928e69a3f6e7af9ffc8adcfcf99
+    image: ghcr.io/cryptosharks131/lndg:v1.5.0@sha256:5adb0bace9086468542fe8ecf7c971fc47c94b0da6b491b0eb856f3d854c86ba
     stop_grace_period: 1m
     restart: on-failure
     command:
