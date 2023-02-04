@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    font-style: monospace;
+    color: #FFFFFF;
+    background-color: #222222;
+    /* background: #151515;  2nd color*/
+}
+    body a{
+        color: rgb(150, 41, 150);
+    }
+        body a:hover{
+            color: rgb(136, 34, 68);
+        }
+
+h1{
+    padding: 50px 0 35px 0;
+    text-align: center;
+}
+
+#zero, #one, #two{
+    margin: 0 25% 0 25%;
+}
+    .img{
+        width: 100%;
+    }
+
+@media (max-width:1000px) {
+    #zero, #one, #two{
+        margin: 0 15% 0 15%;
+    }
+}
