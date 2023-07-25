@@ -1,0 +1,30 @@
+citadel_version: 4
+metadata:
+  category: Finance
+  name: BudgE
+  icon: https://svgshare.com/i/ndp.svg
+  version: "0.0.9"
+  tagline: Budgeting with envelopes personal finance app.
+  description: BudgE (pronounced "budgie", like the bird) is an open source "budgeting with envelopes" personal finance app, taking inspiration from other tools such as Aspire Budgeting, budgetzero, and Buckets.
+  developers:
+    Alex-phillips: https://github.com/linuxserver/budge
+  repo:
+    Public: https://github.com/linuxserver/budge
+  support: https://github.com/linuxserver/budge
+  gallery:
+    - https://user-images.githubusercontent.com/43396684/197842933-d36a6bd3-9c84-4b04-ac68-8b394eef6b14.png
+    - https://user-images.githubusercontent.com/43396684/197842947-846aa574-8509-46d7-bb7f-950b9ea8bdbe.png
+    - https://user-images.githubusercontent.com/43396684/197842991-1bc64ad0-ece8-4d2d-9769-77e961393b80.png
+    - https://user-images.githubusercontent.com/43396684/197842994-05f6428a-f013-4047-9d40-7401212f2396.png
+  path: ""
+  defaultUsername: ""
+  defaultPassword: ""
+  torOnly: false
+
+services:
+  main:
+    image: linuxserver/budge:0.0.9@sha256:8843e7fb8b30982941ca5d52dd1c171f89e14dbbed940d6d505eb6f052c933a4
+    restart: on-failure
+    volumes:
+      - data/config:/config
+    port: 80
