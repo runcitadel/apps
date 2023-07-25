@@ -1,0 +1,33 @@
+citadel_version: 4
+metadata:
+  category: games
+  name: Mario
+  icon: https://raw.githubusercontent.com/IMPranshu/svg-logo/main/Mario.svg
+  version: "1"
+  tagline: Play the Retro Mario game on your Umbrel!
+  description: >-
+    The Super Mario games are set primarily in the fictional Mushroom Kingdom, typically with Mario as the player character. He is usually joined by his brother, Luigi, and often by other members of the Mario cast. As platform games, they involve the player character running and jumping across platforms and atop enemies in themed levels. The games have simple plots, typically with Mario and Luigi rescuing the kidnapped Princess Peach from the primary antagonist, Bowser.
+
+
+    Note: Press "S" to Jump and arrow keys to control.
+  developers:
+    Pranshu Agrawal: https://github.com/IMPranshu
+  repo:
+  Public: https://github.com/IMPranshu/mario-in-web/tree/main/webapp
+  support: https://github.com/IMPranshu/mario-in-web/tree/main/webapp
+  gallery:
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/fac0127f-6f07-4b5d-afdc-3dea4ff5968b
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/ffa32671-8885-4b51-b6b1-4106cb838704
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/bda01cbf-48c2-47f7-af33-ca35b4a7dcae
+  path: ""
+  defaultUsername: ""
+  defaultPassword: ""
+  torOnly: false
+
+services:
+  main:
+    image: impranshu/mario:v1@sha256:b822578012203a14ea3c071b8f14e8ad7c8ac9a007a3c09500bbcacb25c6c0f3
+    volumes:
+      - data:/data
+    restart: on-failure
+    port: 8080
