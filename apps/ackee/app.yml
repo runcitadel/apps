@@ -1,0 +1,60 @@
+citadel_version: 4
+metadata:
+  category: networking
+  name: Ackee
+  icon: https://raw.githubusercontent.com/IMPranshu/svg-logo/main/ackee.svg
+  version: "3.4.2"
+  tagline: Track without being tracked
+  description: >-
+    Self-hosted, Node.js based analytics tool for those who care about privacy. Ackee runs on your own server, analyzes the traffic of your websites and provides useful statistics in a minimal interface.
+
+
+    Next level analytics
+    Ackee combines privacy-focused analytics and first-class insights in a minimal interface.
+
+
+    Data made beautiful
+    See your stats from a new perspective. The minimal UI of Ackee allows you to analyze your data without loosing focus.
+
+
+    Safe and anonym
+    Cookie-free and secure. Our multi-step anonymization process ensures that your users stay anonym.
+
+
+    Your server, your rules
+    Your data should be in your hands. Ackee is 100% open-source and self-hosted, to ensure complete transparency.
+
+
+    Unlimited domains
+    One, two or twenty? It doesn't matter. Ackee allows you to analyze as many domains and apps as you want.
+
+  developers:
+    Tobias Reich: https://ackee.electerious.com/
+  repo:
+    Public: https://github.com/electerious/Ackee
+  support: https://docs.ackee.electerious.com
+  gallery:
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/f64afd15-dc11-4117-b9b2-185468a144d7
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/6f8db28d-5741-42da-967a-fbbba771de61
+  path: ""
+  defaultUsername: "citadel"
+  defaultPassword: "run"
+
+services:
+  main:
+    image: electerious/ackee:3.4.2@sha256:55558f35dee1d0a1a0aa83fc8c766cff2c9c28a93f400cdd390cef38f48a6c25
+    restart: on-failure
+    environment:
+      WAIT_HOSTS: mongo:27017
+      ACKEE_MONGODB: mongodb://mongo:27017/ackee
+      ACKEE_USERNAME: citadel
+      ACKEE_PASSWORD: run
+    depends_on:
+      - mongo
+    port: 3000
+
+  mongo:
+    image: mongo:6@sha256:20f3adcaffe2193e49dd502c8299b770d49a1e0643e0e9db250d5c127b1e9ed8
+    restart: on-failure
+    volumes:
+      - data:/data/db
