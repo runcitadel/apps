@@ -1,0 +1,82 @@
+citadel_version: 4
+metadata:
+  category: files
+  name: vikunja
+  icon: https://raw.githubusercontent.com/IMPranshu/svg-logo/main/vikunja-logo.svg
+  version: "0.21"
+  tagline: The open-source, self-hostable to-do app
+  description: >-
+    Think of Vikunja like the notebook you have with all your things to keep track of.
+    But with superpowers.
+    Stay organized
+    Organize all of your tasks in projects. Create subprojects organize everything hierarchical and keep related stuff grouped together.
+
+
+    Collaborate with peers
+    Vikunja lets you easily share a project with another user or a whole team! Assignments show who's working on what.
+
+
+    Use it how you need it
+    You can view your tasks in the classic list view - or in a Gantt Chart, or Table view, or Kanban Board. Whatever you need!
+
+
+    Built for speed.
+    We built Vikunja with speed in mind - every interaction takes less than 100ms. No more loading spinners.
+    Because a productive tool should not get in your way.
+
+
+    Import your tasks from Todoist, Trello or Microsoft To-Do
+    Because work does not happen in one tool only.
+  developers:
+    kolaente: https://vikunja.io/
+  repo:
+    Public: https://kolaente.dev/vikunja/
+  support: https://vikunja.io/docs/
+  gallery:
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/999acf04-2e90-47d3-a1d9-2e94bbd6030d
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/61588cf6-9735-470f-8abf-159366ceb90f
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/4eed7f4f-3a0b-4884-b106-69bd2a469685
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/c1051c6a-0f94-4c5f-85b6-0ea1183a944f
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/20d3751d-d97f-420a-9f7e-1572256817f9
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/0216e7ce-dce1-4d04-9418-704d2b31c524
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/60bff898-c944-466e-aea4-771ebd10861d
+  path: ""
+  defaultUsername: ""
+  defaultPassword: ""
+
+services:
+  main:
+    image: vikunja/frontend:0.21@sha256:fdd4582979beee4a6bef2d4d8e3744809b82ab2e198d708a829d7189a0ad9882
+    restart: unless-stopped
+    environment:
+      VIKUNJA_API_URL: http://${APP_DOMAIN}:3456/api/v1
+    port: 80
+
+  db:
+    image: mariadb:10@sha256:385c0ba6270307511a511ad915350736602c33fafb3f63f663c853920424c365
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecret
+      MYSQL_USER: vikunja
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: vikunja
+    volumes:
+      - db:/var/lib/mysql
+    restart: unless-stopped
+  api:
+    image: vikunja/api:0.21@sha256:e541ef5599d08f50a24e8de1fd8136f9d0a7ef514916fac6d6bf8ac6c7c16712
+    environment:
+      VIKUNJA_DATABASE_HOST: db
+      VIKUNJA_DATABASE_PASSWORD: secret
+      VIKUNJA_DATABASE_TYPE: mysql
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_SERVICE_JWTSECRET: <a super secure random secret>
+      VIKUNJA_SERVICE_FRONTENDURL: http://${APP_DOMAIN}/
+    ports:
+      - 3456:3456
+    volumes:
+      - files:/app/vikunja/files
+    depends_on:
+      - db
+    restart: unless-stopped
