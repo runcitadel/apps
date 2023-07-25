@@ -1,0 +1,30 @@
+citadel_version: 4
+metadata:
+  name: freshrss
+  category: networking
+  icon: https://raw.githubusercontent.com/IMPranshu/svg-logo/main/logo.svg
+  version: v1.21
+  tagline: A free, self-hostable aggregator for rss feeds.
+  description: FreshRSS is a self-hosted RSS and Atom feed aggregator.It is lightweight, easy to work with, powerful, and customizable.A Powerful Aggregator Syndication Follow websites, podcasts and video channels in a single place. Reader Read your articles directly in FreshRSS. Search Search and save queries for quick access. Web scraping Generate feeds by scraping external websites. Feeds generation Generate new feeds based on your filters. OPML Import and export your feeds with OPML. WebSub Stay connected to your feeds in real-time. Configurable Adapt to your needs thanks to a lot of options. Mobile Follow your feeds with or without a third-party application. Fast & efficient FreshRSS can manage 1M+ articles and 50k+ feeds without complaining. Themes & extensions Customize FreshRSS with themes and extensions. International FreshRSS is translated in more than 15 languages.
+  developers:
+    FreshRSS Org: https://freshrss.org/
+  repo:
+    Public: https://github.com/FreshRSS/FreshRSS
+  support: https://github.com/FreshRSS/FreshRSS
+  gallery:
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/fb6a5be8-a44a-404c-ac93-ea280236352f
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/b132d270-3a12-426f-bbc7-e2dfd5b80d86
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/8e229d50-b6d4-419c-9ca0-18d4a33fd4f7
+    - https://github.com/getumbrel/umbrel-apps/assets/43396684/f62240fe-449c-4518-9967-24d008f09d2f
+  path: ""
+  deterministicPassword: false
+  torOnly: false
+services:
+  main:
+    image: linuxserver/freshrss:1.21.0@sha256:de37e3f8f79c8c0fa00368784baa14d183385e34d168c1749dc69adcde6e45ec
+    restart: on-failure
+    environment:
+      TZ: Etc/UTC
+    volumes:
+      - data:/config
+    port: 80
