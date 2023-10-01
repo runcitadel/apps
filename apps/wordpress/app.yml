@@ -1,7 +1,7 @@
 citadel_version: 4
 metadata:
   name: WordPress
-  version: 6.0.3
+  version: 6.3.1
   category: Blog
   tagline: Host a blog on your Citadel
   developers:
@@ -20,28 +20,28 @@ metadata:
   torOnly: false
   compatible: false
 services:
-  main:
-    image: wordpress:6.0.3@sha256:4a545ef322a1c9cbd5582339f4d57ad09761243353699a62f43d0dd6fcf534ac
-    depends_on:
-    - db
-    restart: always
-    environment:
-      WORDPRESS_CONFIG_EXTRA: |
-        define('FS_METHOD','direct');
-      WORDPRESS_DB_HOST: $APP_WORDPRESS_DB_IP
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: somewordpress
-      WORDPRESS_DB_NAME: wordpress
-    port: 80
   db:
     image: mariadb:10.7.3-focal@sha256:07e06f2e7ae9dfc63707a83130a62e00167c827f08fcac7a9aa33f4b6dc34e0e
     user: 1000:1000
     restart: always
     environment:
-      MARIADB_USER: wordpress
-      MARIADB_ROOT_PASSWORD: somewordpress
       MARIADB_DATABASE: wordpress
       MARIADB_PASSWORD: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_ROOT_PASSWORD: somewordpress
     mounts:
       data:
         data/db: /var/lib/mysql
+  main:
+    image: wordpress:6.3.1@sha256:a078d12a76827322cf95c1e3ae470d30bd518af6e0bdb42f4f49919b2b3ba74b
+    depends_on:
+    - db
+    restart: always
+    environment:
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_HOST: $APP_WORDPRESS_DB_IP
+      WORDPRESS_CONFIG_EXTRA: |
+        define('FS_METHOD','direct');
+      WORDPRESS_DB_PASSWORD: somewordpress
+      WORDPRESS_DB_NAME: wordpress
+    port: 80

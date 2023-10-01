@@ -1,56 +1,46 @@
-# SPDX-FileCopyrightText: 2021 Oren Zomer
-#
-# SPDX-License-Identifier: AGPL-3.0-only
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
 version: 3
 metadata:
   category: Automation
   name: Node-RED
-  version: 3.0.2
+  version: 3.1.0
   tagline: Wire together the Internet of Things
-  description: >-
-    Node-RED is a visual programming tool for wiring together hardware devices,
-    APIs and online services in new and interesting ways.
-
+  description: |-
+    Node-RED is a visual programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.
 
     It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.  A built-in library allows you to save useful functions, templates or flows for re-use.
 
-
     The flows created in Node-RED are stored using JSON which can be easily imported and exported for sharing with others. An online flow library allows you to share your best flows with the world.
-
 
     Warning: Node-RED on Citadel is able to connect directly to Bitcoin Core, LND and Electrum, due to this you should be careful when installing third-party Node-RED nodes.
   developers:
     OpenJS Foundation: https://nodered.org
   dependencies:
-    - bitcoind
-    - electrum
-    - lnd
+  - bitcoind
+  - electrum
+  - lnd
   repo: https://github.com/node-red/node-red
   support: https://nodered.org/about/community/slack/
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
-  defaultPassword: moneyprintergobrrr
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
   torOnly: false
+  defaultPassword: moneyprintergobrrr
 containers:
-  - name: web
-    image: nodered/node-red:3.0.2@sha256:524316b9b84cb5bbfe006c117f3dad31ee806804b12e4b866047a65e2080e92d
-    stop_grace_period: 1m
-    data:
-      - data:/data
-    port: 3000
-    environment:
-      PORT: 3000
-      BITCOIN_NETWORK: $BITCOIN_NETWORK
-      BITCOIN_IP: $BITCOIN_IP
-      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
-      BITCOIN_RPC_USER: $BITCOIN_RPC_USER
-      BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
-      LND_IP: $LND_IP
-      LND_GRPC_PORT: $LND_GRPC_PORT
-      ELECTRUM_IP: $ELECTRUM_IP
-      ELECTRUM_PORT: $ELECTRUM_PORT
+- name: web
+  image: nodered/node-red:3.1.0@sha256:5e99ed734f7d2f9bfcb1e20dfbf4c5b9aa60f35a9df6e257e817130f0f9be9dc
+  data:
+  - data:/data
+  environment:
+    ELECTRUM_IP: $ELECTRUM_IP
+    BITCOIN_IP: $BITCOIN_IP
+    BITCOIN_RPC_USER: $BITCOIN_RPC_USER
+    LND_IP: $LND_IP
+    LND_GRPC_PORT: $LND_GRPC_PORT
+    PORT: 3000
+    BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
+    BITCOIN_NETWORK: $BITCOIN_NETWORK
+    BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
+    ELECTRUM_PORT: $ELECTRUM_PORT
+  port: 3000
+  stop_grace_period: 1m
