@@ -2,7 +2,7 @@ version: 3
 metadata:
   category: Wallets
   name: Specter Desktop
-  version: 1.13.1
+  version: 2.0.2
   tagline: Multisig with hardware wallets made easy
   description: |-
     Specter Desktop connects to the Bitcoin Core running on your Citadel and functions as a watch-only coordinator for multi-signature and single-key Bitcoin wallets. At the moment Specter Desktop is working with all major hardware wallets including:
@@ -29,7 +29,7 @@ metadata:
   - 3.jpg
 containers:
 - name: web
-  image: lncm/specter-desktop:v1.13.1@sha256:d277dec2a54fc77f3ccbc0f082183abce31e655b50f21da8d098f90fb734a15b
+  image: lncm/specter-desktop:v2.0.2@sha256:aeda6dfaa3f82c7bd3e1c6ba61388df02bd0c22a59412d2bbed3c792fb0b3702
   command:
   - --host=0.0.0.0
   - --specter-data-folder=/data
@@ -39,8 +39,8 @@ containers:
     BTC_RPC_PASSWORD: $BITCOIN_RPC_PASS
     BTC_RPC_USER: $BITCOIN_RPC_USER
     BTC_RPC_HOST: $BITCOIN_IP
-    BTC_RPC_PORT: $BITCOIN_RPC_PORT
     BTC_RPC_PROTOCOL: http
+    BTC_RPC_PORT: $BITCOIN_RPC_PORT
   mounts:
     bitcoin: /data/.bitcoin
   port: 25441

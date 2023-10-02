@@ -1,11 +1,12 @@
 citadel_version: 4
 metadata:
   name: LNDg
-  version: 1.3.1
+  version: 1.7.1
   category: Lightning Node Management
   tagline: Lite GUI web interface to analyze LND data and manage your node with automation.
   developers:
     cryptosharks131: https://github.com/cryptosharks131
+  description: LNDg is your command center for running a profitable and efficient routing node. From quickly viewing your node's health, automated rebalancing, selecting new potential peers and much more.
   permissions:
   - lnd
   repo:
@@ -18,18 +19,18 @@ metadata:
   path: ''
   defaultPassword: $APP_SEED
   torOnly: false
-  description: LNDg is your command center for running a profitable and efficient routing node. From quickly viewing your node's health, automated rebalancing, selecting new potential peers and much more.
+  compatible: false
 services:
   main:
-    image: ghcr.io/cryptosharks131/lndg:v1.3.1@sha256:b412bc37b6ed07c3c0335fedf409699ce019a928e69a3f6e7af9ffc8adcfcf99
+    image: ghcr.io/cryptosharks131/lndg:v1.7.1@sha256:2518dbe45bcce4f238e6d531df4478d98b2eade47e4ebe91c6f404cf53bd0600
     stop_grace_period: 1m
     restart: on-failure
     command:
     - sh
     - -c
     - python initialize.py -net '${BITCOIN_NETWORK}' -server '${LND_IP}:${LND_GRPC_PORT}' -pw '${APP_SEED}' -d && supervisord && python manage.py runserver 0.0.0.0:3000
+    port: 3000
     mounts:
       lnd: /root/.lnd
       data:
         data: /lndg/data
-    port: 3000

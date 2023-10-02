@@ -2,7 +2,7 @@ version: 3
 metadata:
   category: Files
   name: Nextcloud
-  version: 25.0.0
+  version: 27.1.1
   tagline: Your personal cloud
   description: No description yet.
   developers:
@@ -34,21 +34,21 @@ containers:
   - data/redis:/data
   user: 1000:1000
 - name: web
-  image: nextcloud:25.0.0@sha256:673d2ec801f2aaa953c4587db5a9bd53430497c95d9d439819074f3ef05538ac
+  image: nextcloud:27.1.1@sha256:eac49486297576bb3a9e8ae80cbdadfe18f7829e22fc4683a818ed12791cc313
   data:
   - data/nextcloud:/var/www/html
   depends_on:
   - db
   - redis
   environment:
+    NEXTCLOUD_ADMIN_PASSWORD: $APP_SEED
     REDIS_HOST: ${APP_NEXTCLOUD_REDIS_IP}
     MYSQL_USER: nextcloud
-    NEXTCLOUD_ADMIN_PASSWORD: $APP_SEED
     MYSQL_DATABASE: nextcloud
     NEXTCLOUD_TRUSTED_DOMAINS: ${APP_DOMAIN}:${APP_NEXTCLOUD_WEB_PORT} ${APP_HIDDEN_SERVICE}
     MYSQL_PASSWORD: password123
-    NEXTCLOUD_ADMIN_USER: citadel
     MYSQL_HOST: ${APP_NEXTCLOUD_DB_IP}
+    NEXTCLOUD_ADMIN_USER: citadel
   port: 80
 - name: cron
   image: nextcloud:24.0.4@sha256:69a52f571dc72f9ebbe222fc810f09d016173ec94f4423ea5e3d628496c1a5d5

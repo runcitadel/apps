@@ -1,29 +1,20 @@
-# SPDX-FileCopyrightText: 2022 Citadel and contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-# yaml-language-server: $schema=../../app-standard-v3.yml
-
 version: 3
-
 metadata:
   category: Social
   name: Synapse Admin
-  version: 0.8.5
+  version: 0.8.7
   tagline: Manage your synapse server
-  description: "This app allows you to manage your synapse server. It currently
-    requires some manual work inside Synapse's Docker container,  so it's not
-    usable for most users yet. "
-  developers: 
+  description: 'This app allows you to manage your synapse server. It currently requires some manual work inside Synapse''s Docker container,  so it''s not usable for most users yet. '
+  developers:
     Awesome Technologies: https://awesome-technologies.de/https://awesome-technologies.de/
   dependencies: []
   repo: https://github.com/Awesome-Technologies/synapse-admin
   support: https://github.com/Awesome-Technologies/synapse-admin
   gallery:
-    - 1.jpg
-    - 2.jpg
-    - 3.jpg
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
 containers:
-  - name: main
-    image: awesometechnologies/synapse-admin:0.8.5@sha256:e2598994cf3b6fca4ed7bac781519b099f8233b512f80d806eb704f53981e849
-    port: 80
+- name: main
+  image: awesometechnologies/synapse-admin:0.8.7@sha256:6193a821f0e5c74a06401c0d77a45a7ea1e3bec7e43f6233f78ee2c753599960
+  port: 80
