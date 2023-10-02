@@ -1,11 +1,12 @@
 citadel_version: 4
 metadata:
   name: WoofBot
-  version: 0.3.0
+  version: 0.9.8
   category: Explorers
   tagline: A chatbot for your personal node.
   developers:
     WoofBotApp: https://github.com/woofbotapp
+  description: 'WoofBot is a chat bot that runs on your personal Bitcoin node and sends telegram notifications based on pre-configured conditions: addresses, transactions, new-blocks and price changes.'
   permissions:
   - bitcoind
   repo:
@@ -18,7 +19,7 @@ metadata:
   path: ''
   defaultPassword: $APP_SEED
   torOnly: false
-  description: 'WoofBot is a chat bot that runs on your personal Bitcoin node and sends telegram notifications based on pre-configured conditions: addresses, transactions, new-blocks and price changes.'
+  compatible: false
 services:
   mongodb:
     image: mongo:5.0.9@sha256:37e84d3dd30cdfb5472ec42b8a6b4dc6ca7cacd91ebcfa0410a54528bbc5fa6d
@@ -29,18 +30,18 @@ services:
       data:
         data/db: /data/db
   main:
-    image: woofbot/woofbot:v0.3.0@sha256:69a78087386ab3c2d1cfb2cac268c377c3cf67bcb1c39b733bd9de93b8a57b49
+    image: woofbot/woofbot:v0.9.8@sha256:483076f0f364291d569025639ab502dc19c9c61d38931402955482e53cc3d950
     stop_grace_period: 1m
     depends_on:
     - mongodb
     restart: on-failure
     environment:
+      APP_PASSWORD: $APP_SEED
+      APP_SEED: $APP_SEED_2
       APP_PORT: '8080'
-      APP_BITCOIN_NODE_IP: $BITCOIN_IP
       APP_BITCOIN_RPC_USER: $BITCOIN_RPC_USER
       APP_BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
       APP_BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
-      APP_PASSWORD: $APP_SEED
-      APP_SEED: $APP_SEED_2
       MONGODB_URI: mongodb://${APP_WOOFBOT_MONGODB_IP}:27017/woofbot
+      APP_BITCOIN_NODE_IP: $BITCOIN_IP
     port: 8080

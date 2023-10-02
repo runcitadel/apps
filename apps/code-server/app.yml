@@ -1,7 +1,7 @@
 citadel_version: 4
 metadata:
   name: code-server
-  version: 4.7.1
+  version: 4.17.1
   category: Development
   tagline: Run VS Code on your Citadel
   developers:
@@ -17,9 +17,10 @@ metadata:
   - 3.jpg
   defaultPassword: $APP_SEED
   torOnly: false
+  compatible: false
 services:
   main:
-    image: codercom/code-server:4.7.1@sha256:cbe4f6c6b1dc898e8884b6eb01552cb67717e3edba2e1e23c5fdebfed785860d
+    image: codercom/code-server:4.17.1@sha256:69f3b3952cd7a9680c290cf2c8030888064c759b7b599505eda5b52bdd841e74
     user: 1000:1000
     environment:
       PASSWORD: $APP_SEED
